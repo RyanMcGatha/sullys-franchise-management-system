@@ -1,10 +1,11 @@
-import "./routeStyles.css";
+import "../../index.css";
 import { useState, useEffect } from "react";
 import { supabase } from "../config/supabaseConfig";
-import Auth from "./Auth";
-import Account from "./protectedRoutes/Account";
+import Auth from "./unprotectedRoutes/Auth";
 
-function App() {
+import Dashboard from "./protectedRoutes/Dashboard";
+
+function Routes() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -18,14 +19,18 @@ function App() {
   }, []);
 
   return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
+    <div>
       {!session ? (
-        <Auth />
+        <>
+          <Auth />
+        </>
       ) : (
-        <Account key={session.user.id} session={session} />
+        <>
+          <Dashboard key={session.user.id} session={session} />
+        </>
       )}
     </div>
   );
 }
 
-export default App;
+export default Routes;

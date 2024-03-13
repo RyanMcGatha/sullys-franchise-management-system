@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../../config/supabaseConfig";
-import Avatar from "../../components/Avatar";
-import "../routeStyles.css";
+import { supabase } from "../config/supabaseConfig";
+import Avatar from "./Avatar";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
-  const [website, setWebsite] = useState(null);
+  const [role, setRole] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export default function Account({ session }) {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`username, website, avatar_url`)
+        .select(`username, role, avatar_url`)
         .eq("id", user.id)
         .single();
 
@@ -26,7 +25,7 @@ export default function Account({ session }) {
           console.warn(error);
         } else if (data) {
           setUsername(data.username);
-          setWebsite(data.website);
+          setRole(data.role);
           setAvatarUrl(data.avatar_url);
         }
       }
@@ -50,7 +49,7 @@ export default function Account({ session }) {
     const updates = {
       id: user.id,
       username,
-      website,
+      role,
       avatar_url: avatarUrl,
       updated_at: new Date(),
     };
@@ -89,12 +88,12 @@ export default function Account({ session }) {
         />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
+        <label htmlFor="role">Set Role</label>
         <input
-          id="website"
+          id="role"
           type="url"
-          value={website || ""}
-          onChange={(e) => setWebsite(e.target.value)}
+          value={role || ""}
+          onChange={(e) => setRole(e.target.value)}
         />
       </div>
 

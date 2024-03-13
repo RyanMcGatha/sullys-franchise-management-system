@@ -1,0 +1,28 @@
+.main-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+  width: 100vw;
+  background: #1c1c1c;
+  color: white;
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+
+  height: 5vh;
+  width: 20vw;
+  overflow: visible;
+}
+
+.accountBtn {
+  height: 5vh;
+  width: 10vw;
+  background: #7c2529;
+}
+
+.accountBtn:hover {
+  background: #f1b434;
+}

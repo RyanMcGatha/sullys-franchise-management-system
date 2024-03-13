@@ -1,0 +1,10 @@
+nav {
+  background: #1c1c1c;
+  display: flex;
+  height: 5vh;
+  width: 100vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
