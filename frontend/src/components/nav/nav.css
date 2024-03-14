@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "TradeGothicLTStd-BdCn20";
+  src: url("../../assets/fonts/TradeGothicLTStd-BdCn20.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("../../assets/fonts/Pacifico.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Fineday";
+  src: url("../../assets/fonts/Fineday-StyleTwo.ttf") format("truetype");
+}
+
 nav {
   display: flex;
   flex-direction: column;
@@ -5,7 +20,8 @@ nav {
   height: 100vh;
   width: 20vw;
   background-color: #1d1e23;
-  gap: 2vh;
+  gap: 5vh;
+  align-items: center;
 }
 
 .accountBtn {
@@ -20,8 +36,8 @@ nav {
   font-size: 25px;
   border: none;
   background: none;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
+
+  font-family: "TradeGothicLTStd-BdCn20", Arial, sans-serif;
 }
 
 .navLink::before {
@@ -36,6 +52,19 @@ nav {
   background: #f44336;
   display: block;
   transition: 0.5s;
+}
+
+#a {
+  content: "Dashboard";
+}
+#b {
+  content: "Locations";
+}
+#c {
+  content: "Upload Document";
+}
+#d {
+  content: "Messenger";
 }
 
 .navLink:hover::after,
