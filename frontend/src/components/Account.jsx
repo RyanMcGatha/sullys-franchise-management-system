@@ -4,8 +4,9 @@ import Avatar from "./Avatar";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
+
   const [username, setUsername] = useState(null);
-  const [role, setRole] = useState(null);
+  const [full_name, set_full_name] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function Account({ session }) {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select(`username, role, avatar_url`)
+        .select(`username, full_name, avatar_url`)
         .eq("id", user.id)
         .single();
 
@@ -25,7 +26,7 @@ export default function Account({ session }) {
           console.warn(error);
         } else if (data) {
           setUsername(data.username);
-          setRole(data.role);
+          set_full_name(data.full_name);
           setAvatarUrl(data.avatar_url);
         }
       }
@@ -38,7 +39,7 @@ export default function Account({ session }) {
     return () => {
       ignore = true;
     };
-  }, [session]);
+  }, []);
 
   async function updateProfile(event, avatarUrl) {
     event.preventDefault();
@@ -49,7 +50,7 @@ export default function Account({ session }) {
     const updates = {
       id: user.id,
       username,
-      role,
+      full_name,
       avatar_url: avatarUrl,
       updated_at: new Date(),
     };
@@ -73,10 +74,7 @@ export default function Account({ session }) {
           updateProfile(event, url);
         }}
       />
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
+
       <div>
         <label htmlFor="username">Name</label>
         <input
@@ -88,12 +86,13 @@ export default function Account({ session }) {
         />
       </div>
       <div>
-        <label htmlFor="role">Set Role</label>
+        <label htmlFor="full_name">Full Name</label>
         <input
-          id="role"
-          type="url"
-          value={role || ""}
-          onChange={(e) => setRole(e.target.value)}
+          id="full_name"
+          type="text"
+          required
+          value={full_name || ""}
+          onChange={(e) => set_full_name(e.target.value)}
         />
       </div>
 

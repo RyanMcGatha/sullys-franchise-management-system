@@ -1,8 +1,14 @@
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+
 const ProtectedLayout = () => {
+  const { session } = useAuth();
+  if (!session) {
+    return <Navigate to="/" />;
+  }
   return (
     <div>
-      <h1>Protected Layout</h1>
-      <p>This is a protected layout.</p>
+      <Outlet />
     </div>
   );
 };

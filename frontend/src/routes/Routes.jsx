@@ -1,36 +1,51 @@
 import "../../index.css";
-import { useState, useEffect } from "react";
+import React from "react";
 import { supabase } from "../config/supabaseConfig";
 import Auth from "./unprotectedRoutes/Auth";
 
 import Dashboard from "./protectedRoutes/Dashboard";
+import Locations from "./protectedRoutes/Locations";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+import Layout from "../pages/Layout";
+import ProtetcedLayout from "../pages/ProtectedLayout";
+import ErrorPage from "../pages/ErrorPage";
 
-function Routes() {
-  const [session, setSession] = useState(null);
+const Routes = () => {
+  const { isAuth } = useAuth();
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
+  const publicRoutes = [
+    {
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/",
+          element: <Auth />,
+        },
+      ],
+    },
+  ];
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
+  const protectedRoutes = [
+    {
+      element: <ProtetcedLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+        },
+      ],
+    },
+  ];
 
-  return (
-    <div>
-      {!session ? (
-        <>
-          <Auth />
-        </>
-      ) : (
-        <>
-          <Dashboard key={session.user.id} session={session} />
-        </>
-      )}
-    </div>
-  );
-}
+  const router = createBrowserRouter([
+    ...publicRoutes,
+    ...(isAuth ? protectedRoutes : []),
+    ...protectedRoutes,
+  ]);
+  return <RouterProvider router={router} />;
+};
 
 export default Routes;

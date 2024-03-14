@@ -5,7 +5,9 @@ import "./components.css";
 const Nav = ({ session }) => {
   return (
     <nav>
-      <ShowAccountBtn session={session} />
+      <div className="showAccountBtn">
+        <ShowAccountBtn session={session} />
+      </div>
     </nav>
   );
 };
