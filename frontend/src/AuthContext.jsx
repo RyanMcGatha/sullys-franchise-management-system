@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import { supabase } from "./config/supabaseConfig";
 
 import { createContext, useContext, useState, useEffect } from "react";

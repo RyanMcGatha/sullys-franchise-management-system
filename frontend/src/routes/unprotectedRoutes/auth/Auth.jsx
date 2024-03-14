@@ -1,9 +1,10 @@
-import "./routeStyles.css";
+import "./auth.css";
+
 import { Link, Navigate } from "react-router-dom";
-import { useAuth } from "../../AuthContext";
+import { useAuth } from "../../../AuthContext";
 
 import { useState } from "react";
-import { supabase } from "../../config/supabaseConfig";
+import { supabase } from "../../../config/supabaseConfig";
 
 export default function Auth() {
   const { session } = useAuth();

@@ -1,7 +1,5 @@
-import "../routes/protectedRoutes/dashboard.css";
-
 import React, { useState } from "react";
-import Account from "./Account";
+import Account from "./account/Account";
 
 const ShowAccountBtn = ({ session }) => {
   const [account, setAccount] = useState(false);

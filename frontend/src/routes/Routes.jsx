@@ -1,15 +1,22 @@
-import "../../index.css";
 import React from "react";
-import { supabase } from "../config/supabaseConfig";
-import Auth from "./unprotectedRoutes/Auth";
 
-import Dashboard from "./protectedRoutes/Dashboard";
-import Locations from "./protectedRoutes/Locations";
+import { supabase } from "../config/supabaseConfig";
+
+import Auth from "./unprotectedRoutes/auth/Auth";
+
+import Dashboard from "./protectedRoutes/dashboard/Dashboard";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { useAuth } from "../AuthContext";
-import Layout from "../pages/Layout";
-import ProtetcedLayout from "../pages/ProtectedLayout";
-import ErrorPage from "../pages/ErrorPage";
+
+import Layout from "../pages/layout/Layout";
+
+import ProtetcedLayout from "../pages/protectedLayout/ProtectedLayout";
+
+import Locations from "./protectedRoutes/locations/Locations";
+
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
 const Routes = () => {
   const { isAuth } = useAuth();
@@ -35,6 +42,10 @@ const Routes = () => {
         {
           path: "/dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "/locations",
+          element: <Locations />,
         },
       ],
     },

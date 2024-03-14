@@ -1,0 +1,5 @@
+.main-layout {
+  display: flex;
+  background: #222;
+  width: 100vw;
+}

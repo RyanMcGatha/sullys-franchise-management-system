@@ -1,0 +1,8 @@
+.main-locations {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 100vh;
+  align-items: center;
+  color: white;
+}
