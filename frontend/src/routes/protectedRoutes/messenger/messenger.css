@@ -1,0 +1,48 @@
+.main-messenger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+
+  width: 80vw;
+  height: 100vh;
+  color: white;
+}
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  width: 40vw;
+  height: 70vh;
+  background-color: #2c2c2c;
+  border-radius: 15px;
+  padding: 2vh;
+  overflow-y: auto;
+  color: white;
+}
+
+.messageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 40vw;
+  height: 5vh;
+  background-color: #2c2c2c;
+  border-radius: 15px;
+  padding: 2vh;
+  overflow-y: auto;
+  color: white;
+}
+
+.sendMessageBtn {
+  width: 10vw;
+  height: 5vh;
+  border-radius: 15px;
+  background-color: #af4c4c;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
