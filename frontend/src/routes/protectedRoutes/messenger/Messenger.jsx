@@ -1,36 +1,66 @@
 import "./messenger.css";
 import { supabase } from "../../../config/supabaseConfig";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 
 const Messenger = () => {
   const [message, setMessage] = useState("");
+  const [messagesDisplay, setMessagesDisplay] = useState([]);
 
-  const main = supabase.channel("main");
+  useEffect(() => {
+    const messages = supabase
+      .channel("schema-db-changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "messages",
+        },
+        (payload) => {
+          setMessagesDisplay((prevMessages) => [
+            ...prevMessages,
+            payload.new.message,
+          ]);
+          console.log(payload);
+        }
+      )
+      .subscribe();
+
+    return () => messages.unsubscribe();
+  }, []);
 
   const handleSendMessage = async (event) => {
     event.preventDefault();
 
-    main.send({
-      type: "broadcast",
-      event: "test",
-      payload: {
-        message: message,
-      },
-    });
+    const { data, error } = await supabase
+      .from("messages")
+      .insert([{ message }])
+      .select();
+
+    if (error) {
+      alert(error.message);
+    } else {
+      console.log("Message sent successfully");
+
+      setMessage("");
+    }
   };
 
   return (
     <div className="main-messenger">
       <h1>Messenger</h1>
-      <div className="chatBox"></div>
+      <div className="chatBox">
+        {messagesDisplay.map((message, index) => (
+          <p key={index}>{message}</p>
+        ))}
+      </div>
       <form onSubmit={handleSendMessage} className="newMessageForm">
         <input
-          className="message"
+          className="messageBox"
           type="text"
           placeholder="Enter your message"
           value={message || ""}
-          required={true}
           onChange={(e) => setMessage(e.target.value)}
         />
         <button className="sendMessageBtn" type="submit">
