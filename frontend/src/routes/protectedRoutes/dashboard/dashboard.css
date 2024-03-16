@@ -1,33 +1,105 @@
 .main-dashboard {
   display: flex;
-
-  height: 100vh;
-  width: 100vw;
-  color: white;
-}
-
-.body {
-  display: flex;
+  flex-direction: column;
   width: 80vw;
   height: 100vh;
-  justify-content: center;
+  color: white;
+  padding: 5vh 5vw;
 }
 
-.formBody {
+.locationCards {
+  display: flex;
+  gap: 1vw;
+  padding-left: 2vw;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 15vw;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  height: 30vh;
+  background-color: #212121;
+}
+
+.locationTxt {
+  font-size: 30px;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin-bottom: 1vh;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-
-  height: 5vh;
-  width: 20vw;
-  overflow: visible;
+  align-items: flex-start;
+  gap: 20px;
+  color: #e8e8e8;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
 }
 
-.accountBtn {
-  height: 5vh;
-
-  background: #7c2529;
+.content .heading {
+  font-weight: 700;
+  font-size: 32px;
 }
 
-.accountBtn:hover {
-  background: #f1b434;
+.content .para {
+  line-height: 1.5;
+}
+
+.content .btn {
+  color: #e8e8e8;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #ff0000 0%, #ee00ff 100%);
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(-45deg, #ff0000 0%, #ee00ff 100%);
+
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1;
+}
+
+.card:hover::before {
+  height: 100%;
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: none;
+  z-index: 1;
+}
+
+.card:hover .btn {
+  color: #212121;
+  background: #e8e8e8;
+}
+
+.content .btn:hover {
+  outline: 2px solid #e8e8e8;
+  background: transparent;
+  color: #e8e8e8;
+}
+
+.content .btn:active {
+  box-shadow: none;
 }

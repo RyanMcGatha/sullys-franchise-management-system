@@ -1,6 +1,7 @@
 .main-layout {
   display: flex;
   background: #0b0b0b;
+  background-color: #212121;
 
   width: 100vw;
 }

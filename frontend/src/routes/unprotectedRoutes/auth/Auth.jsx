@@ -43,9 +43,7 @@ export default function Auth() {
           </span>
         </div>
         <div class="input_container">
-          <label class="input_label" for="email_field">
-            Email
-          </label>
+          Email
           <svg
             fill="none"
             viewBox="0 0 24 24"
@@ -81,9 +79,7 @@ export default function Auth() {
           ></input>
         </div>
         <div class="input_container">
-          <label class="input_label" for="password_field">
-            Password
-          </label>
+          Password
           <svg
             fill="none"
             viewBox="0 0 24 24"
@@ -145,28 +141,23 @@ export default function Auth() {
               ></path>
             </defs>
             <clipPath id="B"></clipPath>
-            <g transform="matrix(.727273 0 0 .727273 -.954545 -1.45455)">
-              <path
-                fill="#fbbc05"
-                clip-path="url(#B)"
-                d="M0 37V11l17 13z"
-              ></path>
-              <path
-                fill="#ea4335"
-                clip-path="url(#B)"
-                d="M0 11l17 13 7-6.1L48 14V0H0z"
-              ></path>
-              <path
-                fill="#34a853"
-                clip-path="url(#B)"
-                d="M0 37l30-23 7.9 1L48 0v48H0z"
-              ></path>
-              <path
-                fill="#4285f4"
-                clip-path="url(#B)"
-                d="M48 48L17 24l-4-3 35-10z"
-              ></path>
-            </g>
+
+            <path fill="#fbbc05" clip-path="url(#B)" d="M0 37V11l17 13z"></path>
+            <path
+              fill="#ea4335"
+              clip-path="url(#B)"
+              d="M0 11l17 13 7-6.1L48 14V0H0z"
+            ></path>
+            <path
+              fill="#34a853"
+              clip-path="url(#B)"
+              d="M0 37l30-23 7.9 1L48 0v48H0z"
+            ></path>
+            <path
+              fill="#4285f4"
+              clip-path="url(#B)"
+              d="M48 48L17 24l-4-3 35-10z"
+            ></path>
           </svg>
           <span>Sign In with Google</span>
         </button>
