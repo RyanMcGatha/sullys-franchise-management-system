@@ -7,7 +7,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  // const [isAuth, setIsAuth] = useState(false);
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -19,12 +18,6 @@ export function AuthProvider({ children }) {
       setSession(session);
     });
   }, []);
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("access_token")) {
-  //     setIsAuth(true);
-  //   }
-  // }, []);
 
   return (
     <AuthContext.Provider value={{ session, setSession }}>
