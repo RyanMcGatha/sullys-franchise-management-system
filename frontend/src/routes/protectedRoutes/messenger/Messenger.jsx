@@ -49,10 +49,17 @@ const Messenger = () => {
 
   return (
     <div className="main-messenger">
-      <h1>Messenger</h1>
       <div className="chatBox">
+        <h1>Messenger</h1>
         {messagesDisplay.map((message, index) => (
-          <p key={index}>{message}</p>
+          <div class="notification">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle">Welcome To Uiverse</div>
+            <div class="notibody" key={index}>
+              {message}
+            </div>
+          </div>
         ))}
       </div>
       <form onSubmit={handleSendMessage} className="newMessageForm">
