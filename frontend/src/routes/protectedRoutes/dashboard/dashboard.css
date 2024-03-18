@@ -1,63 +1,20 @@
 .main-dashboard {
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 92vh;
+
+  width: 90vw;
+  height: 100vh;
   color: white;
-  overflow: hidden;
-}
-
-.container {
-  display: flex;
-  width: 100vw;
-  height: 40vh;
-}
-
-.idk {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2vh;
-  width: 75vw;
-  height: 35vh;
-  background-image: rgba(33, 33, 33, 0.5);
-  backdrop-filter: blur(100px);
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-}
-
-.uploadsTxt {
-  font-size: 30px;
-  font-weight: 700;
-  color: #e8e8e8;
-  margin-bottom: 1vh;
-  height: fit-content;
-}
-
-.notify {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-  width: 20vw;
-  margin-left: 2.5vw;
-  background-color: #212121;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .locationCards {
   display: flex;
-
-  width: 75vw;
-  height: 35vh;
-  gap: 1vw;
-  overflow-x: hidden;
-  background-color: rgba(33, 33, 33, 0.5);
+  width: 90vw;
+  height: 100vh;
+  background-color: rgba(33, 33, 33, 0.1);
   backdrop-filter: blur(100px);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 
-  align-items: center;
-}
-
-.locationCards:hover {
-  overflow-x: scroll;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -73,13 +30,8 @@
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   height: 30vh;
   background-color: #212121;
-}
-
-.locationTxt {
-  font-size: 30px;
-  font-weight: 700;
-  color: #e8e8e8;
-  margin-bottom: 1vh;
+  margin-top: 3vh;
+  margin-left: 2vw;
 }
 
 .content {

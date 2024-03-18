@@ -20,7 +20,7 @@ import ErrorPage from "../pages/errorPage/ErrorPage";
 
 import Messenger from "./protectedRoutes/messenger/Messenger";
 
-import Upload from "./protectedRoutes/uploadDoc/Upload";
+import LocationLayout from "../pages/locationLayout/LocationLayout";
 
 const Routes = () => {
   const { isAuth } = useAuth();
@@ -55,9 +55,10 @@ const Routes = () => {
           path: "/messenger",
           element: <Messenger />,
         },
+
         {
-          path: "/upload",
-          element: <Upload />,
+          path: "/locations/:owner/:store_number",
+          element: <LocationLayout />,
         },
       ],
     },

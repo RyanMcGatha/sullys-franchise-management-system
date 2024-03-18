@@ -14,6 +14,21 @@ const Locations = () => {
 
     setLoading(true);
 
+    async function createBucket() {
+      const { bucketData, bucketError } = await supabase.storage.createBucket(
+        `uploads-${store_number}`,
+        {
+          public: true,
+        }
+      );
+      if (bucketError) {
+        console.log(bucketError);
+      } else {
+        console.log(bucketData);
+      }
+    }
+    createBucket();
+
     const { data, error } = await supabase
       .from("locations")
       .insert([{ store_number, owner, address }])

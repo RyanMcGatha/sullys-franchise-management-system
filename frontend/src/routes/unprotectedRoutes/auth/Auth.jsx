@@ -33,7 +33,7 @@ export default function Auth() {
 
   return !session ? (
     <div className="main-auth">
-      <form onSubmit={handleLogin} class="form_container">
+      {/* <form onSubmit={handleLogin} class="form_container">
         <div class="logo_container">logo.svg</div>
         <div class="title_container">
           <p class="title">Login to your Account</p>
@@ -181,7 +181,7 @@ export default function Auth() {
           <span>Sign In with Apple</span>
         </button>
         <p class="note">Terms of use &amp; Conditions</p>
-      </form>
+      </form> */}
     </div>
   ) : (
     <Navigate to={"/dashboard"} />

@@ -3,6 +3,8 @@ import { supabase } from "../../../config/supabaseConfig";
 import "./dashboard.css";
 import Messenger from "../messenger/Messenger";
 
+import { Link } from "react-router-dom";
+
 const Dashboard = () => {
   const [locations, setLocations] = useState([]);
   const [error, setError] = useState(null);
@@ -25,14 +27,6 @@ const Dashboard = () => {
   return (
     <>
       <div className="main-dashboard">
-        <div className="uploadsTxt">Uploads</div>
-        <div className="container">
-          <div className="idk"></div>
-          <div className="notify">
-            <Messenger />
-          </div>
-        </div>
-        <div className="locationTxt">Locations</div>
         <div className="locationCards">
           {locations.map((location) => (
             <div key={location.id} className="card">
@@ -40,7 +34,12 @@ const Dashboard = () => {
                 <p className="heading">{location.store_number}</p>
                 <p className="para">{location.owner}</p>
                 <p className="para">{location.address}</p>
-                <button className="btn">Read more</button>
+                <Link
+                  to={`/locations/${location.owner}/${location.store_number}`}
+                  className="btn"
+                >
+                  Read more
+                </Link>
               </div>
             </div>
           ))}
