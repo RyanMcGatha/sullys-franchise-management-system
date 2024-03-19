@@ -3,45 +3,59 @@ import React from "react";
 import { supabase } from "../../config/supabaseConfig";
 
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import "./nav.css";
 
-const Nav = ({}) => {
+export default function Nav({ url, onUpload }) {
+  const [logoUrl, setLogoUrl] = useState(null);
+
+  useEffect(() => {
+    downloadImage(url);
+  }, [url]);
+
+  async function downloadImage() {
+    try {
+      const { data, error } = await supabase.storage
+        .from("logos")
+        .download("sullysLogo.png");
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setLogoUrl(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error.message);
+    }
+  }
+
   return (
     <nav>
+      <label>
+        <img className="sullysLogo" src={logoUrl} alt="Logo" />
+        Sullys Steamers
+      </label>
       <Link to={"/dashboard"} id="a" className="navLink">
-        <span className="actual-text">&nbsp;Dashboard&nbsp;</span>
-        <span aria-hidden="true" className="hover-text">
-          &nbsp;Dashboard&nbsp;
-        </span>
+        Dashboard
+        <div className="arrow">›</div>
       </Link>
       <Link to={"/locations"} className="navLink">
-        <span className="actual-text">&nbsp;locations&nbsp;</span>
-        <span aria-hidden="true" className="hover-text">
-          &nbsp;Locations&nbsp;
-        </span>
+        Locations
+        <div className="arrow">›</div>
       </Link>
-      <Link to={"/messenger"} id="d" className="navLink">
-        <span className="actual-text">&nbsp;Messenger&nbsp;</span>
-        <span aria-hidden="true" className="hover-text">
-          &nbsp;Messenger&nbsp;
-        </span>
+      <Link to={"/messenger"} className="navLink">
+        Messenger
+        <div className="arrow">›</div>
       </Link>
-      <div>
-        <button
-          className="navLink"
-          id="e"
-          type="button"
-          onClick={() => supabase.auth.signOut()}
-        >
-          <span className="actual-text">&nbsp;Sign Out&nbsp;</span>
-          <span aria-hidden="true" className="hover-text">
-            &nbsp;Sign Out&nbsp;
-          </span>
-        </button>
+      <div
+        className="navLink"
+        id="logOut"
+        type="button"
+        onClick={() => supabase.auth.signOut()}
+      >
+        Log Out
+        <div className="arrow">›</div>
       </div>
     </nav>
   );
-};
-
-export default Nav;
+}

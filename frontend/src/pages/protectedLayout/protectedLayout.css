@@ -1,7 +1,14 @@
 .main-layout {
-  display: flex;
-
   background: #0b0b0b;
-
+  background-color: rgb(251, 252, 255);
+  display: flex;
+  flex-direction: column;
   width: 100vw;
+  height: 100vh;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  align-content: center;
 }

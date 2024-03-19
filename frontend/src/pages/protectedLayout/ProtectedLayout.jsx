@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 import Nav from "../../components/nav/Nav";
+import TopNav from "../../components/topNav/TopNav";
 import "./protectedLayout.css";
 
 const ProtectedLayout = () => {
@@ -10,10 +11,8 @@ const ProtectedLayout = () => {
   }
   return (
     <div className="main-layout">
-      <div className="nav-layout">
+      <div className="body">
         <Nav />
-      </div>
-      <div className="outlet-layout">
         <Outlet />
       </div>
     </div>

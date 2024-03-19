@@ -1,64 +1,116 @@
+.titleDash {
+  height: 10vh;
+  width: 71vw;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 40px;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3vh;
+  padding-left: 2vw;
+}
+
 .main-dashboard {
   display: flex;
-
-  width: 90vw;
-
+  flex-direction: column;
+  width: 73vw;
+  height: 100vh;
   color: white;
+  font-family: "TradeGothic";
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  width: 13vw;
+  height: 100vh;
+  border-left: solid 3px rgba(0, 0, 0, 0.1);
+  align-self: flex-end;
+}
+
+.firstName {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 40px;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3vh;
 }
 
 .locationCards {
   display: flex;
-  width: 90vw;
-  height: 15vh;
-  padding-top: 5vh;
-  padding-left: 5vw;
+  width: 71vw;
+  min-height: 50vh;
   gap: 2vw;
 
-  backdrop-filter: blur(100px);
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 15vw;
-  height: 15vh;
-  border-radius: 15px;
-  box-shadow: rgb(0, 0, 0, 0.7) 5px 10px 50px, rgb(0, 0, 0, 0.7) -5px 0px 250px;
-  display: flex;
-  color: white;
-  background: linear-gradient(#fff2, transparent);
-
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-.cardHeader {
-  display: flex;
-  gap: 1vw;
-
-  margin-left: 0.5vw;
+  padding-left: 2vw;
+  border-radius: 1rem;
+  flex-wrap: wrap;
 }
 
 .cardBtn {
-  width: fit-content;
-  height: fit-content;
-  align-self: flex-end;
-  margin-right: 0.5vw;
-  background: none;
-  border: none;
   text-decoration: none;
-  color: white;
 }
 
-.btnTxt {
-  color: white;
+.cardBtn p {
+  color: #da291c;
+  text-decoration: none;
 }
 
-.btnTxt:hover {
-  color: #ff0055;
+.card {
+  padding-left: 1vw;
+  padding-top: 1vh;
+  height: 20vh;
+  width: 20vw;
+
+  background: #e8e8e8;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #212121;
+  border: 2px solid #da291c;
+  transition: all 0.5s ease;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.page {
+  font-size: 13px;
+  font-weight: 100;
+}
+
+.title {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 17px;
+  color: black;
+}
+
+.content {
+  font-size: 14px;
+}
+
+.card:hover {
+  box-shadow: 5px 5px 10px 0px #ab4b3866;
+}
+
+.card:hover .icons {
+  z-index: 1;
+  opacity: 1;
+}
+
+.card:hover .image {
+  filter: brightness(0.8);
+}
+
+.card:hover .title {
+  color: #ab4b38;
 }
