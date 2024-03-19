@@ -1,3 +1,6 @@
+// { {locations.map((location) => ( }
+// { <div key={location.id} className="card"> }
+
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../config/supabaseConfig";
 import "./dashboard.css";
@@ -30,15 +33,15 @@ const Dashboard = () => {
         <div className="locationCards">
           {locations.map((location) => (
             <div key={location.id} className="card">
-              <div className="content">
-                <p className="heading">{location.store_number}</p>
-                <p className="para">{location.owner}</p>
-                <p className="para">{location.address}</p>
+              <div className="cardHeader">
+                <p>{location.location_name}</p>
+                <p>#{location.store_number}</p>
+              </div>
+              <div className="cardBtn">
                 <Link
                   to={`/locations/${location.owner}/${location.store_number}`}
-                  className="btn"
                 >
-                  Read more
+                  <p className="btnTxt">View Files</p>
                 </Link>
               </div>
             </div>

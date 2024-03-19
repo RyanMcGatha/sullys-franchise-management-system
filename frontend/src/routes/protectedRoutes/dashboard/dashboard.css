@@ -2,103 +2,63 @@
   display: flex;
 
   width: 90vw;
-  height: 100vh;
+
   color: white;
 }
 
 .locationCards {
   display: flex;
   width: 90vw;
-  height: 100vh;
-  background-color: rgba(33, 33, 33, 0.1);
+  height: 15vh;
+  padding-top: 5vh;
+  padding-left: 5vw;
+  gap: 2vw;
+
   backdrop-filter: blur(100px);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-
-  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 15vw;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  padding: 0.5em;
-  overflow: hidden;
-  border-radius: 10px;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  height: 30vh;
-  background-color: #212121;
-  margin-top: 3vh;
-  margin-left: 2vw;
-}
-
-.content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  color: #e8e8e8;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  z-index: 2;
-}
+  width: 15vw;
+  height: 15vh;
+  border-radius: 15px;
+  box-shadow: rgb(0, 0, 0, 0.7) 5px 10px 50px, rgb(0, 0, 0, 0.7) -5px 0px 250px;
+  display: flex;
+  color: white;
+  background: linear-gradient(#fff2, transparent);
 
-.content .heading {
-  font-weight: 700;
-  font-size: 32px;
-}
-
-.content .para {
-  line-height: 1.5;
-}
-
-.content .btn {
-  color: #e8e8e8;
-  text-decoration: none;
-  padding: 10px;
-  font-weight: 600;
-  border: none;
+  backdrop-filter: blur(10px);
   cursor: pointer;
-  background: linear-gradient(-45deg, #ff0000 0%, #fce3ad 100%);
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  justify-content: space-between;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(-45deg, #ff0000 0%, #fce3ad 100%);
+.cardHeader {
+  display: flex;
+  gap: 1vw;
 
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  z-index: 1;
+  margin-left: 0.5vw;
 }
 
-.card:hover::before {
-  height: 100%;
-  z-index: 1;
+.cardBtn {
+  width: fit-content;
+  height: fit-content;
+  align-self: flex-end;
+  margin-right: 0.5vw;
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: white;
 }
 
-.card:hover {
-  box-shadow: none;
-  z-index: 1;
+.btnTxt {
+  color: white;
 }
 
-.card:hover .btn {
-  color: #212121;
-  background: #e8e8e8;
-}
-
-.content .btn:hover {
-  outline: 2px solid #e8e8e8;
-  background: transparent;
-  color: #e8e8e8;
-}
-
-.content .btn:active {
-  box-shadow: none;
+.btnTxt:hover {
+  color: #ff0055;
 }

@@ -17,7 +17,6 @@ const LocationLayout = ({ url, size, onUpload }) => {
     setOwnerName(owner);
     setStoreNum(store_number);
   }, [owner, store_number]);
-  console.log(store_number);
 
   async function uploadFile(event) {
     try {
@@ -32,7 +31,7 @@ const LocationLayout = ({ url, size, onUpload }) => {
       const filePath = `${fileName}`;
 
       const { data, error } = await supabase.storage
-        .from(`uploads-${store_number}`)
+        .from(`uploads-${storeNum}`)
         .upload(filePath, file);
 
       if (error) {
@@ -55,7 +54,7 @@ const LocationLayout = ({ url, size, onUpload }) => {
         <input
           type="file"
           id="single"
-          accept="image/*"
+          accept="*/*"
           onChange={uploadFile}
           disabled={uploading}
         />
