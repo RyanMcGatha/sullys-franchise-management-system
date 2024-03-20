@@ -1,11 +1,55 @@
-.locationLayout {
+.content-location-layout {
   display: flex;
   flex-direction: column;
-  width: 90vw;
   height: 100vh;
-  align-items: center;
+  max-width: 72vw;
+  min-width: 72vw;
+  color: black;
+}
 
-  color: white;
+.titleDash {
+  height: 10vh;
+  width: 100%;
+  max-width: 72vw;
+  min-width: 72vw;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 40px;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  padding: 0 1vw;
+  font-family: "FineDay";
+  margin-bottom: 3vh;
+}
+.firstName {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 40px;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3vh;
+}
+
+.folders {
+  display: flex;
+  flex-direction: column;
+  max-width: 72vw;
+  align-items: center;
+}
+
+.rightSide {
+  font-family: "Fineday";
+
+  display: flex;
+  flex-direction: column;
+  min-width: 14vw;
+  max-width: 14vw;
+
+  width: 14vw;
+  height: 100vh;
+  border-left: solid 3px rgba(0, 0, 0, 0.1);
+  align-self: flex-end;
 }
 
 .uploadBtn {

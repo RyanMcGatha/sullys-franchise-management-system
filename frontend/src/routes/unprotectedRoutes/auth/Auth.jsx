@@ -1,7 +1,10 @@
 import "./auth.css";
 import "../../../assets/pngs/mainLogo.png";
 
-import React from "react";
+import { useAnimate } from "framer-motion";
+import React, { useRef } from "react";
+import { FiMousePointer } from "react-icons/fi";
+
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../../AuthContext";
 
@@ -14,8 +17,6 @@ export default function Auth({ url }) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [profiles, setProfiles] = useState([]);
-  const [error, setError] = useState(null);
   const [logoUrl, setLogoUrl] = useState(null);
 
   useEffect(() => {
@@ -101,7 +102,7 @@ export default function Auth({ url }) {
             id="email_field"
             value={email}
             required={true}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
           ></input>
         </div>
         <div className="input_container">
@@ -141,7 +142,7 @@ export default function Auth({ url }) {
             id="password_field"
             value={password}
             required={true}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           ></input>
         </div>
         <button title="Sign In" type="submit" className="sign-in_btn">

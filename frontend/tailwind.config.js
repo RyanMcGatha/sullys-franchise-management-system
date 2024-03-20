@@ -1,6 +1,3 @@
-const colors = require("tailwindcss/colors");
-const { default: tailwindConfig } = require("../frontend/tailwind.config");
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],

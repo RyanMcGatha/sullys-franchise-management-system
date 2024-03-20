@@ -67,7 +67,7 @@ const Dashboard = () => {
                   </div>
                   <div className="cardBtn">
                     <Link
-                      to={`/locations/${location.owner}/${location.store_number}`}
+                      to={`/locations/${location.owner}/${location.store_number}/${location.location_name}`}
                     >
                       <p className="text">View Store</p>
                     </Link>
