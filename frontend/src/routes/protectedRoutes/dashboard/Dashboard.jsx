@@ -1,6 +1,3 @@
-// { {locations.map((location) => ( }
-// { <div key={location.id} className="card"> }
-
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../config/supabaseConfig";
 import "./dashboard.css";
@@ -14,7 +11,6 @@ const Dashboard = () => {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState(null);
   const { session } = useAuth();
-  console.log(profiles);
 
   useEffect(() => {
     async function getUaer() {
@@ -48,34 +44,48 @@ const Dashboard = () => {
     <>
       <div className="main-dashboard">
         <div className="titleDash">Dashboard</div>
-
-        <div className="locationCards">
-          {locations.map((location) => (
-            <div key={location.id} className="card">
-              <div className="card__info">
-                <span className="page">#{location.store_number}</span>
-                <a href="#" className="title">
-                  {location.location_name}
-                </a>
-                <p className="content">
-                  {location.address} <br />
-                </p>
+        <div className="titleCompany">Company Files</div>
+        <div className="cards">
+          <div className="companyCards">
+            <div className="companyCard"></div>
+            <div className="companyCard"></div>
+            <div className="companyCard"></div>
+          </div>
+          <div className="titleLocations">Locations</div>
+          <div className="locationCards">
+            {locations.map((location) => (
+              <div key={location.id} className="card">
+                <div className="glass">
+                  <div className="card__info">
+                    <span className="page">#{location.store_number}</span>
+                    <a href="#" className="title">
+                      {location.location_name}
+                    </a>
+                    <p className="content">
+                      {location.address} <br />
+                    </p>
+                  </div>
+                  <div className="cardBtn">
+                    <Link
+                      to={`/locations/${location.owner}/${location.store_number}`}
+                    >
+                      <p className="text">View Store</p>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="cardBtn">
-                <Link
-                  to={`/locations/${location.owner}/${location.store_number}`}
-                >
-                  <p className="text">View Store</p>
-                </Link>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {profiles.map((profile) => (
         <div key={profile.id} className="rightSide">
-          <div className="firstName">{profile.first_name}</div>
+          <div className="firstName">
+            <div>__IMG__</div>
+            <br />
+            {profile.first_name}
+          </div>
         </div>
       ))}
     </>

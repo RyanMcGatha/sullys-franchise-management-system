@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 import Nav from "../../components/nav/Nav";
-import TopNav from "../../components/topNav/TopNav";
+
 import "./protectedLayout.css";
 
 const ProtectedLayout = () => {

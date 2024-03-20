@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 .main-auth {
   display: flex;
   height: 100vh;
@@ -16,7 +20,8 @@
 
 .form_container {
   margin-bottom: 5vh;
-  width: 20vw;
+  max-width: 18vw;
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -34,15 +39,18 @@
   scale: 1.3;
 }
 
+.logo {
+  width: 75px;
+  height: 75px;
+}
 .logo_container {
   box-sizing: border-box;
   width: 80px;
   height: 80px;
-  background: linear-gradient(
-    180deg,
-    rgba(248, 248, 248, 0) 50%,
-    #f8f8f888 100%
-  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: 1px solid #f7f7f8;
   filter: drop-shadow(0px 0.5px 0.5px #efefef)
     drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));

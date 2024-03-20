@@ -16,43 +16,56 @@
 nav {
   display: flex;
   flex-direction: column;
-  width: 13vw;
+  align-items: space-around;
+  width: 14vw;
+  min-width: 14vw;
+  max-width: 14vw;
   height: 100vh;
   background-color: rgb(0 0 0);
+  border-right: solid 3px rgb(255, 255, 255);
+}
+
+.logoContain {
+  width: 14vw;
+  min-width: 14vw;
+  max-width: 14vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 3px rgba(255, 255, 255, 0.2);
+  margin-bottom: 2vh;
 }
 
 .sullysLogo {
-  transform: scale();
-  width: 20%;
-  height: auto;
+  transform: scale(0.85);
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+
+  filter: drop-shadow(0px 0.5px 0.5px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+
+  border-radius: 11px;
+
+  transition-duration: 0.2s;
 }
 
-label {
-  margin-top: 1vw;
-  margin-left: 1px;
-  margin-bottom: 1vh;
-  display: flex;
-  align-items: center;
-  color: #e8e8e8;
-  gap: 0.5vw;
-  font-size: 1.4vw;
-  justify-content: flex-start;
-}
 .navLink,
 #navBtn {
   height: 5vh;
-
+  width: 13vw;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
-  padding: 0px 15px;
-  color: white;
+  padding: 0px 1vw;
+  color: #8c8c8c;
   border: none;
   position: relative;
   cursor: pointer;
   transition-duration: 0.2s;
-  font-size: 1.5vw;
+  font-family: "TradeGothic";
+  font-size: 25px;
+
   background: none;
   text-decoration: none;
 }
@@ -68,15 +81,31 @@ label {
   justify-content: center;
 }
 
+.navBottom {
+  width: 14vw;
+  padding-top: 1vh;
+
+  border-top: solid 3px rgba(255, 255, 255, 0.2);
+  margin-top: 55vh;
+  height: 10vh;
+  min-height: 10vh;
+  max-height: 10vh;
+}
+
 .navLink:hover,
 .navBtn:hover {
-  background-color: rgba(47, 47, 47, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background-color: rgba(65, 65, 65, 0.308);
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  cursor: pointer;
   transition-duration: 0.2s;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
 .navLink:hover,
 .navBtn:hover .arrow {
-  animation: slide-right 0.6s ease-out both;
+  animation: slide-right 0.5s ease-out both;
 }
 
 @keyframes slide-right {

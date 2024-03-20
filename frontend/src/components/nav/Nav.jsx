@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 import "./nav.css";
 
-export default function Nav({ url, onUpload }) {
+export default function Nav({ url }) {
   const [logoUrl, setLogoUrl] = useState(null);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function Nav({ url, onUpload }) {
       }
       const url = URL.createObjectURL(data);
       setLogoUrl(url);
+      console.log(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     }
@@ -31,10 +32,9 @@ export default function Nav({ url, onUpload }) {
 
   return (
     <nav>
-      <label>
+      <div className="logoContain">
         <img className="sullysLogo" src={logoUrl} alt="Logo" />
-        Sullys Steamers
-      </label>
+      </div>
       <Link to={"/dashboard"} id="a" className="navLink">
         Dashboard
         <div className="arrow">›</div>
@@ -55,6 +55,21 @@ export default function Nav({ url, onUpload }) {
       >
         Log Out
         <div className="arrow">›</div>
+      </div>
+      <div className="navBottom">
+        <Link to={"/"} className="navLink">
+          Settings
+          <div className="arrow">›</div>
+        </Link>
+        <div
+          className="navLink"
+          id="logOut"
+          type="button"
+          onClick={() => supabase.auth.signOut()}
+        >
+          Log Out
+          <div className="arrow">›</div>
+        </div>
       </div>
     </nav>
   );

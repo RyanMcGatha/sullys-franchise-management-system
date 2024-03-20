@@ -1,28 +1,48 @@
 .titleDash {
   height: 10vh;
-  width: 71vw;
+  width: 100%;
+  max-width: 72vw;
+  min-width: 72vw;
   display: flex;
   align-items: center;
   color: black;
   font-size: 40px;
   border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  padding: 0 1vw;
+  font-family: "FineDay";
   margin-bottom: 3vh;
-  padding-left: 2vw;
+}
+.titleLocations,
+.titleCompany {
+  padding: 0 1vw;
+
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 30px;
+  font-family: "FineDay";
+  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 72vw;
+  min-width: 72vw;
 }
 
 .main-dashboard {
   display: flex;
   flex-direction: column;
-  width: 73vw;
+  width: 86vw;
   height: 100vh;
-  color: white;
-  font-family: "TradeGothic";
 }
 
 .rightSide {
+  font-family: "Fineday";
+
   display: flex;
   flex-direction: column;
-  width: 13vw;
+  min-width: 14vw;
+  max-width: 14vw;
+
+  width: 14vw;
   height: 100vh;
   border-left: solid 3px rgba(0, 0, 0, 0.1);
   align-self: flex-end;
@@ -38,16 +58,42 @@
   margin-bottom: 3vh;
 }
 
+.cards {
+  display: flex;
+  flex-direction: column;
+  width: 72vw;
+  min-width: 72vw;
+  max-width: 72vw;
+
+  align-items: center;
+}
 .locationCards {
   display: flex;
-  width: 71vw;
-  min-height: 50vh;
+  width: 72vw;
+  min-width: 72vw;
+  max-width: 72vw;
   gap: 2vw;
-
   overflow: hidden;
-  padding-left: 2vw;
   border-radius: 1rem;
   flex-wrap: wrap;
+  overflow-y: auto;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 0 2vw;
+}
+.companyCards {
+  display: flex;
+  width: 72vw;
+  min-height: 25vh;
+  gap: 2vw;
+  overflow: hidden;
+  border-radius: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardBtn {
@@ -63,17 +109,31 @@
   padding-left: 1vw;
   padding-top: 1vh;
   height: 20vh;
-  width: 20vw;
-
-  background: #e8e8e8;
+  width: 10vw;
   border-radius: 15px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  color: #212121;
-  border: 2px solid #da291c;
   transition: all 0.5s ease;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 20vh;
+  width: 10vw;
+}
+.companyCard {
+  padding-left: 1vw;
+  padding-top: 1vh;
+  height: 20vh;
+  width: 22vw;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card__info {
