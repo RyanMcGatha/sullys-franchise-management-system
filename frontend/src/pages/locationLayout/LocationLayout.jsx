@@ -11,25 +11,11 @@ const LocationLayout = ({ size }) => {
   const [locationName, setLocationName] = useState("");
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [profiles, setProfiles] = useState([]);
 
   useEffect(() => {
     setOwnerName(owner);
     setStoreNum(store_number);
     setLocationName(location_name);
-
-    async function getUser() {
-      try {
-        const { data, error } = await supabase.from("profiles").select("*");
-        if (error) {
-          throw error;
-        }
-        setProfiles(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-    getUser();
   }, [owner, store_number, location_name]);
 
   async function uploadFile(event) {
@@ -65,6 +51,12 @@ const LocationLayout = ({ size }) => {
         <div className="titleDash">{locationName}</div>
 
         <div className="folders">
+          <div className="titleCompany">Folders</div>
+          <div className="companyCards">
+            <div className="companyCard"></div>
+            <div className="companyCard"></div>
+            <div className="companyCard"></div>
+          </div>
           <p>{ownerName}'s Store</p>
           <div style={{ width: size }}>
             <label className="uploadBtn">
@@ -80,16 +72,6 @@ const LocationLayout = ({ size }) => {
           </div>
         </div>
       </div>
-
-      {profiles.map((profile) => (
-        <div key={profile.id} className="rightSide">
-          <div className="firstName">
-            <div>__IMG__</div>
-            <br />
-            {profile.first_name}
-          </div>
-        </div>
-      ))}
     </>
   );
 };

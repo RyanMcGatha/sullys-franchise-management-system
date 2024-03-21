@@ -1,94 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { supabase } from "../../../config/supabaseConfig";
 import "./dashboard.css";
-import Messenger from "../messenger/Messenger";
-import { useAuth } from "../../../AuthContext";
 
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import Locations from "../locations/Locations";
+import AllLocations from "./dashPages/allLocations/AllLocations";
 
 const Dashboard = () => {
-  const [locations, setLocations] = useState([]);
-  const [profiles, setProfiles] = useState([]);
-  const [error, setError] = useState(null);
-  const { session } = useAuth();
-
-  useEffect(() => {
-    async function getUaer() {
-      try {
-        const { data, error } = await supabase.from("profiles").select("*");
-        if (error) {
-          throw error;
-        }
-        setProfiles(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-    getUaer();
-
-    async function fetchLocations() {
-      try {
-        const { data, error } = await supabase.from("locations").select("*");
-        if (error) {
-          throw error;
-        }
-        setLocations(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    }
-    fetchLocations();
-  }, []);
+  const [addLocations, setAddLocations] = useState(false);
+  const [showAllLocations, setShowAllLocations] = useState(false);
 
   return (
-    <>
-      <div className="main-dashboard">
+    <div className="main-dashboard">
+      <div className="mid">
         <div className="titleDash">Dashboard</div>
-        <div className="titleCompany">Company Files</div>
         <div className="cards">
-          <div className="companyCards">
-            <div className="companyCard"></div>
-            <div className="companyCard"></div>
-            <div className="companyCard"></div>
+          <div className="actionCards">
+            <button
+              className="actionCard"
+              type="radio"
+              name="action"
+              value="addLocations"
+              checked={addLocations}
+              onClick={() => {
+                setAddLocations(true);
+                setShowAllLocations(false);
+              }}
+            >
+              <label>Add Locations</label>
+            </button>
+            <button
+              className="actionCard"
+              type="radio"
+              name="action"
+              value="showAllLocations"
+              checked={showAllLocations}
+              onClick={() => {
+                setShowAllLocations(true);
+                setAddLocations(false);
+              }}
+            >
+              <label>View All Locations</label>
+            </button>
           </div>
-          <div className="titleLocations">Locations</div>
-          <div className="locationCards">
-            {locations.map((location) => (
-              <div key={location.id} className="card">
-                <div className="glass">
-                  <div className="card__info">
-                    <span className="page">#{location.store_number}</span>
-                    <a href="#" className="title">
-                      {location.location_name}
-                    </a>
-                    <p className="content">
-                      {location.address} <br />
-                    </p>
-                  </div>
-                  <div className="cardBtn">
-                    <Link
-                      to={`/locations/${location.owner}/${location.store_number}/${location.location_name}`}
-                    >
-                      <p className="text">View Store</p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="displayWindow">
+            {addLocations && <Locations />}
+            {showAllLocations && <AllLocations />}
           </div>
         </div>
       </div>
-
-      {profiles.map((profile) => (
-        <div key={profile.id} className="rightSide">
-          <div className="firstName">
-            <div>__IMG__</div>
-            <br />
-            {profile.first_name}
-          </div>
-        </div>
-      ))}
-    </>
+      <div className="storage">
+        <div className="activityCard"></div>
+      </div>
+    </div>
   );
 };
 

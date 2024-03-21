@@ -24,7 +24,6 @@ export default function Nav({ url }) {
       }
       const url = URL.createObjectURL(data);
       setLogoUrl(url);
-      console.log(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     }

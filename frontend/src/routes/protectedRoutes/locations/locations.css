@@ -1,16 +1,18 @@
 .main-locations {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  height: 100vh;
+  width: 100vw;
+  height: 70vh;
   align-items: center;
-  color: white;
+
   justify-content: center;
+  color: black;
 }
 
-.form-locations {
+.form-locations input {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  color: black;
 }

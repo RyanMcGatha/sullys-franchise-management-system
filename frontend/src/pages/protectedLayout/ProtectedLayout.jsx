@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 import Nav from "../../components/nav/Nav";
+import RightNav from "../../components/nav/RightNav";
 
 import "./protectedLayout.css";
 

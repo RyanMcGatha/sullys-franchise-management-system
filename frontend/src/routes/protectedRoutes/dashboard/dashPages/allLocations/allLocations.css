@@ -1,0 +1,73 @@
+.cardBtn {
+  text-decoration: none;
+}
+
+.cardBtn p {
+  color: #da291c;
+  text-decoration: none;
+}
+
+.card {
+  height: 20vh;
+  width: 10vw;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 20vh;
+  width: 10vw;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.page {
+  font-size: 13px;
+  font-weight: 100;
+}
+
+.title {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 17px;
+  color: black;
+}
+
+.content {
+  font-size: 14px;
+}
+
+.card:hover,
+.actionCard:hover {
+  box-shadow: 5px 10px 10px 10px #ab4b3866;
+}
+
+.card:hover .image {
+  filter: brightness(0.8);
+}
+
+.card:hover .title {
+  color: #ab4b38;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #da291c;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0 0 15px 15px;
+  height: 5vh;
+  width: 100%;
+}

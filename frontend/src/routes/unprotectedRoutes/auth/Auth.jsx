@@ -1,11 +1,8 @@
 import "./auth.css";
-import "../../../assets/pngs/mainLogo.png";
 
-import { useAnimate } from "framer-motion";
-import React, { useRef } from "react";
-import { FiMousePointer } from "react-icons/fi";
+import React from "react";
 
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../../../AuthContext";
 
 import { useState } from "react";
@@ -33,7 +30,6 @@ export default function Auth({ url }) {
       }
       const url = URL.createObjectURL(data);
       setLogoUrl(url);
-      console.log(url);
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     }

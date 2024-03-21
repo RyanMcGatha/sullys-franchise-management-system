@@ -1,133 +1,48 @@
-.titleDash {
-  height: 10vh;
-  width: 100%;
-  max-width: 72vw;
-  min-width: 72vw;
-  display: flex;
-  align-items: center;
-  color: black;
-  font-size: 40px;
-  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
-  padding: 0 1vw;
-  font-family: "FineDay";
-  margin-bottom: 3vh;
-}
-.titleLocations,
-.titleCompany {
-  padding: 0 1vw;
-
-  display: flex;
-  align-items: center;
-  color: black;
-  font-size: 30px;
-  font-family: "FineDay";
-  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 72vw;
-  min-width: 72vw;
-}
-
 .main-dashboard {
   display: flex;
-  flex-direction: column;
   width: 86vw;
   height: 100vh;
 }
 
-.rightSide {
-  font-family: "Fineday";
-
+.mid {
   display: flex;
   flex-direction: column;
-  min-width: 14vw;
-  max-width: 14vw;
-
-  width: 14vw;
-  height: 100vh;
-  border-left: solid 3px rgba(0, 0, 0, 0.1);
-  align-self: flex-end;
+  width: 72vw;
+  border: solid 2px red;
 }
 
-.firstName {
+.titleDash {
   height: 10vh;
+  width: 72vw;
   display: flex;
   align-items: center;
   color: black;
   font-size: 40px;
-  border-bottom: solid 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 3vh;
+  border: solid 2px blue;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
   width: 72vw;
-  min-width: 72vw;
-  max-width: 72vw;
-
   align-items: center;
+  height: 100vh;
+  max-height: 100vh;
+  border: solid 2px green;
 }
-.locationCards {
+
+.actionCards {
   display: flex;
-  width: 72vw;
-  min-width: 72vw;
-  max-width: 72vw;
   gap: 2vw;
-  overflow: hidden;
-  border-radius: 1rem;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  padding: 0 2vw;
-}
-.companyCards {
-  display: flex;
   width: 72vw;
-  min-height: 25vh;
-  gap: 2vw;
-  overflow: hidden;
-  border-radius: 1rem;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  height: 20vh;
+  border: solid 2px yellow;
 }
 
-.cardBtn {
-  text-decoration: none;
-}
-
-.cardBtn p {
-  color: #da291c;
-  text-decoration: none;
-}
-
-.card {
-  padding-left: 1vw;
-  padding-top: 1vh;
-  height: 20vh;
-  width: 10vw;
-  border-radius: 15px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  height: 20vh;
-  width: 10vw;
-}
-.companyCard {
-  padding-left: 1vw;
-  padding-top: 1vh;
-  height: 20vh;
-  width: 22vw;
-  border-radius: 15px;
-  overflow: hidden;
+.actionCard {
+  height: 15vh;
+  width: 15vw;
+  border-radius: 1em;
   display: flex;
   flex-direction: column;
   transition: all 0.5s ease;
@@ -136,41 +51,40 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card__info {
+.displayWindow {
+  display: flex;
+  width: 72vw;
+  height: 70vh;
+}
+
+.storage {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  gap: 2vh;
+  width: 14vw;
+  height: 100vh;
+  align-self: flex-end;
+  align-items: center;
+  border: solid 2px blue;
 }
 
-.page {
-  font-size: 13px;
-  font-weight: 100;
+.activityCard {
+  padding-left: 1vw;
+  padding-top: 1vh;
+  height: 20vh;
+  width: 10vw;
+  border-radius: 1em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
-.title {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 17px;
-  color: black;
-}
-
-.content {
-  font-size: 14px;
-}
-
-.card:hover {
-  box-shadow: 5px 5px 10px 0px #ab4b3866;
-}
-
-.card:hover .icons {
-  z-index: 1;
-  opacity: 1;
-}
-
-.card:hover .image {
-  filter: brightness(0.8);
-}
-
-.card:hover .title {
-  color: #ab4b38;
+.actionCard {
+  cursor: pointer;
 }
