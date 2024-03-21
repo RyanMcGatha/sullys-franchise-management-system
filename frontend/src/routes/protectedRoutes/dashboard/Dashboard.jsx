@@ -56,6 +56,20 @@ const Dashboard = () => {
             >
               <label>View All Files</label>
             </button>
+            <button
+              className="actionCard"
+              type="radio"
+              name="action"
+              value="showAllFiles"
+              checked={showAllFiles}
+              onClick={() => {
+                setShowAllLocations(false);
+                setAddLocations(false);
+                setShowAllFiles(true);
+              }}
+            >
+              <label>View All Files</label>
+            </button>
           </div>
           <div className="displayWindow">
             {addLocations && <Locations />}

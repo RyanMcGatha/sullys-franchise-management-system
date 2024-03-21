@@ -33,9 +33,7 @@ const AllLocations = () => {
             <div className="card__info">
               <span className="page">#{location.store_number}</span>
               <a className="title">{location.location_name}</a>
-              <p className="content">
-                {location.address} <br />
-              </p>
+              <p className="content"></p>
             </div>
             <div className="cardBtn">
               <Link

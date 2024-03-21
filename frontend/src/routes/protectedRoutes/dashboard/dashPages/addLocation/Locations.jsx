@@ -7,7 +7,6 @@ const Locations = () => {
   const [loading, setLoading] = useState(false);
   const [store_number, setStoreNumber] = useState("");
   const [owner, setOwner] = useState("");
-  const [address, setAddress] = useState("");
   const [location_name, setLocationName] = useState([]);
 
   const handleAddLocation = async (event) => {
@@ -32,7 +31,7 @@ const Locations = () => {
 
     const { data, error } = await supabase
       .from("locations")
-      .insert([{ store_number, owner, address, location_name }])
+      .insert([{ store_number, owner, location_name }])
       .select();
 
     if (error) {
@@ -64,14 +63,6 @@ const Locations = () => {
             value={owner || ""}
             required={true}
             onChange={(e) => setOwner(e.target.value)}
-          />
-          <input
-            className="input-locations"
-            type="text"
-            placeholder="Store Address"
-            value={address || ""}
-            required={true}
-            onChange={(e) => setAddress(e.target.value)}
           />
           <input
             className="input-locations"

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../config/supabaseConfig";
 
+import LocationLayoutFolders from "./locationFolders/LocationLayoutFolders";
+import LocationFiles from "./locationFiles/LocationFiles";
+
 import "./locationLayout.css";
 
 const LocationLayout = ({ size }) => {
@@ -11,6 +14,9 @@ const LocationLayout = ({ size }) => {
   const [locationName, setLocationName] = useState("");
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
+
+  const [addFolder, setAddFolder] = useState(false);
+  const [addFile, setAddFile] = useState(false);
 
   useEffect(() => {
     setOwnerName(owner);
@@ -50,23 +56,37 @@ const LocationLayout = ({ size }) => {
       <div className="mid-location-layout">
         <div className="title-location-layout">{locationName}</div>
         <div className="cards-location-layout">
-          <div className="actionCards-location-layout"></div>
+          <div className="folders-location-layout">
+            <button
+              className="folder-location-layout"
+              type="radio"
+              name="foleder"
+              value="addFolder"
+              checked={addFolder}
+              onClick={() => {
+                setAddFolder(true);
+                setAddFile(false);
+              }}
+            >
+              <label>Add Folder</label>
+            </button>
+            <button
+              className="folder-location-layout"
+              type="radio"
+              name="foleder"
+              value="addFile"
+              checked={addFolder}
+              onClick={() => {
+                setAddFile(true);
+                setAddFolder(false);
+              }}
+            >
+              <label>Add file</label>
+            </button>
+          </div>
           <div className="displayWindow-location-layout">
-            <div className="uploadFile-location-layout">
-              <p>{ownerName}'s Store</p>
-              <div style={{ width: size }}>
-                <label className="uploadBtn">
-                  {uploading ? "Uploading ..." : "Upload"}
-                </label>
-                <input
-                  type="file"
-                  id="single"
-                  accept="*/*"
-                  onChange={uploadFile}
-                  disabled={uploading}
-                />
-              </div>
-            </div>
+            {addFolder && <LocationLayoutFolders />}
+            {addFile && <LocationFiles />}
           </div>
         </div>
       </div>

@@ -32,17 +32,19 @@
 }
 
 .actionCards {
+  background: transparent;
+  border: none;
   display: flex;
   width: 72vw;
   border: solid 2px yellow;
   justify-content: space-evenly;
   align-items: center;
-  height: 20vh;
+  height: 17vh;
 }
 
 .actionCard {
   height: 15vh;
-  width: 20vw;
+  width: 16vw;
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -55,7 +57,7 @@
 .displayWindow {
   display: flex;
   width: 72vw;
-  height: 70vh;
+  height: 73vh;
   overflow-y: auto;
 }
 
