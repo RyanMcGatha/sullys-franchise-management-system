@@ -34,40 +34,35 @@ export default function Nav({ url }) {
       <div className="logoContain">
         <img className="sullysLogo" src={logoUrl} alt="Logo" />
       </div>
-      <Link to={"/dashboard"} id="a" className="navLink">
-        Dashboard
-        <div className="arrow">›</div>
-      </Link>
-      <Link to={"/locations"} className="navLink">
-        Locations
-        <div className="arrow">›</div>
-      </Link>
-      <Link to={"/messenger"} className="navLink">
-        Messenger
-        <div className="arrow">›</div>
-      </Link>
-      <div
-        className="navLink"
-        id="logOut"
-        type="button"
-        onClick={() => supabase.auth.signOut()}
-      >
-        Log Out
-        <div className="arrow">›</div>
-      </div>
-      <div className="navBottom">
-        <Link to={"/"} className="navLink">
-          Settings
-          <div className="arrow">›</div>
-        </Link>
-        <div
-          className="navLink"
-          id="logOut"
-          type="button"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Log Out
-          <div className="arrow">›</div>
+      <div className="contentContainer">
+        <div className="links">
+          <Link to={"/dashboard"} id="a" className="navLink">
+            Dashboard
+            <div className="arrow">›</div>
+          </Link>
+          <Link to={"/locations"} className="navLink">
+            Files
+            <div className="arrow">›</div>
+          </Link>
+          <Link to={"/messenger"} className="navLink">
+            Messenger
+            <div className="arrow">›</div>
+          </Link>
+        </div>
+        <div className="navBottom">
+          <Link to={"/"} className="navLink">
+            Settings
+            <div className="arrow">›</div>
+          </Link>
+          <div
+            className="navLink"
+            id="logOut"
+            type="button"
+            onClick={() => supabase.auth.signOut()}
+          >
+            Log Out
+            <div className="arrow">›</div>
+          </div>
         </div>
       </div>
     </nav>

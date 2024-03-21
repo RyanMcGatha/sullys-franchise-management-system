@@ -46,33 +46,34 @@ const LocationLayout = ({ size }) => {
   }
 
   return (
-    <>
-      <div className="content-location-layout">
-        <div className="titleDash">{locationName}</div>
-
-        <div className="folders">
-          <div className="titleCompany">Folders</div>
-          <div className="companyCards">
-            <div className="companyCard"></div>
-            <div className="companyCard"></div>
-            <div className="companyCard"></div>
-          </div>
-          <p>{ownerName}'s Store</p>
-          <div style={{ width: size }}>
-            <label className="uploadBtn">
-              {uploading ? "Uploading ..." : "Upload"}
-            </label>
-            <input
-              type="file"
-              id="single"
-              accept="*/*"
-              onChange={uploadFile}
-              disabled={uploading}
-            />
+    <div className="content-location-layout">
+      <div className="mid-location-layout">
+        <div className="title-location-layout">{locationName}</div>
+        <div className="cards-location-layout">
+          <div className="actionCards-location-layout"></div>
+          <div className="displayWindow-location-layout">
+            <div className="uploadFile-location-layout">
+              <p>{ownerName}'s Store</p>
+              <div style={{ width: size }}>
+                <label className="uploadBtn">
+                  {uploading ? "Uploading ..." : "Upload"}
+                </label>
+                <input
+                  type="file"
+                  id="single"
+                  accept="*/*"
+                  onChange={uploadFile}
+                  disabled={uploading}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+      <div className="storage-location-layout">
+        <div className="activityCard-location-layout"></div>
+      </div>
+    </div>
   );
 };
 export default LocationLayout;

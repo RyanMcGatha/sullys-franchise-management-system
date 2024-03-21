@@ -14,7 +14,7 @@ import Layout from "../pages/layout/Layout";
 
 import ProtetcedLayout from "../pages/protectedLayout/ProtectedLayout";
 
-import Locations from "./protectedRoutes/locations/Locations";
+import Locations from "./protectedRoutes/dashboard/dashPages/addLocation/Locations";
 
 import ErrorPage from "../pages/errorPage/ErrorPage";
 

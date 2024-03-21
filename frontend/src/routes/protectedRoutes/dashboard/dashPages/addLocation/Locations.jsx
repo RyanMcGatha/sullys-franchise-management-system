@@ -1,7 +1,7 @@
 import React from "react";
 import "./locations.css";
 import { useState } from "react";
-import { supabase } from "../../../config/supabaseConfig";
+import { supabase } from "../../../../../config/supabaseConfig";
 
 const Locations = () => {
   const [loading, setLoading] = useState(false);

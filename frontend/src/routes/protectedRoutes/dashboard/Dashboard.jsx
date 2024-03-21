@@ -2,12 +2,13 @@ import "./dashboard.css";
 
 import React, { useState } from "react";
 
-import Locations from "../locations/Locations";
+import Locations from "./dashPages/addLocation/Locations";
 import AllLocations from "./dashPages/allLocations/AllLocations";
 
 const Dashboard = () => {
   const [addLocations, setAddLocations] = useState(false);
   const [showAllLocations, setShowAllLocations] = useState(false);
+  const [showAllFiles, setShowAllFiles] = useState(false);
 
   return (
     <div className="main-dashboard">
@@ -40,6 +41,20 @@ const Dashboard = () => {
               }}
             >
               <label>View All Locations</label>
+            </button>
+            <button
+              className="actionCard"
+              type="radio"
+              name="action"
+              value="showAllFiles"
+              checked={showAllFiles}
+              onClick={() => {
+                setShowAllLocations(false);
+                setAddLocations(false);
+                setShowAllFiles(true);
+              }}
+            >
+              <label>View All Files</label>
             </button>
           </div>
           <div className="displayWindow">
