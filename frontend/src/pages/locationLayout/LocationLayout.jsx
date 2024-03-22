@@ -56,6 +56,7 @@ const LocationLayout = ({ size }) => {
               onClick={() => {
                 setAddFile(true);
                 setAddFolder(false);
+                setAllFolders(false);
               }}
             >
               <label>Add file</label>

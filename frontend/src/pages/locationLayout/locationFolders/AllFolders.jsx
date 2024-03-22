@@ -22,7 +22,7 @@ const AllFolders = () => {
   return (
     <div className="folders-location-layout">
       {folders.map((folder) => (
-        <div key={folder.store_number} className="folder">
+        <div key={folder.id} className="folder">
           {folder.folder_name}
         </div>
       ))}
