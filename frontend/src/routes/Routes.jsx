@@ -57,7 +57,7 @@ const Routes = () => {
         },
 
         {
-          path: "/locations/:owner/:store_number/:location_name",
+          path: "/locations/:owner/:store_number/:location_name/:id",
           element: <LocationLayout />,
         },
       ],

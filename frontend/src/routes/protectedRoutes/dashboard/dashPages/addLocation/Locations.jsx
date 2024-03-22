@@ -24,7 +24,7 @@ const Locations = () => {
       if (bucketError) {
         console.log(bucketError);
       } else {
-        console.log(bucketData);
+        bucketData;
       }
     }
     createBucket();

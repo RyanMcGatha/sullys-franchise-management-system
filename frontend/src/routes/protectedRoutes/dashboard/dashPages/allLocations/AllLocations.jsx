@@ -37,7 +37,7 @@ const AllLocations = () => {
             </div>
             <div className="cardBtn">
               <Link
-                to={`/locations/${location.owner}/${location.store_number}/${location.location_name}`}
+                to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
               >
                 <p className="text">View Store</p>
               </Link>

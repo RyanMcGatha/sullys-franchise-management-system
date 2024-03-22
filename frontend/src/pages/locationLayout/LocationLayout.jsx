@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../config/supabaseConfig";
 
-import LocationLayoutFolders from "./locationFolders/LocationLayoutFolders";
+import AddFolder from "./locationFolders/AddFolder";
 import LocationFiles from "./locationFiles/LocationFiles";
 import AllFolders from "./locationFolders/AllFolders";
 
 import "./locationLayout.css";
 
 const LocationLayout = ({ size }) => {
-  const { owner, store_number, location_name } = useParams();
+  const { owner, store_number, location_name, id } = useParams();
   const [ownerName, setOwnerName] = useState("");
   const [storeNum, setStoreNum] = useState("");
   const [locationName, setLocationName] = useState("");
+  const [locationId, setLocationId] = useState("");
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
-
   const [folders, setFolders] = useState([]);
 
   const [addFolder, setAddFolder] = useState(false);
@@ -26,7 +26,8 @@ const LocationLayout = ({ size }) => {
     setOwnerName(owner);
     setStoreNum(store_number);
     setLocationName(location_name);
-  }, [owner, store_number, location_name]);
+    setLocationId(id);
+  }, [owner, store_number, location_name, id]);
 
   return (
     <div className="content-location-layout">
@@ -43,6 +44,7 @@ const LocationLayout = ({ size }) => {
               onClick={() => {
                 setAddFolder(true);
                 setAddFile(false);
+                setAllFolders(false);
               }}
             >
               <label>Add Folder</label>
@@ -73,11 +75,11 @@ const LocationLayout = ({ size }) => {
                 setAllFolders(true);
               }}
             >
-              <label>Add file</label>
+              <label>All folders</label>
             </button>
           </div>
           <div className="displayWindow-location-layout">
-            {addFolder && <LocationLayoutFolders />}
+            {addFolder && <AddFolder />}
             {addFile && <LocationFiles />}
             {allFolders && <AllFolders />}
           </div>

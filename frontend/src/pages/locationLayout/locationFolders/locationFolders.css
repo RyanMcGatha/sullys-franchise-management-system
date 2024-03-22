@@ -6,6 +6,19 @@
   width: 100%;
   height: 100%;
 }
+.main-allFolders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.allFolders {
+  display: flex;
+  gap: 2vw;
+}
 
 .newFolderForm {
   height: 20vh;

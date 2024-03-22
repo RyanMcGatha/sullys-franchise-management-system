@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../../../config/supabaseConfig";
 import "./locationFolders.css";
 
-const LocationLayoutFolders = () => {
-  const { store_number } = useParams();
+const AddFolder = () => {
+  const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [folder_name, setFolderName] = useState("");
 
@@ -14,12 +14,12 @@ const LocationLayoutFolders = () => {
 
     const { error } = await supabase
       .from("folders")
-      .insert([{ store_number, folder_name }]);
+      .insert([{ location_id: id, folder_name }]);
 
     if (error) {
       alert(error.message);
     } else {
-      document.location.reload();
+      alert("Folder added successfully");
     }
     setLoading(false);
   };
@@ -33,7 +33,7 @@ const LocationLayoutFolders = () => {
           placeholder="Folder Name"
           value={folder_name}
           onChange={(e) => setFolderName(e.target.value)}
-          required
+          required={true}
         />
         <button className="btn-location-folders" type="submit">
           Add Folder
@@ -43,4 +43,4 @@ const LocationLayoutFolders = () => {
   );
 };
 
-export default LocationLayoutFolders;
+export default AddFolder;
