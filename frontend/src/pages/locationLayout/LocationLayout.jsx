@@ -4,6 +4,7 @@ import { supabase } from "../../config/supabaseConfig";
 
 import LocationLayoutFolders from "./locationFolders/LocationLayoutFolders";
 import LocationFiles from "./locationFiles/LocationFiles";
+import AllFolders from "./locationFolders/AllFolders";
 
 import "./locationLayout.css";
 
@@ -15,7 +16,10 @@ const LocationLayout = ({ size }) => {
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
 
+  const [folders, setFolders] = useState([]);
+
   const [addFolder, setAddFolder] = useState(false);
+  const [allFolders, setAllFolders] = useState([false]);
   const [addFile, setAddFile] = useState(false);
 
   useEffect(() => {
@@ -23,33 +27,6 @@ const LocationLayout = ({ size }) => {
     setStoreNum(store_number);
     setLocationName(location_name);
   }, [owner, store_number, location_name]);
-
-  async function uploadFile(event) {
-    event.preventDefault();
-    try {
-      setUploading(true);
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error("You must select an image to upload.");
-      }
-      const file = event.target.files[0];
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
-
-      const { data, error } = await supabase.storage
-        .from(`uploads-${storeNum}`)
-        .upload(filePath, file);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setUploading(false);
-    }
-  }
 
   return (
     <div className="content-location-layout">
@@ -75,10 +52,24 @@ const LocationLayout = ({ size }) => {
               type="radio"
               name="foleder"
               value="addFile"
-              checked={addFolder}
+              checked={addFile}
               onClick={() => {
                 setAddFile(true);
                 setAddFolder(false);
+              }}
+            >
+              <label>Add file</label>
+            </button>
+            <button
+              className="folder-location-layout"
+              type="radio"
+              name="foleder"
+              value="allFolders"
+              checked={allFolders}
+              onClick={() => {
+                setAddFile(false);
+                setAddFolder(false);
+                setAllFolders(true);
               }}
             >
               <label>Add file</label>
@@ -87,6 +78,7 @@ const LocationLayout = ({ size }) => {
           <div className="displayWindow-location-layout">
             {addFolder && <LocationLayoutFolders />}
             {addFile && <LocationFiles />}
+            {allFolders && <AllFolders />}
           </div>
         </div>
       </div>

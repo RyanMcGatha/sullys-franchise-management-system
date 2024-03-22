@@ -7,7 +7,7 @@ const Locations = () => {
   const [loading, setLoading] = useState(false);
   const [store_number, setStoreNumber] = useState("");
   const [owner, setOwner] = useState("");
-  const [location_name, setLocationName] = useState([]);
+  const [location_name, setLocationName] = useState("");
 
   const handleAddLocation = async (event) => {
     event.preventDefault();
