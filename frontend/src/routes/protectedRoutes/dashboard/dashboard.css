@@ -2,97 +2,98 @@
   display: flex;
   width: 86vw;
   height: 100vh;
-  border-top: #05060f 0.411 vmin solid;
 }
 
 .mid {
   display: flex;
   flex-direction: column;
-  width: 72vw;
+  min-width: 72vw;
+  max-width: 72vw;
+  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .titleDash {
-  max-height: 10vh;
-  min-height: 10vh;
+  max-height: 5vh;
+  min-height: 5vh;
   display: flex;
   align-items: center;
-  font-size: 8vh;
+  font-size: 5vh;
   color: #05060f;
-  padding-left: 1vw;
-  border-bottom: #05060f 0.5vmin solid;
-  font-weight: 250;
+  font-weight: 500;
+  margin-bottom: 1vh;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
-  width: 72vw;
   align-items: center;
-  height: 100vh;
-  max-height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-width: 72vw;
+  max-width: 72vw;
+  min-height: 95vh;
+  max-height: 95vh;
 }
 
 .actionCards {
-  background: transparent;
-  border: none;
   display: flex;
   width: 72vw;
+  min-width: 72vw;
+  max-width: 72vw;
   align-items: center;
-  justify-content: space-evenly;
-  height: 17vh;
-  overflow: hidden;
+  justify-content: space-around;
+  height: fit-content;
 }
 
 .actionCard {
-  margin-left: 1vw;
-  width: 15vw;
+  width: 10vw;
   height: 10vh;
-  background: rgba(216, 36, 33, 0.759);
-  filter: saturate(5.5);
-  border-radius: 1rem;
-  border: 0.5vmin solid #05060f;
-  box-shadow: 0.4rem 0.4rem #05060f;
-  overflow: hidden;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: black 0px 0px 10px;
+  border-radius: 1em;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.03);
+  font-size: 3vh;
 }
 
 .actionContent {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
-.actionCard:checked + .actionContent {
+.actionCard:checked {
   background-color: white;
   color: black;
 }
 
 .displayWindow {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 72vw;
-  height: 73vh;
-  overflow-y: auto;
+  height: 85vh;
+  min-height: 85vh;
+  max-height: 85vh;
 }
 
 .storage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2vh;
-  width: 14vw;
+  min-width: 14vw;
+  max-width: 14vw;
+  width: 100%;
   height: 100vh;
-  border-left: #05060f 0.5vmin solid;
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .activityCard {
-  padding-left: 1vw;
-  padding-top: 1vh;
   height: 20vh;
   width: 10vw;
-  border-radius: 1em;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.5s ease;
@@ -100,7 +101,6 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-top: 2vh;
-  margin-bottom: 2vh;
 }
 
 .actionCard {

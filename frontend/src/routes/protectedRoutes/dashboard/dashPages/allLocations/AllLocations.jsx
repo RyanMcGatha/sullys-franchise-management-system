@@ -48,28 +48,17 @@ const AllLocations = ({ url }) => {
     <div className="main-all-locations">
       <div className="cardRow">
         {locations.map((location) => (
-          <div
-            key={location.id}
-            class="w-80 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out"
-          >
-            <img
-              class="w-full h-40 object-cover rounded-t-lg"
-              alt="Card Image"
-              src={blankUrl}
-            />
-            <div class="p-4">
-              <h2 class="text-xl  font-semibold">{location.location_name}</h2>
-              <p class="text-gray-600">#{location.store_number}</p>
-              <div class="flex justify-between items-center mt-4">
-                <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                  <Link
-                    to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
-                  ></Link>
-                  View Files
-                  <p className="text">View Store</p>
-                </button>
-              </div>
-            </div>
+          <div key={location.id} class="card">
+            <img class="cardImage" alt="Card Image" src={blankUrl} />
+            <div class="card__info">{location.location_name}</div>
+            <p class="title">#{location.store_number}</p>
+            <button class="cardBtn">
+              <Link
+                to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
+              >
+                View Files
+              </Link>
+            </button>
           </div>
         ))}
       </div>

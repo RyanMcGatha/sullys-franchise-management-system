@@ -108,7 +108,6 @@ const Dashboard = () => {
           <div className="displayWindow">
             {addLocations && <Locations />}
             {showAllLocations && <AllLocations />}
-            <div className="chart"></div>
           </div>
         </div>
       </div>

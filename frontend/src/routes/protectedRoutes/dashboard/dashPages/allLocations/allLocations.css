@@ -1,53 +1,50 @@
 .main-all-locations {
   display: flex;
   flex-direction: column;
-  width: 72vw;
-  min-height: 73vh;
-  align-items: center;
+  min-width: 72vw;
+  max-width: 72vw;
+  height: 85vh;
+  min-height: 85vh;
+  max-height: 85vh;
 }
 
 .cardRow {
   margin-top: 3vh;
-  justify-content: center;
   display: flex;
+  justify-content: space-evenly;
+  min-width: 72vw;
+  max-width: 72vw;
+  max-height: 85vh;
+  height: 80%;
   flex-wrap: wrap;
-  width: 65vw;
-  height: 40vh;
-  gap: 2vw;
 }
 
 .card {
-  width: 10vw;
+  width: 15vw;
   height: 20vh;
-  background: #e8e8e8;
-  border-radius: 15px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  position: relative;
-  color: #212121;
+  align-items: center;
+
+  border-radius: 10px;
+  background-color: #fafafa;
   transition: all 0.5s ease;
-  border: 0.5vmin solid #05060f;
-  box-shadow: 0.4rem 0.4rem #05060f;
-  overflow: hidden;
+  padding: 1vh;
+  cursor: pointer;
+  margin-bottom: 1vh;
 }
 
 .cardBtn {
   display: flex;
-  flex-direction: row;
-  gap: 5px;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  transition: opacity 0.5s ease;
-  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  height: 2vh;
+  color: black;
 }
 
 .cardImage {
-  width: auto;
-  height: 40%;
-  object-fit: cover;
+  width: 50%;
+  height: 50%;
   transition: all 0.5s ease;
 }
 
@@ -57,7 +54,6 @@
   align-items: center;
   font-size: 1.5rem;
   flex-grow: 1;
-  background: white;
 }
 
 p {
@@ -72,15 +68,6 @@ p {
   color: black;
 }
 
-.card:hover .cardBtn {
-  z-index: 1;
-  opacity: 1;
-}
-
 .card:hover .cardImage {
   filter: brightness(0.8);
-}
-
-.card:hover .title {
-  color: #ab4b38;
 }
