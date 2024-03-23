@@ -19,9 +19,12 @@
 nav {
   display: flex;
   flex-direction: column;
-  width: 14vw;
+  max-width: 14vw;
+  overflow: hidden;
   height: 100vh;
   background-color: white;
+
+  border: #05060f 0.5vmin solid;
 }
 
 .logoContain {
@@ -29,7 +32,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: solid 2px #e6e6e6;
+  border-bottom: #05060f 0.5vmin solid;
 }
 
 .sullysLogo {
@@ -58,10 +61,11 @@ nav {
   position: relative;
   cursor: pointer;
   transition-duration: 0.2s;
-  font-size: 25px;
+  font-size: 1vw;
   text-decoration: none;
   margin-bottom: 1vh;
   margin-top: 1vh;
+  color: #05060f;
 }
 
 .arrow {
@@ -80,7 +84,7 @@ nav {
   flex-direction: column;
   width: 14vw;
   margin-top: 5vh;
-  border-top: solid 2px #e6e6e6;
+  border-top: #05060f 0.5vmin solid;
 }
 
 /*  */

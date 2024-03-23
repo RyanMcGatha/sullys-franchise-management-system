@@ -32,6 +32,17 @@
   border: solid 2px green;
 }
 
+.folderDisplay {
+  background: transparent;
+  border: none;
+  display: flex;
+  width: 72vw;
+  border: solid 2px orange;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+}
+
 .folders-location-layout {
   background: transparent;
   border: none;

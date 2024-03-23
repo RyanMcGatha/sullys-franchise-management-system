@@ -19,7 +19,7 @@ const LocationLayout = ({ size }) => {
   const [folders, setFolders] = useState([]);
 
   const [addFolder, setAddFolder] = useState(false);
-  const [allFolders, setAllFolders] = useState([false]);
+
   const [addFile, setAddFile] = useState(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const LocationLayout = ({ size }) => {
       <div className="mid-location-layout">
         <div className="title-location-layout">{locationName}</div>
         <div className="cards-location-layout">
-          <div className="folders-location-layout">
+          <div className="folderDisplay">
             <button
               className="folder-location-layout"
               type="radio"
@@ -44,7 +44,6 @@ const LocationLayout = ({ size }) => {
               onClick={() => {
                 setAddFolder(true);
                 setAddFile(false);
-                setAllFolders(false);
               }}
             >
               <label>Add Folder</label>
@@ -58,30 +57,16 @@ const LocationLayout = ({ size }) => {
               onClick={() => {
                 setAddFile(true);
                 setAddFolder(false);
-                setAllFolders(false);
               }}
             >
               <label>Add file</label>
             </button>
-            <button
-              className="folder-location-layout"
-              type="radio"
-              name="foleder"
-              value="allFolders"
-              checked={allFolders}
-              onClick={() => {
-                setAddFile(false);
-                setAddFolder(false);
-                setAllFolders(true);
-              }}
-            >
-              <label>All folders</label>
-            </button>
           </div>
+
           <div className="displayWindow-location-layout">
             {addFolder && <AddFolder />}
             {addFile && <LocationFiles />}
-            {allFolders && <AllFolders />}
+            <AllFolders />
           </div>
         </div>
       </div>

@@ -41,7 +41,10 @@ const Routes = () => {
   const protectedRoutes = [
     {
       element: <ProtetcedLayout />,
-      errorElement: <ErrorPage />,
+      errorElement: {
+        path: "errorpage",
+        element: <ErrorPage />,
+      },
       children: [
         {
           path: "/dashboard",

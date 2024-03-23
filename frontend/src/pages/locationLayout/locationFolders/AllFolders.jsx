@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../../config/supabaseConfig";
 import "./locationFolders.css";
+import LocationFiles from "../locationFiles/LocationFiles";
 
 const AllFolders = () => {
   const { id } = useParams();
   const [folders, setFolders] = useState([]);
   const [error, setError] = useState(null);
+  const [addFolder, setAddFolder] = useState(false);
+
+  const [addFile, setAddFile] = useState(false);
 
   useEffect(() => {
     async function fetchFolders() {
@@ -29,9 +33,20 @@ const AllFolders = () => {
   return (
     <div className="main-allFolders">
       {folders.map((folder) => (
-        <div className="allFolders" key={folder.folder_id}>
-          <div className="card">{folder.folder_name}</div>
-        </div>
+        <button
+          type="radio"
+          name="folder"
+          value={"addFile"}
+          checked={addFile}
+          onClick={() => {
+            setAddFile(true);
+            setAddFolder(false);
+          }}
+          key={folder.folder_id}
+          className="card"
+        >
+          {folder.folder_name}
+        </button>
       ))}
       {error && <div>Error: {error}</div>}
     </div>

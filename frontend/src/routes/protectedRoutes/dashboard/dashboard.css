@@ -2,23 +2,25 @@
   display: flex;
   width: 86vw;
   height: 100vh;
+  border-top: #05060f 0.411 vmin solid;
 }
 
 .mid {
   display: flex;
   flex-direction: column;
   width: 72vw;
-  border: solid 2px red;
 }
 
 .titleDash {
-  height: 10vh;
-  width: 72vw;
+  max-height: 10vh;
+  min-height: 10vh;
   display: flex;
   align-items: center;
-  color: black;
-  font-size: 40px;
-  border: solid 2px blue;
+  font-size: 8vh;
+  color: #05060f;
+  padding-left: 1vw;
+  border-bottom: #05060f 0.5vmin solid;
+  font-weight: 250;
 }
 
 .cards {
@@ -28,7 +30,6 @@
   align-items: center;
   height: 100vh;
   max-height: 100vh;
-  border: solid 2px green;
 }
 
 .actionCards {
@@ -36,22 +37,35 @@
   border: none;
   display: flex;
   width: 72vw;
-  border: solid 2px yellow;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
   height: 17vh;
+  overflow: hidden;
 }
 
 .actionCard {
-  height: 15vh;
-  width: 16vw;
-  border-radius: 1em;
+  margin-left: 1vw;
+  width: 15vw;
+  height: 10vh;
+  background: rgba(216, 36, 33, 0.759);
+  filter: saturate(5.5);
+  border-radius: 1rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1vw;
+}
+
+.actionContent {
   display: flex;
   flex-direction: column;
-  transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  gap: 0.5rem;
+}
+
+.actionCard:checked + .actionContent {
+  background-color: white;
+  color: black;
 }
 
 .displayWindow {
@@ -69,7 +83,7 @@
   gap: 2vh;
   width: 14vw;
   height: 100vh;
-  border: solid 2px blue;
+  border-left: #05060f 0.5vmin solid;
 }
 
 .activityCard {
@@ -92,3 +106,17 @@
 .actionCard {
   cursor: pointer;
 }
+
+.whiteButton {
+  background-color: white;
+  color: black;
+}
+
+.chart {
+  width: auto;
+  height: 50%;
+}
+
+/*  */
+/*  */
+/*  */
