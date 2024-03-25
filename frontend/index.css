@@ -26,7 +26,8 @@
   font-style: normal;
 }
 
-:root body {
+:root,
+body {
   padding: 0;
   margin: 0;
   overflow: hidden;

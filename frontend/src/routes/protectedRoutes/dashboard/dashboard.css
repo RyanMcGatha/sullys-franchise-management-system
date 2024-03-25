@@ -1,83 +1,68 @@
 .main-dashboard {
   display: flex;
+  flex-direction: column;
   width: 86vw;
   height: 100vh;
-}
-
-.mid {
-  display: flex;
-  flex-direction: column;
-  min-width: 72vw;
-  max-width: 72vw;
-  min-height: 100vh;
-  max-height: 100vh;
-}
-
-.titleDash {
-  max-height: 5vh;
-  min-height: 5vh;
-  display: flex;
-  align-items: center;
   font-size: 5vh;
-  color: #05060f;
-  font-weight: 500;
-  margin-bottom: 1vh;
+  background: rgba(252, 227, 173, 0.6);
+  color: white;
+  background-color: #05060f;
+  padding-left: 1vw;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  min-width: 72vw;
-  max-width: 72vw;
-  min-height: 95vh;
-  max-height: 95vh;
+  min-width: 86vw;
+  max-width: 86vw;
+  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .actionCards {
   display: flex;
-  width: 72vw;
-  min-width: 72vw;
-  max-width: 72vw;
-  align-items: center;
-  justify-content: space-around;
+  min-width: 84vw;
+  max-width: 84vw;
+  min-height: 12vh;
   height: fit-content;
+  gap: 1vw;
+  justify-content: center;
+  margin-right: 2vh;
 }
 
 .actionCard {
-  width: 10vw;
-  height: 10vh;
+  font-size: 2vh;
+  min-width: 12vw;
+  max-width: 39vw;
+  height: 15vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: black 0px 0px 10px;
-  border-radius: 1em;
-  transition: all 0.5s ease;
+  border-radius: 10px;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.03);
-  font-size: 3vh;
+  transition-duration: 0.4s;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  width: 100%;
 }
 
 .actionContent {
   display: flex;
-}
-
-.actionCard:checked {
-  background-color: white;
-  color: black;
+  background: transparent;
 }
 
 .displayWindow {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 72vw;
-  height: 85vh;
-  min-height: 85vh;
-  max-height: 85vh;
+  width: 86vw;
+  height: 75vh;
+  min-height: 75vh;
+  max-height: 75vh;
 }
 
 .storage {
@@ -86,9 +71,7 @@
   align-items: center;
   min-width: 14vw;
   max-width: 14vw;
-  width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.03);
 }
 
 .activityCard {
@@ -97,9 +80,7 @@
   display: flex;
   flex-direction: column;
   transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
   margin-top: 2vh;
 }
 
@@ -108,15 +89,41 @@
 }
 
 .whiteButton {
-  background-color: white;
-  color: black;
+  width: 20vw;
 }
 
-.chart {
-  width: auto;
-  height: 50%;
+button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
 }
 
-/*  */
-/*  */
-/*  */
+button,
+.actionCard {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
+  --animation-color: #ff0000;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+/* hover */
+button:hover,
+.actionCard:hover {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+.actionCard {
+  font-size: 3vh;
+}

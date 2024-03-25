@@ -33,7 +33,7 @@ const AllLocations = ({ url }) => {
     try {
       const { data, error } = await supabase.storage
         .from("imgs")
-        .download("blank");
+        .download("store.jpg");
       if (error) {
         throw error;
       }
@@ -48,18 +48,30 @@ const AllLocations = ({ url }) => {
     <div className="main-all-locations">
       <div className="cardRow">
         {locations.map((location) => (
-          <div key={location.id} class="card">
-            <img class="cardImage" alt="Card Image" src={blankUrl} />
-            <div class="card__info">{location.location_name}</div>
-            <p class="title">#{location.store_number}</p>
-            <button class="cardBtn">
-              <Link
-                to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
-              >
-                View Files
-              </Link>
-            </button>
-          </div>
+          <article key={location.id} class="card">
+            <img
+              // src={blankUrl}
+              class="card__background"
+              src={blankUrl}
+              alt="background image"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">{location.location_name}</h2>
+                <p class="card__description">{location.store_number}</p>
+              </div>
+              <button class="card__button">
+                {" "}
+                <Link
+                  to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
+                >
+                  View Files
+                </Link>
+              </button>
+            </div>
+          </article>
         ))}
       </div>
     </div>
