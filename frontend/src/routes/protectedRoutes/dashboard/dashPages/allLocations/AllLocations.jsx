@@ -62,8 +62,7 @@ const AllLocations = ({ url }) => {
                 <h2 class="card__title">{location.location_name}</h2>
                 <p class="card__description">{location.store_number}</p>
               </div>
-              <button class="card__button">
-                {" "}
+              <button class="card__button" id="cardBtn">
                 <Link
                   to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
                 >
