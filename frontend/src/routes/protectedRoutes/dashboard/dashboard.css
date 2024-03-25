@@ -4,7 +4,7 @@
   width: 86vw;
   height: 100vh;
   font-size: 5vh;
-  background: rgba(252, 227, 173, 0.6);
+
   color: white;
   background-color: #05060f;
   padding-left: 1vw;
@@ -16,8 +16,6 @@
   align-items: center;
   min-width: 86vw;
   max-width: 86vw;
-  min-height: 100vh;
-  max-height: 100vh;
 }
 
 .actionCards {

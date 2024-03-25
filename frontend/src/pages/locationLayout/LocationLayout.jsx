@@ -18,6 +18,7 @@ const LocationLayout = ({ size }) => {
   const [uploading, setUploading] = useState(false);
   const [folders, setFolders] = useState([]);
 
+  const [allFolders, setAllFolders] = useState(true);
   const [addFolder, setAddFolder] = useState(false);
 
   const [addFile, setAddFile] = useState(false);
@@ -30,48 +31,41 @@ const LocationLayout = ({ size }) => {
   }, [owner, store_number, location_name, id]);
 
   return (
-    <div className="content-location-layout">
-      <div className="mid-location-layout">
-        <div className="title-location-layout">{locationName}</div>
-        <div className="cards-location-layout">
-          <div className="folderDisplay">
-            <button
-              className="folder-location-layout"
-              type="radio"
-              name="foleder"
-              value="addFolder"
-              checked={addFolder}
-              onClick={() => {
-                setAddFolder(true);
-                setAddFile(false);
-              }}
-            >
-              <label>Add Folder</label>
-            </button>
-            <button
-              className="folder-location-layout"
-              type="radio"
-              name="foleder"
-              value="addFile"
-              checked={addFile}
-              onClick={() => {
-                setAddFile(true);
-                setAddFolder(false);
-              }}
-            >
-              <label>Add file</label>
-            </button>
-          </div>
-
-          <div className="displayWindow-location-layout">
-            {addFolder && <AddFolder />}
-            {addFile && <LocationFiles />}
-            <AllFolders />
-          </div>
+    <div className="main-location-layout">
+      {locationName}
+      <div className="cards">
+        <div className="actionCards">
+          <button
+            className={`actionCard ${!allFolders ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="showAllLocations"
+            checked={allFolders}
+            onClick={() => {
+              setAddFolder(false);
+              setAllFolders(true);
+            }}
+          >
+            <label className="actionContent">View All Folders</label>
+          </button>
+          <button
+            className={`actionCard ${!addFolder ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="showAllLocations"
+            checked={addFolder}
+            onClick={() => {
+              setAddFolder(true);
+              setAllFolders(false);
+            }}
+          >
+            <label className="actionContent">Add Folder</label>
+          </button>
         </div>
-      </div>
-      <div className="storage-location-layout">
-        <div className="activityCard-location-layout"></div>
+        <div className="displayWindow-location-layout">
+          {allFolders && <AllFolders url={locationId} />}
+          {addFolder && <AddFolder url={locationId} />}
+        </div>
       </div>
     </div>
   );

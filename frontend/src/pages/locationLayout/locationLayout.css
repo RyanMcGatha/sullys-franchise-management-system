@@ -1,109 +1,22 @@
-.content-location-layout {
+.main-location-layout {
   display: flex;
+  flex-direction: column;
   width: 86vw;
   height: 100vh;
-  color: black;
-}
-
-.mid-location-layout {
-  display: flex;
-  flex-direction: column;
-  width: 72vw;
-  border: solid 2px red;
-}
-
-.title-location-layout {
-  height: 10vh;
-  width: 72vw;
-  display: flex;
-  align-items: center;
-  color: black;
-  font-size: 40px;
-  border: solid 2px blue;
-}
-
-.cards-location-layout {
-  display: flex;
-  flex-direction: column;
-  width: 72vw;
-  align-items: center;
-  height: 100vh;
-  max-height: 100vh;
-  border: solid 2px green;
-}
-
-.folderDisplay {
-  background: transparent;
-  border: none;
-  display: flex;
-  width: 72vw;
-  border: solid 2px orange;
-  justify-content: space-evenly;
-  align-items: center;
-  height: auto;
-}
-
-.folders-location-layout {
-  background: transparent;
-  border: none;
-  display: flex;
-  width: 72vw;
-  border: solid 2px yellow;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 17vh;
-}
-
-.folder-location-layout {
-  height: 15vh;
-  width: 16vw;
-  border-radius: 1em;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 5vh;
+  color: white;
+  background-color: #05060f;
+  padding-left: 1vw;
 }
 
 .displayWindow-location-layout {
   display: flex;
   flex-direction: column;
-  width: 72vw;
-  height: 73vh;
   align-items: center;
-  overflow-y: auto;
-}
-
-.uploadBtn {
-  visibility: hidden;
-  position: absolute;
-}
-
-.storage-location-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2vh;
-  width: 14vw;
-  height: 100vh;
-  border: solid 2px blue;
-}
-
-.activityCard-location-layout {
-  padding-left: 1vw;
-  padding-top: 1vh;
-  height: 20vh;
-  width: 10vw;
-  border-radius: 1em;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  min-width: 86vw;
+  max-width: 86vw;
+  height: 85vh;
+  min-height: 92vh;
+  max-height: 92vh;
+  background: transparent;
 }

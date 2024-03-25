@@ -48,20 +48,19 @@ nav {
 .contentContainer {
   display: flex;
   flex-direction: column;
-  height: 90vh;
-  grid-area: 5vh;
+  justify-content: space-evenly;
 }
 
 .navLink,
 #navBtn {
-  height: 4vh;
+  height: 50%;
+  max-height: 10vh;
   width: 13vw;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0px 1vw;
   color: white;
-  position: relative;
   cursor: pointer;
   transition-duration: 0.2s;
   font-size: 3vh;
@@ -72,7 +71,6 @@ nav {
 }
 
 .arrow {
-  position: absolute;
   right: 0;
   width: 30px;
   height: 100%;
@@ -86,7 +84,6 @@ nav {
   display: flex;
   flex-direction: column;
   width: 14vw;
-  margin-top: 48vh;
 }
 
 /*  */
@@ -96,7 +93,7 @@ nav {
 .navBtn:hover {
   border-radius: 10px;
   backdrop-filter: blur(100px);
-  background-color: rgba(0, 0, 0, 0.05);
+  background: #1e1f27;
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition-duration: 0.4s;

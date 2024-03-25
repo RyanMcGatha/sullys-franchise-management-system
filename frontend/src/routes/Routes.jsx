@@ -21,6 +21,7 @@ import ErrorPage from "../pages/errorPage/ErrorPage";
 import Messenger from "./protectedRoutes/messenger/Messenger";
 
 import LocationLayout from "../pages/locationLayout/LocationLayout";
+import LocationFiles from "../pages/locationLayout/locationFiles/LocationFiles";
 
 const Routes = () => {
   const { isAuth } = useAuth();
@@ -62,6 +63,11 @@ const Routes = () => {
         {
           path: "/locations/:owner/:store_number/:location_name/:id",
           element: <LocationLayout />,
+        },
+
+        {
+          path: "/location/:id/folder/:folderId",
+          element: <LocationFiles />,
         },
       ],
     },

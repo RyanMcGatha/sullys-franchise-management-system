@@ -1,35 +1,172 @@
 .main-location-folders {
+  width: 85vw;
+  min-height: 75vh;
+  max-height: 75vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-.main-allFolders {
-  display: flex;
-  gap: 2vw;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.newFolderForm {
-  height: 20vh;
-  width: 15vw;
-  border-radius: 1em;
+.folders {
+  margin-top: 3vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  min-width: 86vw;
+  max-width: 86vw;
   align-items: center;
-  transition: all 0.5s ease;
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  gap: 1vw;
+  height: fit-content;
 }
 
-.input-location-folders {
-  background-color: black;
-  color: white;
+/*  */
+
+.folder {
+  display: grid;
+  place-items: center;
+  max-width: 30.875rem;
+  min-width: 30.875rem;
+  height: 20.125rem;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  margin-bottom: 1vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.folder > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.folder__background {
+  background-color: white;
+  object-fit: cover;
+  max-width: 113%;
+  height: 100%;
+  position: relative;
+  left: -1vw;
+}
+
+.folder__content {
+  --flow-space: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+  width: 90%;
+  height: 90%;
+  padding: 12% 1.25rem 1.875rem;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 0%, 0) 0%,
+    hsla(0, 0%, 0%, 0.3) 10%,
+    hsl(0, 0%, 0%) 100%
+  );
+}
+
+.folder__content--container {
+  --flow-space: 1.25rem;
+}
+
+.folder__title {
+  position: relative;
+  width: fit-content;
+  width: -moz-fit-content;
+}
+
+.folder__title::after {
+  content: "";
+  position: absolute;
+  height: 0.3125rem;
+  width: calc(100% + 1.25rem);
+  bottom: calc((1.25rem - 0.5rem) * -1);
+  left: -1.25rem;
+  background-color: var(--brand-color);
+}
+
+.folder__button {
+  padding: 0.75em 1.6em;
+  width: fit-content;
+  width: -moz-fit-content;
+  font-variant: small-caps;
+  font-weight: bold;
+  border-radius: 0.45em;
+  border: none;
+  background-color: var(--brand-color);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  color: var(--black);
+}
+
+.folder__button:focus {
+  outline: 2px solid black;
+  outline-offset: -5px;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .folder__content {
+    transform: translateY(62%);
+    transition: transform 500ms ease-out;
+    transition-delay: 500ms;
+  }
+
+  .folder__title::after {
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 1000ms ease-in, transform 500ms ease-out;
+    transition-delay: 500ms;
+    transform-origin: right;
+  }
+
+  .folder__background {
+    transition: transform 500ms ease-in;
+  }
+
+  .folder__content--container > :not(.folder__title),
+  .folder__button {
+    opacity: 0;
+    transition: transform 50ms ease-out, opacity 50ms ease-out;
+  }
+
+  .folder:hover,
+  .folder:focus-within {
+    transform: scale(1.05);
+    transition: transform 500ms ease-in;
+  }
+
+  .folder:hover .folder__content,
+  .folder:focus-within .folder__content {
+    transform: translateY(0);
+    transition: transform 500ms ease-in;
+  }
+
+  .folder:focus-within .folder__content {
+    transition-duration: 5ms;
+  }
+
+  .folder:hover .folder__background,
+  .folder:focus-within .folder__background {
+    transform: scale(1.3);
+  }
+
+  .folder:hover .folder__content--container > :not(.folder__title),
+  .folder:hover .folder__button,
+  .folder:focus-within .folder__content--container > :not(.folder__title),
+  .folder:focus-within .folder__button {
+    opacity: 1;
+    transition: opacity 50ms ease-in;
+    transition-delay: 10ms;
+  }
+
+  .folder:hover .folder__title::after,
+  .folder:focus-within .folder__title::after {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+    transition-delay: 500ms;
+  }
 }

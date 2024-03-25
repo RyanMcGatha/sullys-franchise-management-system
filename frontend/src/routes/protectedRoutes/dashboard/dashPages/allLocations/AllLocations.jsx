@@ -48,27 +48,27 @@ const AllLocations = ({ url }) => {
     <div className="main-all-locations">
       <div className="cardRow">
         {locations.map((location) => (
-          <article key={location.id} class="card">
+          <article key={location.id} className="card">
             <img
               // src={blankUrl}
-              class="card__background"
+              className="card__background"
               src={blankUrl}
               alt="background image"
               width="1920"
               height="2193"
             />
-            <div class="card__content | flow">
-              <div class="card__content--container | flow">
-                <h2 class="card__title">{location.location_name}</h2>
-                <p class="card__description">{location.store_number}</p>
+            <div className="card__content | flow">
+              <div className="card__content--container | flow">
+                <h2 className="card__title">{location.location_name}</h2>
+                <p className="card__description">{location.store_number}</p>
+                <button className="card__button" id="cardBtn">
+                  <Link
+                    to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
+                  >
+                    View Files
+                  </Link>
+                </button>
               </div>
-              <button class="card__button" id="cardBtn">
-                <Link
-                  to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}
-                >
-                  View Files
-                </Link>
-              </button>
             </div>
           </article>
         ))}
