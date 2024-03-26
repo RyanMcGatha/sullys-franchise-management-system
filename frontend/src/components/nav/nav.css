@@ -26,6 +26,7 @@ nav {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background-color: #05060f;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .logoContain {
@@ -33,29 +34,33 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin-top: 3vh;
+  width: 14vw;
+  overflow: visible;
+  margin-top: 3.5vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .sullysLogo {
   filter: drop-shadow(0px 0.5px 0.5px #efefef)
     drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-  height: 12vh;
+  height: 14vh;
   width: auto;
-  margin-bottom: 3vh;
+  margin-bottom: 4vh;
 }
 
 .contentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 45vh;
 }
 
 .navLink,
 #navBtn {
   height: 50%;
-  max-height: 10vh;
+  max-height: 8vh;
   width: 13vw;
+  max-width: 100%;
+  min-width: 20%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -84,6 +89,8 @@ nav {
   display: flex;
   flex-direction: column;
   width: 14vw;
+  height: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /*  */

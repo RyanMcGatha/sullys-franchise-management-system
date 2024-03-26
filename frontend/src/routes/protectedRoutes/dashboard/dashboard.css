@@ -3,11 +3,11 @@
   flex-direction: column;
   width: 86vw;
   height: 100vh;
-  font-size: 5vh;
+  font-size: 4vh;
+  padding-top: 1vh;
 
   color: white;
   background-color: #05060f;
-  padding-left: 1vw;
 }
 
 .cards {
@@ -32,7 +32,7 @@
 .actionCard {
   font-size: 2vh;
   min-width: 12vw;
-  max-width: 39vw;
+  max-width: 30vw;
   height: 15vh;
   display: flex;
   align-items: center;

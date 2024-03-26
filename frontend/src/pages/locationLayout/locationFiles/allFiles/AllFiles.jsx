@@ -30,6 +30,7 @@ const AllFiles = () => {
 
   return (
     <div className="main-all-files">
+      <div>File Name</div>
       {files.map((file) => (
         <div className="files" key={file.id}>
           <div className="fileDisplay">{file.name}</div>

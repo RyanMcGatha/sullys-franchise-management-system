@@ -4,10 +4,14 @@ import React, { useState } from "react";
 
 import Locations from "./dashPages/addLocation/Locations";
 import AllLocations from "./dashPages/allLocations/AllLocations";
+import AddUser from "./dashPages/addUser/AddUser";
+import AllUsers from "./dashPages/allUsers/AllUsers";
 
 const Dashboard = () => {
   const [addLocations, setAddLocations] = useState(false);
   const [showAllLocations, setShowAllLocations] = useState(true);
+  const [addUsers, setAddUsers] = useState(false);
+  const [showAllUsers, setShowAllUsers] = useState(false);
 
   return (
     <div className="main-dashboard">
@@ -23,6 +27,8 @@ const Dashboard = () => {
             onClick={() => {
               setShowAllLocations(true);
               setAddLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(false);
             }}
           >
             <label className="actionContent">View All Locations</label>
@@ -36,30 +42,36 @@ const Dashboard = () => {
             onClick={() => {
               setAddLocations(true);
               setShowAllLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(false);
             }}
           >
             <label className="actionContent">Add Locations</label>
           </button>
           <button
-            className={`actionCard ${!addLocations ? "whiteButton" : ""}`}
+            className={`actionCard ${!showAllUsers ? "whiteButton" : ""}`}
             type="radio"
             name="action"
-            value="addLocations"
+            value="showAllUsers"
             onClick={() => {
-              setAddLocations(true);
+              setAddLocations(false);
               setShowAllLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(true);
             }}
           >
             <label className="actionContent">View All Users</label>
           </button>
           <button
-            className={`actionCard ${!addLocations ? "whiteButton" : ""}`}
+            className={`actionCard ${!addUsers ? "whiteButton" : ""}`}
             type="radio"
             name="action"
-            value="addLocations"
+            value="addUsers"
             onClick={() => {
-              setAddLocations(true);
+              setAddLocations(false);
               setShowAllLocations(false);
+              setAddUsers(true);
+              setShowAllUsers(false);
             }}
           >
             <label className="actionContent">Add Users</label>
@@ -69,6 +81,8 @@ const Dashboard = () => {
         <div className="displayWindow">
           {addLocations && <Locations />}
           {showAllLocations && <AllLocations />}
+          {addUsers && <AddUser />}
+          {showAllUsers && <AllUsers />}
         </div>
       </div>
     </div>
