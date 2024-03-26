@@ -9,12 +9,14 @@ import AllUsers from "./dashPages/allUsers/AllUsers";
 
 import { supabase } from "../../../config/supabaseConfig";
 import { useAuth } from "../../../AuthContext";
+import { Navigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [addLocations, setAddLocations] = useState(false);
   const [showAllLocations, setShowAllLocations] = useState(true);
   const [addUsers, setAddUsers] = useState(false);
   const [showAllUsers, setShowAllUsers] = useState(false);
+  const [role, setRole] = useState("");
   const { session } = useAuth();
   useEffect(() => {
     async function fetchRole() {
@@ -27,7 +29,7 @@ const Dashboard = () => {
         if (error) {
           throw error;
         }
-        console.log(data);
+        setRole(data);
       } catch (error) {
         setError(error.message);
       }

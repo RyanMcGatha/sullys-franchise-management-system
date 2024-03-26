@@ -1,0 +1,53 @@
+.main-add-user {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 70vh;
+  align-items: center;
+  color: black;
+}
+
+.formContainer-add-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 50vh;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background: #fcedda;
+  margin-top: 5vh;
+}
+
+.subHeading-add-user {
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-add-user input {
+  height: 35px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #808080;
+  border: 1px solid #ee4e34;
+  border-radius: 6px;
+  padding: 0 15px;
+  background: #fcedda;
+}
+
+.form-add-user button {
+  height: 40px;
+  width: 100%;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ee4e34;
+}
