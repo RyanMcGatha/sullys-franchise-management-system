@@ -22,18 +22,22 @@
   display: flex;
   min-width: 84vw;
   max-width: 84vw;
-  min-height: 12vh;
-  height: fit-content;
-  gap: 1vw;
+  min-height: 10vh;
+  max-height: 15vh;
+  height: 100%;
+  gap: 0.5vw;
   justify-content: center;
   margin-right: 2vh;
+  margin-top: 1vh;
 }
 
 .actionCard {
   font-size: 2vh;
   min-width: 12vw;
-  max-width: 30vw;
-  height: 15vh;
+  max-width: 33vw;
+  max-height: 15vh;
+  min-height: 5vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,18 +62,8 @@
   flex-direction: column;
   align-items: center;
   width: 86vw;
-  height: 75vh;
-  min-height: 75vh;
-  max-height: 75vh;
-}
-
-.storage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 14vw;
-  max-width: 14vw;
-  height: 100vh;
+  min-height: 90vh;
+  max-height: 90vh;
 }
 
 .activityCard {
@@ -100,7 +94,8 @@ button {
 }
 
 button,
-.actionCard {
+.actionCard,
+.actionCard-location-layout {
   --border-right: 6px;
   --text-stroke-color: rgba(255, 255, 255, 0.6);
   --animation-color: #ff0000;

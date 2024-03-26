@@ -7,9 +7,8 @@
   min-width: 86vw;
   max-width: 86vw;
   height: 85vh;
-  min-height: 75vh;
-  max-height: 75vh;
-  background: transparent;
+  min-height: 90vh;
+  max-height: 90vh;
 }
 
 .cardRow {
@@ -21,7 +20,8 @@
   max-width: 86vw;
   align-items: center;
   justify-content: center;
-  gap: 1vw;
+  gap: 0.5vw;
+  height: 85vh;
 }
 
 :root {
@@ -75,7 +75,7 @@ p {
 .card {
   display: grid;
   place-items: center;
-  max-width: 33.875rem;
+  max-width: 30.875rem;
   height: 25.125rem;
   overflow: hidden;
   border-radius: 0.625rem;

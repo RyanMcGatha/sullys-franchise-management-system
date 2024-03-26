@@ -33,33 +33,39 @@ const LocationLayout = ({ size }) => {
   return (
     <div className="main-location-layout">
       {locationName}
-      <div className="cards">
-        <div className="actionCards">
+      <div className="cards-location-layout">
+        <div className="actionCards-location-layout">
           <button
-            className={`actionCard ${!allFolders ? "whiteButton" : ""}`}
+            className={`actionCard-location-layout ${
+              !allFolders ? "whiteButton" : ""
+            }`}
             type="radio"
             name="action"
-            value="showAllLocations"
+            value="showAllFolders"
             checked={allFolders}
             onClick={() => {
               setAddFolder(false);
               setAllFolders(true);
             }}
           >
-            <label className="actionContent">View All Folders</label>
+            <label className="actionContent-location-layout">
+              View All Folders
+            </label>
           </button>
           <button
-            className={`actionCard ${!addFolder ? "whiteButton" : ""}`}
+            className={`actionCard-location-layout ${
+              !addFolder ? "whiteButton" : ""
+            }`}
             type="radio"
             name="action"
-            value="showAllLocations"
+            value="addFolder"
             checked={addFolder}
             onClick={() => {
               setAddFolder(true);
               setAllFolders(false);
             }}
           >
-            <label className="actionContent">Add Folder</label>
+            <label className="actionContent-location-layout">Add Folder</label>
           </button>
         </div>
         <div className="displayWindow-location-layout">

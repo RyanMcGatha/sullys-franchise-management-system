@@ -2,12 +2,14 @@ import "./addUser.css";
 
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../../../config/supabaseConfig";
+import { useAuth } from "../../../../../AuthContext";
 
 const AddUser = () => {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   const handleAddUser = async (event) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ const AddUser = () => {
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
+      role: role,
     });
 
     if (error) {
@@ -60,6 +63,20 @@ const AddUser = () => {
             required={true}
             onChange={(evenr) => setPassword(event.target.value)}
           />
+          <input
+            className="input-add-user"
+            name="role"
+            list="roles"
+            placeholder="select role"
+            value={role}
+            required={true}
+            onChange={(event) => setRole(event.target.value)}
+          />
+          <datalist id="roles">
+            <option value="Admin" />
+            <option value="User" />
+            <option value="Manager" />
+          </datalist>
           <button className="button-add-user" type="submit">
             Add User
           </button>

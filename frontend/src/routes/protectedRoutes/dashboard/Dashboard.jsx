@@ -39,7 +39,6 @@ const Dashboard = () => {
 
   return (
     <div className="main-dashboard">
-      Dashboard
       <div className="cards">
         <div className="actionCards">
           <button
