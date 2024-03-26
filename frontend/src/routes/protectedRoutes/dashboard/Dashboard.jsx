@@ -1,17 +1,39 @@
 import "./dashboard.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Locations from "./dashPages/addLocation/Locations";
 import AllLocations from "./dashPages/allLocations/AllLocations";
 import AddUser from "./dashPages/addUser/AddUser";
 import AllUsers from "./dashPages/allUsers/AllUsers";
 
+import { supabase } from "../../../config/supabaseConfig";
+import { useAuth } from "../../../AuthContext";
+
 const Dashboard = () => {
   const [addLocations, setAddLocations] = useState(false);
   const [showAllLocations, setShowAllLocations] = useState(true);
   const [addUsers, setAddUsers] = useState(false);
   const [showAllUsers, setShowAllUsers] = useState(false);
+  const { session } = useAuth();
+  useEffect(() => {
+    async function fetchRole() {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", session.user.id);
+
+        if (error) {
+          throw error;
+        }
+        console.log(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    fetchRole();
+  }, []);
 
   return (
     <div className="main-dashboard">

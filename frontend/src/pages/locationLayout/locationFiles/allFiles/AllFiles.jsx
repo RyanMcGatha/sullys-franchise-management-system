@@ -7,7 +7,6 @@ const AllFiles = () => {
   const { folder_name } = useParams();
 
   const [files, setFiles] = useState([]);
-  console.log(folder_name);
 
   useEffect(() => {
     async function fetchFiles() {
