@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../config/supabaseConfig";
-
 import AddFolder from "./locationFolders/AddFolder";
-import LocationFiles from "./locationFiles/LocationFiles";
 import AllFolders from "./locationFolders/AllFolders";
 
 import "./locationLayout.css";
 
 const LocationLayout = ({ size }) => {
-  const { owner, store_number, location_name, id } = useParams();
+  const { owner, store_number, location_name, id, folder_name } = useParams();
+  const [folderName, setFolderName] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [storeNum, setStoreNum] = useState("");
   const [locationName, setLocationName] = useState("");
@@ -28,7 +27,8 @@ const LocationLayout = ({ size }) => {
     setStoreNum(store_number);
     setLocationName(location_name);
     setLocationId(id);
-  }, [owner, store_number, location_name, id]);
+    setFolderName(folder_name);
+  }, [owner, store_number, location_name, id, folder_name]);
 
   return (
     <div className="main-location-layout">
@@ -63,8 +63,8 @@ const LocationLayout = ({ size }) => {
           </button>
         </div>
         <div className="displayWindow-location-layout">
-          {allFolders && <AllFolders url={locationId} />}
-          {addFolder && <AddFolder url={locationId} />}
+          {allFolders && <AllFolders />}
+          {addFolder && <AddFolder />}
         </div>
       </div>
     </div>

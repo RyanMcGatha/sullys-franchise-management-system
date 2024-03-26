@@ -66,7 +66,7 @@ const Routes = () => {
         },
 
         {
-          path: "/location/:id/folder/:folderId",
+          path: "/location/:id/:store_number/folder/:folder_name",
           element: <LocationFiles />,
         },
       ],

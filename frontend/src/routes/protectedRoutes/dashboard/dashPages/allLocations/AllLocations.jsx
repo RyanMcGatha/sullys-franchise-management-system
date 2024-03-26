@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const AllLocations = ({ url }) => {
   const [locations, setLocations] = useState([]);
   const [blankUrl, setBlankUrl] = useState(null);
-  console.log(blankUrl);
 
   const [error, setError] = useState(null);
 

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import "./locationFolders.css";
 
 const AllFolders = ({ url }) => {
-  const { id } = useParams();
+  const { id, store_number, folder_name, location_name } = useParams();
   const [folders, setFolders] = useState([]);
   const [error, setError] = useState(null);
   const [addFolder, setAddFolder] = useState(false);
@@ -33,7 +33,7 @@ const AllFolders = ({ url }) => {
       }
     }
     fetchFolders();
-  }, [id, url]);
+  }, [id, url, store_number, folder_name, location_name]);
 
   async function downloadImage() {
     try {
@@ -61,7 +61,9 @@ const AllFolders = ({ url }) => {
                 <h2 className="folder__title">{folder.folder_name}</h2>
                 <p className="folder__description"></p>
                 <button className="folder__button" id="folderBtn">
-                  <Link to={`/location/${id}/folder/${folder.id}`}>
+                  <Link
+                    to={`/location/${id}/${store_number}/folder/${folder.folder_name}`}
+                  >
                     View Files
                   </Link>
                 </button>

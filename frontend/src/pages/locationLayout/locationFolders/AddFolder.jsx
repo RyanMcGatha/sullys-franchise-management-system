@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import { supabase } from "../../../config/supabaseConfig";
-import "./locationFolders.css";
+import "./addFolder.css";
 
 const AddFolder = () => {
-  const { id } = useParams();
+  const { id, store_number } = useParams();
   const [loading, setLoading] = useState(false);
   const [folder_name, setFolderName] = useState("");
 
@@ -26,19 +26,22 @@ const AddFolder = () => {
 
   return (
     <div className="main-location-folders">
-      <form onSubmit={addFolder} className="newFolderForm">
-        <input
-          className="input-location-folders"
-          type="text"
-          placeholder="Folder Name"
-          value={folder_name}
-          onChange={(e) => setFolderName(e.target.value)}
-          required={true}
-        />
-        <button className="btn-location-folders" type="submit">
-          Add Folder
-        </button>
-      </form>
+      <div className="formContainer-location-folders">
+        <div className="subHeading-location-folders">Add new folder</div>
+        <form onSubmit={addFolder} className="form-locations-folders">
+          <input
+            className="input-location-folders"
+            type="text"
+            placeholder="Folder Name"
+            value={folder_name}
+            onChange={(e) => setFolderName(e.target.value)}
+            required={true}
+          />
+          <button className="btn-location-folders" type="submit">
+            Add Folder
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
