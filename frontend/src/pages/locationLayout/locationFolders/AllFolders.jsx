@@ -53,8 +53,8 @@ const AllFolders = ({ url }) => {
   return (
     <div className="main-location-folders">
       <div className="folders">
-        {folders.map((folder) => (
-          <div key={folder.id} className="folder">
+        {folders.map((folder, index) => (
+          <div key={folder.id || index} className="folder">
             <img className="folder__background" />
             <div className="folder__content | flow">
               <div className="folder__content--content | flow">
