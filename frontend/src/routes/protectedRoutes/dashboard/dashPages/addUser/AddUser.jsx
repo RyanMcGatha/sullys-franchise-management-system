@@ -32,7 +32,6 @@ const AddUser = () => {
 
   return (
     <div className="main-add-user">
-      <h1>Add User</h1>
       <div className="formContainer-add-user">
         <div className="subHeading-add-user">Add new user</div>
         <form onSubmit={handleAddUser} className="form-add-user">

@@ -26,38 +26,38 @@ const LocationFiles = () => {
     <div className="main-files">
       {folderName}
       <div className="cards">
-        <div className="actionCards">
-          <button
-            className={`actionCard ${allFiles ? "whiteButton" : ""}`}
-            type="radio"
-            name="action"
-            value="showAllFiles"
-            checked={allFiles}
-            onClick={() => {
-              setAllFiles(true);
-              setAddFile(false);
-            }}
-          >
-            <label className="actionContent">View All Files</label>
-          </button>
-          <button
-            className={`actionCard ${allFiles ? "whiteButton" : ""}`}
-            type="radio"
-            name="action"
-            value={"addNewFile"}
-            checked={addFile}
-            onClick={() => {
-              setAddFile(true);
-              setAllFiles(false);
-            }}
-          >
-            <label className="actionContent">Add New File</label>
-          </button>
-        </div>
         <div className="displayWindow-files">
           {allFiles && <AllFiles url={[folderName][storeNum]} />}
           {addFile && <AddFile url={[folderName][storeNum]} />}
         </div>
+      </div>
+      <div className="actionCards">
+        <button
+          className={`actionCard ${allFiles ? "whiteButton" : ""}`}
+          type="radio"
+          name="action"
+          value="showAllFiles"
+          checked={allFiles}
+          onClick={() => {
+            setAllFiles(true);
+            setAddFile(false);
+          }}
+        >
+          <label className="actionContent">View All Files</label>
+        </button>
+        <button
+          className={`actionCard ${allFiles ? "whiteButton" : ""}`}
+          type="radio"
+          name="action"
+          value={"addNewFile"}
+          checked={addFile}
+          onClick={() => {
+            setAddFile(true);
+            setAllFiles(false);
+          }}
+        >
+          <label className="actionContent">Add New File</label>
+        </button>
       </div>
     </div>
   );

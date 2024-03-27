@@ -5,18 +5,20 @@
   height: 100vh;
   font-size: 5vh;
   color: white;
-  background-color: #05060f;
-  padding-left: 1vw;
+  background-color: #7c2529;
 }
 
 .displayWindow-files {
   display: flex;
   flex-direction: column;
+
   align-items: center;
+
   min-width: 86vw;
   max-width: 86vw;
-  height: 85vh;
-  min-height: 92vh;
-  max-height: 92vh;
+  height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   background: transparent;
 }

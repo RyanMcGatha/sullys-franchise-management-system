@@ -59,7 +59,9 @@ const AllLocations = ({ url }) => {
             <div className="card__content | flow">
               <div className="card__content--container | flow">
                 <h2 className="card__title">{location.location_name}</h2>
-                <p className="card__description">{location.store_number}</p>
+                <p className="card__description">
+                  Store Number : {location.store_number}
+                </p>
                 <button className="card__button" id="cardBtn">
                   <Link
                     to={`/locations/${location.owner}/${location.store_number}/${location.location_name}/${location.id}`}

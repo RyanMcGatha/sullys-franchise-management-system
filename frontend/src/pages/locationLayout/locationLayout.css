@@ -5,8 +5,8 @@
   height: 100vh;
   font-size: 5vh;
   color: white;
-  background-color: #05060f;
-  padding-left: 1vw;
+  background-color: #7c2529;
+  padding-left: 1vh;
 }
 
 .cards-location-layout {
@@ -18,25 +18,21 @@
 }
 
 .actionCards-location-layout {
+  margin-top: 1vh;
   display: flex;
-  min-width: 84vw;
-  max-width: 84vw;
-  min-height: 10vh;
-  max-height: 15vh;
-  height: 100%;
+  max-width: 86vw;
   gap: 0.5vw;
   justify-content: center;
-  margin-right: 2vh;
-  margin-top: 1vh;
+  align-items: center;
 }
 
 .actionCard-location-layout {
   font-size: 2vh;
-  min-width: 15vw;
-  max-width: 50vw;
-  max-height: 15vh;
-  min-height: 5vh;
-  height: 100%;
+  max-height: 20vh;
+  min-height: 20vh;
+
+  min-width: 21vw;
+  max-width: 21vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +44,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: white;
-  width: 100%;
 }
 
 .actionContent-location-layout {
@@ -64,8 +59,10 @@
 }
 
 .actionCard-location-layout:hover {
-  width: 100%;
-  filter: drop-shadow(0 0 23px var(--animation-color));
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
 }
 
 .actionCard-loation-layout {

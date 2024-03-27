@@ -44,7 +44,6 @@ const Locations = () => {
 
   return (
     <div className="main-locations">
-      <h1>Locations</h1>
       <div className="formContainer-locations">
         <div className="subHeading-locations">Add new location</div>
         <form onSubmit={handleAddLocation} className="form-locations">

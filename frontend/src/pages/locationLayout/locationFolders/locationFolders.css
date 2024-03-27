@@ -1,11 +1,9 @@
 .main-location-folders {
-  width: 85vw;
-  min-height: 75vh;
-  max-height: 75vh;
   display: flex;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding-left: 1vw;
+  flex-direction: column;
+  align-items: center;
+  min-width: 66vw;
+  max-width: 66vw;
 }
 
 .folders {
@@ -21,20 +19,21 @@
   height: fit-content;
 }
 
-/*  */
-
 .folder {
   display: grid;
   place-items: center;
-  max-width: 30.875rem;
-  min-width: 30.875rem;
-  height: 20.125rem;
+  max-width: 25.875rem;
+  min-width: 25.875rem;
+  height: 25.125rem;
   overflow: hidden;
-  border-radius: 0.625rem;
+  border-radius: 2rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
   margin-bottom: 1vh;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+  margin-top: 1vh;
 }
 
 .folder > * {
@@ -43,12 +42,10 @@
 }
 
 .folder__background {
-  background-color: white;
   object-fit: cover;
-  max-width: 113%;
+  max-width: 100%;
   height: 100%;
   position: relative;
-  left: -1vw;
 }
 
 .folder__content {
@@ -60,12 +57,9 @@
   width: 90%;
   height: 90%;
   padding: 12% 1.25rem 1.875rem;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 0%, 0) 0%,
-    hsla(0, 0%, 0%, 0.3) 10%,
-    hsl(0, 0%, 0%) 100%
-  );
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  overflow: hidden;
 }
 
 .folder__content--container {

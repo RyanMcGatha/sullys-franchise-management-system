@@ -44,8 +44,8 @@ export default function Nav({ url }) {
             Files
             <div className="arrow">›</div>
           </Link>
-          <Link to={"/messenger"} className="navLink">
-            Messenger
+          <Link to={"/alllocations"} className="navLink">
+            All Locations
             <div className="arrow">›</div>
           </Link>
         </div>

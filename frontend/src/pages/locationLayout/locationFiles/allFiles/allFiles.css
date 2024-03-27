@@ -1,7 +1,5 @@
 .main-all-files {
   width: 85vw;
-  min-height: 75vh;
-  max-height: 75vh;
   display: flex;
   overflow-x: hidden;
   flex-direction: column;

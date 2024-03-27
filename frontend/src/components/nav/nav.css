@@ -19,14 +19,16 @@
 nav {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 14vw;
   overflow: hidden;
   height: 100vh;
   background: rgba(252, 227, 173, 0.6);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background-color: #05060f;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: #7c2529;
+  border: 1px solid #ffffff40;
+  padding-left: 0.3vw;
 }
 
 .logoContain {
@@ -100,7 +102,8 @@ nav {
 .navBtn:hover {
   border-radius: 10px;
   backdrop-filter: blur(100px);
-  background: #1e1f27;
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition-duration: 0.4s;
