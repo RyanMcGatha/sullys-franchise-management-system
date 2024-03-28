@@ -97,3 +97,9 @@
     font-size: 2.5vh;
   }
 }
+@media (max-width: 1000px) {
+  .navLink,
+  #navBtn {
+    font-size: 1vh;
+  }
+}

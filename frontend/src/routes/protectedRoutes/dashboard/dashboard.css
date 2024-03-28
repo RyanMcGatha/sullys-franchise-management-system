@@ -126,7 +126,7 @@ button,
   display: none;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .main-dashboard {
     min-width: 100vw;
     align-items: center;
@@ -155,5 +155,17 @@ button,
     margin: 0;
     display: flex;
     font-size: 8vh;
+  }
+}
+
+@media (max-width: 150px) {
+  .main-dashboard {
+  }
+
+  .locationsTxt {
+    font-size: 3vh;
+  }
+  .displayWindow {
+    overflow: visible;
   }
 }

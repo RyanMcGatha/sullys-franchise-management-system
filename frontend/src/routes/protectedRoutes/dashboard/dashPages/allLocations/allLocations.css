@@ -32,7 +32,7 @@
   max-width: 25vw;
   min-width: 25vw;
   overflow: hidden;
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(100px);
   background: rgba(255, 255, 255, 0.11);
@@ -51,18 +51,24 @@
 }
 
 .card__content {
-  --flow-space: 0.9375rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   align-self: flex-end;
-  width: 90%;
-  height: 90%;
-  padding: 12% 1.25rem 1.875rem;
+  width: 100%;
+  height: 100%;
+  padding: 12% 1rem 1rem;
   background: hsla(0, 0%, 100%, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  color: wheat;
+  border-radius: 1rem;
+}
+
+.card__content--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card__content--container button {
@@ -208,12 +214,6 @@ p {
   margin: 0;
 }
 
-body {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-
 h2 {
   font-size: 2.25rem;
   font-family: var(--font-title);
@@ -234,16 +234,55 @@ p {
 
 @media (max-width: 1500px) {
   .card {
-    max-width: 40vw;
+    max-width: 35vw;
   }
   .cardRow {
     height: 98vh;
+    gap: 4vw;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .main-all-locations {
     min-height: 75vh;
     max-height: 75vh;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card {
+    max-width: 40vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    max-width: 40vw;
+    max-height: 40vh;
+  }
+}
+
+@media (max-width: 550px) {
+  .main-all-locations {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    min-width: 99vw;
+    max-width: 99vw;
+  }
+
+  .cardRow {
+    gap: 4vw;
+    min-height: 100vh;
+  }
+
+  .card__title {
+    font-size: 13vw;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 }

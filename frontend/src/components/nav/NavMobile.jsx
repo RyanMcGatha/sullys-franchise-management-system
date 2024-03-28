@@ -64,7 +64,7 @@ export default function NavMobile({ url }) {
           type="button"
           onClick={() => supabase.auth.signOut()}
         >
-          Log Out
+          Sign Out
           <div className="arrow">›</div>
         </div>
       </div>
