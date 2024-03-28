@@ -102,14 +102,14 @@ const Dashboard = () => {
             <label className="actionContent">Add Users</label>
           </button>
         </div>
+        {/* <div className="activityGraph">
+          <UploadActivityGraph />
+        </div> */}
         <div className="displayWindow">
           {addLocations && <Locations />}
           {showAllLocations && <AllLocations />}
           {addUsers && <AddUser />}
           {showAllUsers && <AllUsers />}
-          <div className="activityGraph">
-            <UploadActivityGraph />
-          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const AllLocations = ({ url }) => {
   const [blankUrl, setBlankUrl] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, store_number) => {
     const { data, error } = await supabase
       .from("locations")
       .delete()
@@ -17,6 +17,9 @@ const AllLocations = ({ url }) => {
     if (error) {
       alert(error.message);
     } else {
+      const { data, error } = await supabase.storage.deleteBucket(
+        `uploads-${store_number}`
+      );
       alert("Location deleted successfully");
       setLocations(locations.filter((location) => location.id !== id));
     }
@@ -62,8 +65,6 @@ const AllLocations = ({ url }) => {
               className="card__background"
               src={blankUrl}
               alt="background image"
-              width="1920"
-              height="2193"
             />
             <div className="card__content | flow">
               <div className="card__content--container | flow">
@@ -82,7 +83,7 @@ const AllLocations = ({ url }) => {
                   type="button"
                   onClick={() => handleDelete(location.id)}
                   className="card__button"
-                  id="cardBtnDelete"
+                  id="cardBtn"
                 >
                   Delete
                 </button>

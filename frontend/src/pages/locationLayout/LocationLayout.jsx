@@ -34,45 +34,43 @@ const LocationLayout = ({ size }) => {
     <div className="main-location-layout">
       {locationName}'s Folders
       <div className="cards-location-layout">
+        <div className="actionCards-location-layout">
+          <button
+            className={`actionCard-location-layout ${
+              !allFolders ? "whiteButton" : ""
+            }`}
+            type="radio"
+            name="action"
+            value="showAllFolders"
+            checked={allFolders}
+            onClick={() => {
+              setAddFolder(false);
+              setAllFolders(true);
+            }}
+          >
+            <label className="actionContent-location-layout">
+              View All Folders
+            </label>
+          </button>
+          <button
+            className={`actionCard-location-layout ${
+              !addFolder ? "whiteButton" : ""
+            }`}
+            type="radio"
+            name="action"
+            value="addFolder"
+            checked={addFolder}
+            onClick={() => {
+              setAddFolder(true);
+              setAllFolders(false);
+            }}
+          >
+            <label className="actionContent-location-layout">Add Folder</label>
+          </button>
+        </div>
         <div className="displayWindow-location-layout">
           {allFolders && <AllFolders />}
           {addFolder && <AddFolder />}
-          <div className="actionCards-location-layout">
-            <button
-              className={`actionCard-location-layout ${
-                !allFolders ? "whiteButton" : ""
-              }`}
-              type="radio"
-              name="action"
-              value="showAllFolders"
-              checked={allFolders}
-              onClick={() => {
-                setAddFolder(false);
-                setAllFolders(true);
-              }}
-            >
-              <label className="actionContent-location-layout">
-                View All Folders
-              </label>
-            </button>
-            <button
-              className={`actionCard-location-layout ${
-                !addFolder ? "whiteButton" : ""
-              }`}
-              type="radio"
-              name="action"
-              value="addFolder"
-              checked={addFolder}
-              onClick={() => {
-                setAddFolder(true);
-                setAllFolders(false);
-              }}
-            >
-              <label className="actionContent-location-layout">
-                Add Folder
-              </label>
-            </button>
-          </div>
         </div>
       </div>
     </div>

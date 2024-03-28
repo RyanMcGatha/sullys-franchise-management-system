@@ -51,7 +51,7 @@
 
 .displayWindow {
   display: flex;
-  max-height: 80vh;
+  flex-direction: column;
 }
 
 .actionCard {

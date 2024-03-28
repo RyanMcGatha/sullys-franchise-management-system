@@ -3,10 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../../../config/supabaseConfig";
 
+import AddFile from "../addFile/AddFile";
+
 const AllFiles = () => {
   const { folder_name } = useParams();
 
   const [files, setFiles] = useState([]);
+  console.log(files);
 
   useEffect(() => {
     async function fetchFiles() {
@@ -29,12 +32,20 @@ const AllFiles = () => {
 
   return (
     <div className="main-all-files">
-      <div>File Name</div>
-      {files.map((file) => (
-        <div className="files" key={file.id}>
-          <div className="fileDisplay">{file.name}</div>
-        </div>
-      ))}
+      <div className="fileDisplayTemplate">
+        <span>File Name</span> | <span>Type</span> | <span>Created At</span>
+      </div>
+
+      <div className="fileContainer">
+        {files.map((file) => (
+          <div className="files" key={file.id}>
+            <div className="fileDisplay">
+              <span>{file.name}</span> | <span>{file.type}</span> |{" "}
+              <span>{file.created_at}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

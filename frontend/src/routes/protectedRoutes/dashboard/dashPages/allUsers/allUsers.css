@@ -1,5 +1,5 @@
 .main-all-users {
-  width: 65vw;
+  width: 86vw;
   min-height: 80vh;
   max-height: 80vh;
   display: flex;
@@ -16,24 +16,36 @@
   display: flex;
   align-items: center;
   height: 5vh;
-  width: 60vw;
+  width: 84vw;
   border-radius: 1rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 1em;
 }
+
+.userDisplay span {
+  flex: 1;
+  text-align: center;
+}
+
 .displayTemplate {
   margin-top: 2vh;
-  margin-bottom: 1vh;
+  display: flex;
+  justify-content: space-between;
   font-size: 4vh;
   display: flex;
   align-items: center;
   height: 8vh;
-  width: 60vw;
+  width: 84vw;
   border-radius: 1rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 1em;
+}
+
+.displayTemplate span {
+  flex: 1;
+  text-align: center;
 }

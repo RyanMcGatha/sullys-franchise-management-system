@@ -24,14 +24,19 @@ const LocationFiles = () => {
 
   return (
     <div className="main-files">
-      {folderName}
+      <div className="topRow">
+        <span>{folderName}</span>
+        <span>
+          <AddFile />
+        </span>
+      </div>
       <div className="cards">
         <div className="displayWindow-files">
           {allFiles && <AllFiles url={[folderName][storeNum]} />}
           {addFile && <AddFile url={[folderName][storeNum]} />}
         </div>
       </div>
-      <div className="actionCards">
+      {/* <div className="actionCards">
         <button
           className={`actionCard ${allFiles ? "whiteButton" : ""}`}
           type="radio"
@@ -58,7 +63,7 @@ const LocationFiles = () => {
         >
           <label className="actionContent">Add New File</label>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

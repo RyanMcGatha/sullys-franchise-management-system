@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { addDays, startOfDay, formatISO } from "date-fns";
+import { format, startOfWeek, addDays } from "date-fns";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,7 +13,7 @@ import {
   TimeScale,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
-import { supabase } from "../config/supabaseConfig"; // Ensure the path is correct
+import { supabase } from "../config/supabaseConfig";
 
 ChartJS.register(
   CategoryScale,
@@ -28,86 +28,135 @@ ChartJS.register(
 
 const UploadActivityGraph = () => {
   const [graphData, setGraphData] = useState({
+    labels: [],
     datasets: [
       {
-        label: "File Uploads",
+        label: "Total Folder Uploads",
         data: [],
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        tension: 0.1,
+        borderColor: "rgba(54, 162, 235, 0.5)",
+        fill: false,
       },
       {
-        label: "Folder Uploads",
+        label: "Total File Uploads",
         data: [],
-        borderColor: "rgb(54, 162, 235)",
-        backgroundColor: "rgba(54, 162, 235, 0.5)",
-        tension: 0.1,
+        borderColor: "rgba(255, 99, 132, 0.5)",
+        fill: false,
       },
     ],
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      // Here you would fetch your data. The following is a placeholder for the logic
-      // For demonstration, let's use simulated data for file and folder uploads
-      const fileActivities = [
-        { date: "2023-01-01", count: 5 },
-        { date: "2023-01-02", count: 3 },
-        { date: "2023-01-03", count: 9 },
-      ];
-      const folderActivities = [
-        { date: "2023-01-01", count: 2 },
-        { date: "2023-01-02", count: 4 },
-        { date: "2023-01-03", count: 1 },
-      ];
+  // Aggregate data by date
+  const aggregateDataByDate = (data) => {
+    const groupedByDate = data.reduce((acc, { created_at }) => {
+      const date = format(new Date(created_at), "yyyy-MM-dd");
+      acc[date] = (acc[date] || 0) + 1;
+      return acc;
+    }, {});
 
-      const fileDataPoints = fileActivities.flatMap((activity) =>
-        createDataPoints(activity)
-      );
-      const folderDataPoints = folderActivities.flatMap((activity) =>
-        createDataPoints(activity)
-      );
+    // Fill in missing dates with 0 uploads
+    const startDate = startOfWeek(new Date(), { weekStartsOn: 1 });
+    const endDate = addDays(startDate, 6);
+    const dates = [];
+    for (let i = 0; i <= 6; i++) {
+      const date = format(addDays(startDate, i), "yyyy-MM-dd");
+      dates.push({ x: date, y: groupedByDate[date] || 0 });
+    }
 
-      setGraphData({
+    return dates;
+  };
+
+  const fetchData = async () => {
+    setIsLoading(true);
+
+    try {
+      // Fetch folders data
+      const { data: folders, error: foldersError } = await supabase
+        .from("folders")
+        .select("created_at")
+        .gte(
+          "created_at",
+          format(startOfWeek(new Date(), { weekStartsOn: 1 }), "yyyy-MM-dd")
+        )
+        .lte(
+          "created_at",
+          format(
+            addDays(startOfWeek(new Date(), { weekStartsOn: 1 }), 6),
+            "yyyy-MM-dd"
+          )
+        )
+        .order("created_at", { ascending: true });
+
+      if (foldersError) throw foldersError;
+
+      // Fetch files data
+      const { data: files, error: filesError } = await supabase
+        .from("files")
+        .select("created_at")
+        .gte(
+          "created_at",
+          format(startOfWeek(new Date(), { weekStartsOn: 1 }), "yyyy-MM-dd")
+        )
+        .lte(
+          "created_at",
+          format(
+            addDays(startOfWeek(new Date(), { weekStartsOn: 1 }), 6),
+            "yyyy-MM-dd"
+          )
+        )
+        .order("created_at", { ascending: true });
+
+      if (filesError) throw filesError;
+
+      // Aggregate and update graph data
+      const folderDataPoints = aggregateDataByDate(folders);
+      const fileDataPoints = aggregateDataByDate(files);
+
+      setGraphData((prevData) => ({
+        ...prevData,
+        labels: folderDataPoints.map((dp) => dp.x),
         datasets: [
-          { ...graphData.datasets[0], data: fileDataPoints },
-          { ...graphData.datasets[1], data: folderDataPoints },
+          { ...prevData.datasets[0], data: folderDataPoints },
+          { ...prevData.datasets[1], data: fileDataPoints },
         ],
-      });
+      }));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       setIsLoading(false);
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
-  const createDataPoints = (activity) => {
-    const dayStart = startOfDay(new Date(activity.date));
-    return [
-      { x: formatISO(dayStart), y: 0 }, // Start of day at zero
-      { x: formatISO(addDays(dayStart, 1)), y: activity.count }, // Total uploads for the day
-    ];
-  };
-
   const options = {
+    // Continuing from the previous code...
     scales: {
       x: {
         type: "time",
         time: {
           unit: "day",
           tooltipFormat: "MMM dd, yyyy",
+          displayFormats: {
+            day: "MMM dd",
+          },
         },
         title: {
           display: true,
           text: "Date",
+        },
+        ticks: {
+          source: "labels", // Ensure ticks align with our labels
+          autoSkip: false, // Prevent skipping any date
         },
       },
       y: {
         beginAtZero: true,
         title: {
           display: true,
-          text: "Number of Uploads",
+          text: "Total Uploads",
         },
       },
     },
@@ -117,6 +166,7 @@ const UploadActivityGraph = () => {
       },
     },
     maintainAspectRatio: false,
+    responsive: true,
   };
 
   if (isLoading) {
@@ -124,7 +174,7 @@ const UploadActivityGraph = () => {
   }
 
   return (
-    <div className="graph-container" style={{ width: "20vw", height: "70vh" }}>
+    <div style={{ width: "100%", height: "400px" }}>
       <Line data={graphData} options={options} />
     </div>
   );

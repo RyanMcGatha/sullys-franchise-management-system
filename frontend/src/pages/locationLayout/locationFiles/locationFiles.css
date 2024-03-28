@@ -1,6 +1,7 @@
 .main-files {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 86vw;
   height: 100vh;
   font-size: 5vh;
@@ -16,9 +17,15 @@
 
   min-width: 86vw;
   max-width: 86vw;
-  height: 70vh;
+
   overflow-y: auto;
   overflow-x: hidden;
 
   background: transparent;
+}
+
+.topRow {
+  display: flex;
+  width: 85vw;
+  justify-content: space-between;
 }

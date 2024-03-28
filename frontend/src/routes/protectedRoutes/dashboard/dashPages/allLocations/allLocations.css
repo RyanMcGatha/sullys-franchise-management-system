@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 65vw;
-  max-width: 65vw;
+  min-width: 100%;
+  max-width: 100%;
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
@@ -16,8 +16,8 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
-  min-width: 65vw;
-  max-width: 65vw;
+  min-width: 86vw;
+  max-width: 86vw;
   height: 75vh;
   scrollbar-width: none;
   gap: 2vw;
@@ -28,63 +28,21 @@
   display: none;
 }
 
-:root {
-  /* Colors */
-  --brand-color: #f1b434;
-  --black: hsl(0, 0%, 0%);
-  --white: hsl(0, 0%, 100%);
-  /* Fonts */
-  --font-title: "Montserrat", sans-serif;
-  --font-text: "Lato", sans-serif;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body,
-h2,
-p {
-  margin: 0;
-}
-
-body {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-
-h2 {
-  font-size: 2.25rem;
-  font-family: var(--font-title);
-  color: var(--white);
-  line-height: 1.1;
-}
-
-p {
-  font-family: var(--font-text);
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--white);
-}
-
-.flow > * + * {
-  margin-top: var(--flow-space, 1em);
-}
-
-/* CARD COMPONENT */
-
 .card {
   display: grid;
   place-items: center;
   max-width: 25.875rem;
-  height: 25.125rem;
+  min-width: 25.875rem;
+  height: 23.125rem;
   overflow: hidden;
   border-radius: 2rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
   margin-bottom: 1vh;
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+  margin-top: 1vh;
 }
 
 .card > * {
@@ -93,33 +51,44 @@ p {
 }
 
 .card__background {
-  object-fit: cover;
-  max-width: 100%;
+  width: auto;
   height: 100%;
-  position: relative;
+  filter: blur(6px);
 }
 
 .card__content {
   --flow-space: 0.9375rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   align-self: flex-end;
   width: 90%;
   height: 90%;
   padding: 12% 1.25rem 1.875rem;
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: hsla(0, 0%, 100%, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  color: wheat;
 }
 
-.card__content--container {
+.card__content--container button {
   --flow-space: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.11);
+}
+.card__content--container button {
+  background: #7c2529;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+  color: white;
 }
 
 .card__title {
-  position: relative;
   width: fit-content;
   width: -moz-fit-content;
+  font-size: 3rem;
 }
 
 .card__title::after {
@@ -132,9 +101,15 @@ p {
   background-color: var(--brand-color);
 }
 
+.card__description {
+  font-family: var(--font-text);
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
 .card__button {
   padding: 0.75em 1.6em;
-  width: fit-content;
+  width: 100%;
   width: -moz-fit-content;
   font-variant: small-caps;
   font-weight: bold;
@@ -195,6 +170,7 @@ p {
   .card:hover .card__background,
   .card:focus-within .card__background {
     transform: scale(1.3);
+    filter: blur(20px);
   }
 
   .card:hover .card__content--container > :not(.card__title),
@@ -214,4 +190,50 @@ p {
     transition: opacity 500ms ease-in, transform 500ms ease-in;
     transition-delay: 500ms;
   }
+}
+
+:root {
+  /* Colors */
+  --brand-color: #f1b434;
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  /* Fonts */
+  --font-title: "Montserrat", sans-serif;
+  --font-text: "Lato", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h2,
+p {
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-family: var(--font-title);
+  color: var(--white);
+  line-height: 1.1;
+}
+
+p {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
 }

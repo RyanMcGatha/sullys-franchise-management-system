@@ -40,11 +40,11 @@ export default function Nav({ url }) {
             Dashboard
             <div className="arrow">›</div>
           </Link>
-          <Link to={"/locations"} className="navLink">
+          <Link to={"/"} className="navLink">
             Files
             <div className="arrow">›</div>
           </Link>
-          <Link to={"/alllocations"} className="navLink">
+          <Link to={"/"} className="navLink">
             All Locations
             <div className="arrow">›</div>
           </Link>

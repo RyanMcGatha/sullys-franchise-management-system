@@ -24,11 +24,15 @@ const AllUsers = () => {
 
   return (
     <div className="main-all-users">
-      <div className="displayTemplate">Username | E-mail | FullName | Role</div>
+      <div class="displayTemplate">
+        <span>Username</span> |<span>E-mail</span> |<span>FullName</span> |
+        <span>Role</span>
+      </div>
       {users.map((user) => (
         <div className="users" key={user.id}>
           <div className="userDisplay">
-            {user.username} | {user.email} | {user.full_name} | {user.role}
+            <span>{user.username}</span> | <span>{user.email}</span> |{" "}
+            <span>{user.full_name}</span> | <span>{user.role}</span>
           </div>
         </div>
       ))}
