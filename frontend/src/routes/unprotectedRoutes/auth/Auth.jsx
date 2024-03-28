@@ -56,7 +56,13 @@ export default function Auth({ url }) {
     <div className="main-auth">
       <form onSubmit={handleLogin} className="form_container">
         <div className="logo_container">
-          <img className="logo" src={logoUrl} alt="Logo" />
+          <img
+            className="logo"
+            src={
+              "https://wnplbeoyxtitkkuaaaua.supabase.co/storage/v1/object/public/logos/sullysLogo.png"
+            }
+            alt="Logo"
+          />
         </div>
         <div className="title_container">
           <p className="title">Login to your Account</p>
