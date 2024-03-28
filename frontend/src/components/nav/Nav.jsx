@@ -9,6 +9,7 @@ import "./nav.css";
 
 export default function Nav({ url }) {
   const [logoUrl, setLogoUrl] = useState(null);
+  const [isNavVisible, setIsNavVisible] = useState(true);
 
   useEffect(() => {
     downloadImage(url);
@@ -34,6 +35,7 @@ export default function Nav({ url }) {
       <div className="logoContain">
         <img className="sullysLogo" src={logoUrl} alt="Logo" />
       </div>
+
       <div className="contentContainer">
         <div className="links">
           <Link to={"/dashboard"} id="a" className="navLink">
@@ -41,11 +43,15 @@ export default function Nav({ url }) {
             <div className="arrow">›</div>
           </Link>
           <Link to={"/"} className="navLink">
-            Files
+            Users
             <div className="arrow">›</div>
           </Link>
           <Link to={"/"} className="navLink">
-            All Locations
+            Folders
+            <div className="arrow">›</div>
+          </Link>
+          <Link to={"/"} className="navLink">
+            Files
             <div className="arrow">›</div>
           </Link>
         </div>

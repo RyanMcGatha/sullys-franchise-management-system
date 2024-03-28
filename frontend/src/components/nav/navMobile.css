@@ -1,38 +1,17 @@
-nav {
+#navMobile {
+  margin-top: 1vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  max-width: 14vw;
-  min-width: 14vw;
-  overflow: hidden;
-  height: 100vh;
-
-  background-color: #181818;
-}
-
-.logoContain {
-  height: 12vh;
-  padding-top: 1vh;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  width: 14vw;
-  overflow: visible;
+  height: 5vh;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.sullysLogo {
-  filter: drop-shadow(0px 0.5px 0.5px #efefef)
-    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-
-  width: auto;
-  height: 100%;
-  scale: 1;
-}
-
-.contentContainer {
+.linksMobile {
   display: flex;
-  flex-direction: column;
-  gap: 40vh;
 }
 
 .navLink,

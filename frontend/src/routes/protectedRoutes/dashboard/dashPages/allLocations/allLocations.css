@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100%;
-  max-width: 100%;
+  min-width: 86vw;
+  max-width: 86vw;
   height: 100vh;
   min-height: 100vh;
   max-height: 100vh;
@@ -13,15 +13,13 @@
 
 .cardRow {
   margin-top: 2vh;
+  height: 98vh;
   display: flex;
+  justify-content: center;
+  gap: 1vw;
   flex-wrap: wrap;
   overflow-y: auto;
-  min-width: 86vw;
-  max-width: 86vw;
-  height: 75vh;
   scrollbar-width: none;
-  gap: 2vw;
-  justify-content: center;
 }
 
 .cardRow::-webkit-scrollbar {
@@ -31,18 +29,14 @@
 .card {
   display: grid;
   place-items: center;
-  max-width: 25.875rem;
-  min-width: 25.875rem;
-  height: 23.125rem;
+  max-width: 25vw;
+  min-width: 25vw;
   overflow: hidden;
   border-radius: 2rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
-  margin-bottom: 1vh;
   backdrop-filter: blur(100px);
   background: rgba(255, 255, 255, 0.11);
   border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-  margin-top: 1vh;
 }
 
 .card > * {
@@ -236,4 +230,20 @@ p {
 
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
+}
+
+@media (max-width: 1500px) {
+  .card {
+    max-width: 40vw;
+  }
+  .cardRow {
+    height: 98vh;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-all-locations {
+    min-height: 75vh;
+    max-height: 75vh;
+  }
 }

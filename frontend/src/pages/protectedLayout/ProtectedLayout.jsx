@@ -13,7 +13,9 @@ const ProtectedLayout = () => {
   return (
     <div className="main-layout">
       <div className="body">
-        <Nav />
+        <div className="navLayout">
+          <Nav />
+        </div>
         <Outlet />
       </div>
     </div>

@@ -1,5 +1,6 @@
 .main-dashboard {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   font-size: 4vh;
   width: 86vw;
@@ -7,9 +8,16 @@
   background-color: #7c2529;
 }
 
+.locationsTxt {
+  margin-left: 1vw;
+  margin-top: 1vh;
+  display: flex;
+}
+
 .cards {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 86vw;
 }
 
@@ -52,6 +60,9 @@
 .displayWindow {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-width: 86vw;
+  min-width: 86vw;
 }
 
 .actionCard {
@@ -109,4 +120,40 @@ button,
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .main-dashboard {
+    min-width: 100vw;
+    align-items: center;
+  }
+
+  .idek {
+    margin-top: 0.5vh;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    gap: 1vw;
+  }
+
+  .nav-toggle {
+    display: flex;
+    cursor: pointer;
+    height: 10vh;
+  }
+
+  .logoClick {
+    height: 100%;
+    width: 100%;
+  }
+
+  .locationsTxt {
+    margin: 0;
+    display: flex;
+    font-size: 8vh;
+  }
 }
