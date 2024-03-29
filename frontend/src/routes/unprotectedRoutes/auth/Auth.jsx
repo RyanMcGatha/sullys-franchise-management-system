@@ -66,10 +66,7 @@ export default function Auth({ url }) {
         </div>
         <div className="title_container">
           <p className="title">Login to your Account</p>
-          <span className="subtitle">
-            Get started with Sullys Franchise Management System, just sign in
-            and enjoy the experience.
-          </span>
+          <span className="subtitle">Sign in and steam away!</span>
         </div>
         <div className="input_container">
           Email
