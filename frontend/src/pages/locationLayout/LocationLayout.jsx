@@ -1,79 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { supabase } from "../../config/supabaseConfig";
+import { useParams, useNavigate } from "react-router-dom";
 import AddFolder from "./locationFolders/AddFolder";
 import AllFolders from "./locationFolders/AllFolders";
-
 import "./locationLayout.css";
 
-const LocationLayout = ({ size }) => {
+const LocationLayout = () => {
   const { owner, store_number, location_name, id, folder_name } = useParams();
-  const [folderName, setFolderName] = useState("");
-  const [ownerName, setOwnerName] = useState("");
-  const [storeNum, setStoreNum] = useState("");
-  const [locationName, setLocationName] = useState("");
-  const [locationId, setLocationId] = useState("");
-  const [error, setError] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  const [folders, setFolders] = useState([]);
+  const navigate = useNavigate();
 
-  const [allFolders, setAllFolders] = useState(true);
-  const [addFolder, setAddFolder] = useState(false);
-
-  const [addFile, setAddFile] = useState(false);
+  // useState declarations for form fields, etc., might be here
+  // For brevity, assuming these are used elsewhere in your component or for API calls
+  const [showAddFolder, setShowAddFolder] = useState(false);
 
   useEffect(() => {
-    setOwnerName(owner);
-    setStoreNum(store_number);
-    setLocationName(location_name);
-    setLocationId(id);
-    setFolderName(folder_name);
+    // You might have useEffect logic here
+    // For example, to fetch folder data when the component mounts or when certain params change
+    // For this example, the useEffect hook is used to show how it's structured, but it's left empty
   }, [owner, store_number, location_name, id, folder_name]);
+
+  const handleAddFolderClick = () => {
+    setShowAddFolder((prevState) => !prevState); // Toggle the visibility of AddFolder component
+  };
+
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
 
   return (
     <div className="main-location-layout">
-      {locationName}'s Folders
-      <div className="cards-location-layout">
-        <div className="actionCards-location-layout">
-          <button
-            className={`actionCard-location-layout ${
-              !allFolders ? "whiteButton" : ""
-            }`}
-            type="radio"
-            name="action"
-            value="showAllFolders"
-            checked={allFolders}
-            onClick={() => {
-              setAddFolder(false);
-              setAllFolders(true);
-            }}
-          >
-            <label className="actionContent-location-layout">
-              View All Folders
-            </label>
-          </button>
-          <button
-            className={`actionCard-location-layout ${
-              !addFolder ? "whiteButton" : ""
-            }`}
-            type="radio"
-            name="action"
-            value="addFolder"
-            checked={addFolder}
-            onClick={() => {
-              setAddFolder(true);
-              setAllFolders(false);
-            }}
-          >
-            <label className="actionContent-location-layout">Add Folder</label>
-          </button>
-        </div>
-        <div className="displayWindow-location-layout">
-          {allFolders && <AllFolders />}
-          {addFolder && <AddFolder />}
-        </div>
+      <div className="header-location-layout">
+        <button onClick={handleBackClick} className="back-button">
+          Back
+        </button>
+        <span>{location_name}'s Folders</span>
+        <button
+          className="small-actionCard-location-layout"
+          onClick={handleAddFolderClick}
+        >
+          {/* Dynamic button label based on whether the AddFolder component is displayed */}
+          {showAddFolder ? "Close Add Folder" : "Add Folder"}
+        </button>
+      </div>
+
+      <div className="displayWindow-location-layout">
+        {showAddFolder && <AddFolder />}
+        <AllFolders />
       </div>
     </div>
   );
 };
+
 export default LocationLayout;

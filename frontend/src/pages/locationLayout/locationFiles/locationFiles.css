@@ -1,31 +1,43 @@
+:root {
+  --main-bg-color: #000; /* Assuming a background color, replace with your preference */
+  --font-color: white;
+  --content-width: 86vw;
+}
+
 .main-files {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 86vw;
+  width: var(--content-width);
   height: 100vh;
   font-size: 5vh;
-  color: white;
-  background-color: #7c2529;
+  color: var(--font-color);
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .displayWindow-files {
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
-  min-width: 86vw;
-  max-width: 86vw;
-
+  width: var(--content-width); /* Unified width control */
   overflow-y: auto;
   overflow-x: hidden;
-
-  background: transparent;
+  background: transparent; /* Maintained for explicit declaration */
 }
 
 .topRow {
   display: flex;
-  width: 85vw;
+  width: calc(
+    var(--content-width) - 1vw
+  ); /* Adjusting to maintain spacing consistency */
   justify-content: space-between;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --content-width: 100vw; /* Full width for smaller screens */
+  }
 }

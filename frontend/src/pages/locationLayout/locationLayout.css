@@ -1,82 +1,99 @@
+:root {
+  --layout-bg-color: #7c2529;
+  --layout-font-color: white;
+  --card-bg-color: rgba(255, 255, 255, 0.1);
+  --card-border-color: rgba(255, 255, 255, 0.25);
+  --card-hover-bg-color: rgba(255, 255, 255, 0.11);
+  --card-hover-border-color: rgba(255, 255, 255, 0.45);
+  --card-shadow-color: rgba(255, 255, 255, 0.05);
+  --small-btn-font-size: 2vh; /* Font size for smaller buttons */
+  --small-btn-width: 15vw; /* Width for smaller buttons */
+  --small-btn-height: 15vh; /* Height for smaller buttons */
+}
+
 .main-location-layout {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 86vw;
   height: 100vh;
   font-size: 5vh;
-  color: white;
-  background-color: #7c2529;
+  color: var(--layout-font-color);
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(100px);
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
   padding-left: 1vh;
 }
 
-.cards-location-layout {
+.header-location-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 101%;
+
+  box-shadow: var(--file-shadow);
+  background-color: var(--file-bg-color);
+  border: 1px solid var(--file-border-color);
+  padding: 1em;
+  max-height: 8vh;
+  gap: 15vw;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-family: "Pacifico";
+  color: rgba(255, 255, 255, 0.174);
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.cards-location-layout,
+.displayWindow-location-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 86vw;
-  max-width: 86vw;
+  width: 86vw;
+  max-height: 92vh;
 }
 
 .actionCards-location-layout {
-  margin-top: 1vh;
+  margin-top: 2vh;
   display: flex;
-  max-width: 86vw;
-  gap: 0.5vw;
   justify-content: center;
   align-items: center;
+  gap: 0.5vw;
+  width: 86vw;
 }
 
 .actionCard-location-layout {
-  font-size: 2vh;
-  max-height: 20vh;
-  min-height: 20vh;
-
-  min-width: 21vw;
-  max-width: 21vw;
+  font-size: var(--small-btn-font-size);
+  width: var(--small-btn-width);
+  height: var(--small-btn-height);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   cursor: pointer;
-  transition-duration: 0.4s;
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s;
+  background: var(--card-bg-color);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: white;
-}
-
-.actionContent-location-layout {
-  display: flex;
-  background: transparent;
-}
-.actionCard-location-layout {
-  cursor: pointer;
-}
-
-.whiteButton {
-  width: 40%;
+  border: 1px solid var(--card-border-color);
+  color: var(--layout-font-color);
 }
 
 .actionCard-location-layout:hover {
   backdrop-filter: blur(100px);
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-}
-
-.actionCard-loation-layout {
-  font-size: 3vh;
+  background: var(--card-hover-bg-color);
+  border: 1px solid var(--card-hover-border-color);
+  box-shadow: 0 5px 15px var(--card-shadow-color);
 }
 
 .displayWindow-location-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 86vw;
-  max-width: 86vw;
-  height: 85vh;
+  overflow-y: auto;
+  height: auto;
   min-height: 92vh;
-  max-height: 92vh;
   background: transparent;
 }

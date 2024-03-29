@@ -56,19 +56,16 @@ const AllFolders = ({ url }) => {
         {folders.map((folder, index) => (
           <div key={folder.id || index} className="folder">
             <img className="folder__background" />
-            <div className="folder__content | flow">
-              <div className="folder__content--content | flow">
-                <h2 className="folder__title">{folder.folder_name}</h2>
-                <p className="folder__description"></p>
-                <button className="folder__button" id="folderBtn">
-                  <Link
-                    to={`/location/${id}/${store_number}/folder/${folder.folder_name}`}
-                  >
-                    View Files
-                  </Link>
-                </button>
-              </div>
-            </div>
+
+            <h2 className="folder__title">{folder.folder_name}</h2>
+
+            <button className="folder__button" id="folderBtn">
+              <Link
+                to={`/location/${id}/${store_number}/folder/${folder.folder_name}`}
+              >
+                View Files
+              </Link>
+            </button>
           </div>
         ))}
       </div>

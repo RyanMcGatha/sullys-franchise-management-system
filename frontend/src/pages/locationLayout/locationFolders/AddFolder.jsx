@@ -25,7 +25,7 @@ const AddFolder = () => {
   };
 
   return (
-    <div className="main-location-folders">
+    <div className="main-add-location-folders">
       <div className="formContainer-location-folders">
         <div className="subHeading-location-folders">Add new folder</div>
         <form onSubmit={addFolder} className="form-locations-folders">
