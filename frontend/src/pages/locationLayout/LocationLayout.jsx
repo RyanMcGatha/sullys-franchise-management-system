@@ -12,11 +12,7 @@ const LocationLayout = () => {
   // For brevity, assuming these are used elsewhere in your component or for API calls
   const [showAddFolder, setShowAddFolder] = useState(false);
 
-  useEffect(() => {
-    // You might have useEffect logic here
-    // For example, to fetch folder data when the component mounts or when certain params change
-    // For this example, the useEffect hook is used to show how it's structured, but it's left empty
-  }, [owner, store_number, location_name, id, folder_name]);
+  useEffect(() => {}, [owner, store_number, location_name, id, folder_name]);
 
   const handleAddFolderClick = () => {
     setShowAddFolder((prevState) => !prevState); // Toggle the visibility of AddFolder component

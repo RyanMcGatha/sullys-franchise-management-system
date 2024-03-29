@@ -41,7 +41,7 @@ export default function Nav({ url }) {
           Dashboard
           <div className="arrow">›</div>
         </Link>
-        <Link to={"/"} className="navLink">
+        {/* <Link to={"/loctions"} className="navLink">
           Users
           <div className="arrow">›</div>
         </Link>
@@ -53,11 +53,12 @@ export default function Nav({ url }) {
           Files
           <div className="arrow">›</div>
         </Link>
+      */}
         <div className="spacer">
-          <Link to={"/"} className="navLink">
+          {/* <Link to={"/"} className="navLink">
             Settings
             <div className="arrow">›</div>
-          </Link>
+          </Link> */}
           <div
             className="navLink"
             id="logOut"

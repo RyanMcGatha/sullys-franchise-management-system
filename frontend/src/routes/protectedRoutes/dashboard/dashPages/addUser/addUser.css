@@ -1,27 +1,19 @@
-.main-add-user {
-  display: flex;
-  flex-direction: column;
-  width: 86vw;
-  height: 80vh;
-  align-items: center;
-  color: white;
-}
-
 .formContainer-add-user {
+  margin-bottom: 2vh;
+
   display: flex;
+
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 86vw;
-  height: 80vh;
-  padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  background: #fcedda;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin-bottom: 2vh;
 }
 
 .subHeading-add-user {
-  color: #000;
   font-weight: 600;
   text-align: center;
 }

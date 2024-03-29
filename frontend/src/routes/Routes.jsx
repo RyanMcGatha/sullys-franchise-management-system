@@ -23,6 +23,7 @@ import Messenger from "./protectedRoutes/messenger/Messenger";
 import LocationLayout from "../pages/locationLayout/LocationLayout";
 import LocationFiles from "../pages/locationLayout/locationFiles/LocationFiles";
 import AllLocations from "./protectedRoutes/dashboard/dashPages/allLocations/AllLocations";
+import AllUsers from "./protectedRoutes/dashboard/dashPages/allUsers/AllUsers";
 
 const Routes = () => {
   const { isAuth } = useAuth();
