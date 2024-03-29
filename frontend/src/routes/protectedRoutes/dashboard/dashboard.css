@@ -17,7 +17,7 @@
   margin-top: 1vh;
   display: flex;
   font-size: 8vh;
-  font-family: "Pacifico";
+  font-family: "Pacifico", sans-serif;
 }
 
 .cards {
@@ -130,6 +130,7 @@ button,
 
 .nav-toggle {
   display: none;
+  width: 15vw;
 }
 
 @media (max-width: 1000px) {
@@ -148,13 +149,14 @@ button,
 
   .nav-toggle {
     display: flex;
+    justify-content: center;
     cursor: pointer;
-    height: 10vh;
+    height: 15vh;
+    width: 100%;
   }
 
   .logoClick {
     height: 100%;
-    width: 100%;
   }
 
   .locationsTxt {
