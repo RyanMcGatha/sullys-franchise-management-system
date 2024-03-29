@@ -19,9 +19,7 @@
   height: 100vh;
   font-size: 5vh;
   color: var(--layout-font-color);
-  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(100px);
-  background: var(--card-bg-color);
+  background-color: rgb(26 26 26);
   border: 1px solid var(--card-border-color);
   padding-left: 1vh;
 }
