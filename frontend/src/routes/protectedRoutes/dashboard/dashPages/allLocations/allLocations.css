@@ -4,16 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 86vw;
   max-width: 86vw;
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
+  max-height: 85vh;
 }
 
 .cardRow {
-  margin-top: 2vh;
-  height: 98vh;
+  padding-top: 1vh;
+  padding-bottom: 2vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   gap: 1vw;
@@ -31,23 +29,27 @@
   place-items: center;
   max-width: 25vw;
   min-width: 25vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border-radius: 1rem;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(100px);
   background: rgba(255, 255, 255, 0.11);
   border: 1px solid rgba(255, 255, 255, 0.45);
+  color: black;
+  scrollbar-width: none;
 }
 
 .card > * {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  color: black;
 }
 
 .card__background {
   width: auto;
   height: 100%;
-  filter: blur(6px);
+  color: black;
+  filter: brightness(0.8);
 }
 
 .card__content {
@@ -58,17 +60,22 @@
   align-self: flex-end;
   width: 100%;
   height: 100%;
-  padding: 12% 1rem 1rem;
-  background: hsla(0, 0%, 100%, 0.15);
+  padding: 1% 0rem 0rem;
+  background: hsla(0, 0%, 100%, 0.1);
+  text-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.9);
   overflow: hidden;
   border-radius: 1rem;
+  transition: transform 1500ms ease-out;
+  color: black;
 }
 
 .card__content--container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1.25rem;
+  color: black;
 }
 
 .card__content--container button {
@@ -77,6 +84,7 @@
   flex-direction: column;
   align-items: center;
   background: rgba(255, 255, 255, 0.11);
+  color: black;
 }
 .card__content--container button {
   background: #7c2529;
@@ -88,23 +96,20 @@
 .card__title {
   width: fit-content;
   width: -moz-fit-content;
-  font-size: 3rem;
+  font-size: 8rem;
 }
 
 .card__title::after {
-  content: "";
   position: absolute;
   height: 0.3125rem;
   width: calc(100% + 1.25rem);
   bottom: calc((1.25rem - 0.5rem) * -1);
   left: -1.25rem;
-  background-color: var(--brand-color);
 }
 
 .card__description {
   font-family: var(--font-text);
   font-size: 2rem;
-  line-height: 1.5;
 }
 
 .card__button {
@@ -153,7 +158,6 @@
 
   .card:hover,
   .card:focus-within {
-    transform: scale(1.05);
     transition: transform 500ms ease-in;
   }
 
@@ -161,6 +165,7 @@
   .card:focus-within .card__content {
     transform: translateY(0);
     transition: transform 500ms ease-in;
+    height: 101%;
   }
 
   .card:focus-within .card__content {
@@ -169,8 +174,8 @@
 
   .card:hover .card__background,
   .card:focus-within .card__background {
-    transform: scale(1.3);
-    filter: blur(20px);
+    transform: scale(1.1);
+    transition: transform 500ms ease-in;
   }
 
   .card:hover .card__content--container > :not(.card__title),
@@ -241,6 +246,15 @@ p {
     gap: 4vw;
   }
 }
+@media (max-width: 2000px) {
+  .card__title {
+    font-size: 5vw;
+  }
+  .card__button {
+    margin: 1vh;
+    justify-content: center;
+  }
+}
 
 @media (max-width: 1000px) {
   .main-all-locations {
@@ -255,22 +269,16 @@ p {
   }
 }
 
-@media (max-width: 700px) {
-  .card {
-    max-width: 40vw;
-    max-height: 40vh;
-  }
-}
-
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .main-all-locations {
     flex-direction: column;
     align-items: center;
   }
 
   .card {
-    min-width: 99vw;
-    max-width: 99vw;
+    min-width: 90vw;
+    max-width: 90vw;
+    max-height: 20vh;
   }
 
   .cardRow {
@@ -284,5 +292,47 @@ p {
 
   h2 {
     font-size: 1.5rem;
+  }
+  .card__button {
+    justify-content: center;
+    width: 25vw;
+    font-size: 1vh;
+    margin: 0;
+  }
+
+  .card__description {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    align-self: flex-end;
+    width: 100%;
+    height: 101%;
+    padding: 1% 0rem 0rem;
+    background: hsla(0, 0%, 100%, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: transform 1500ms ease-out;
+  }
+
+  .card__button {
+    margin: 0.1vh;
+    height: 3.5vh;
+    width: 45vw;
+    justify-content: center;
+    font-size: 1vh;
+  }
+}
+
+@media (min-width: 1500px) {
+  .card__title {
+    font-size: 3vw;
   }
 }

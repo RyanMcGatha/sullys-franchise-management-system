@@ -37,25 +37,23 @@ export default function Nav({ url }) {
       </div>
 
       <div className="contentContainer">
-        <div className="links">
-          <Link to={"/dashboard"} id="a" className="navLink">
-            Dashboard
-            <div className="arrow">›</div>
-          </Link>
-          <Link to={"/"} className="navLink">
-            Users
-            <div className="arrow">›</div>
-          </Link>
-          <Link to={"/"} className="navLink">
-            Folders
-            <div className="arrow">›</div>
-          </Link>
-          <Link to={"/"} className="navLink">
-            Files
-            <div className="arrow">›</div>
-          </Link>
-        </div>
-        <div className="navBottom">
+        <Link to={"/dashboard"} id="a" className="navLink">
+          Dashboard
+          <div className="arrow">›</div>
+        </Link>
+        <Link to={"/"} className="navLink">
+          Users
+          <div className="arrow">›</div>
+        </Link>
+        <Link to={"/"} className="navLink">
+          Folders
+          <div className="arrow">›</div>
+        </Link>
+        <Link to={"/"} className="navLink">
+          Files
+          <div className="arrow">›</div>
+        </Link>
+        <div className="spacer">
           <Link to={"/"} className="navLink">
             Settings
             <div className="arrow">›</div>

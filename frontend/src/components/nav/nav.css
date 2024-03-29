@@ -5,40 +5,44 @@ nav {
   max-width: 14vw;
   min-width: 14vw;
   overflow: hidden;
-  height: 100vh;
+  height: 99.99vh;
 
   background-color: #181818;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  width: 14vw;
 }
 
 .logoContain {
-  height: 12vh;
+  height: 13vh;
   padding-top: 1vh;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 14vw;
-  overflow: visible;
 }
 
 .sullysLogo {
   filter: drop-shadow(0px 0.5px 0.5px #efefef)
     drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-
   width: auto;
   height: 100%;
-  scale: 1;
 }
 
 .contentContainer {
   display: flex;
   flex-direction: column;
-  gap: 40vh;
+  width: 100%;
+  height: 100%;
 }
 
-.navLink,
-#navBtn {
-  height: 50%;
-  max-height: 8vh;
+.navLink {
+  height: 100%;
+  max-height: 10vh;
   max-width: 13vw;
   display: flex;
   align-items: center;
@@ -54,6 +58,21 @@ nav {
   margin-bottom: 2vh;
 }
 
+.navLin {
+  height: 80%;
+  max-height: 5vh;
+  max-width: 13vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 1vw;
+  color: white;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 3vh;
+  text-decoration: none;
+}
+
 .arrow {
   right: 0;
   width: 30px;
@@ -64,18 +83,16 @@ nav {
   justify-content: center;
 }
 
-.navBottom {
-  display: flex;
-  flex-direction: column;
-  width: 14vw;
-  height: 100%;
+.spacer {
+  margin-top: 17vh;
+  height: 15vh;
+  width: 100%;
 }
 
 /*  */
 /*  */
 
-.navLink:hover,
-.navBtn:hover {
+.navLink:hover {
   border-radius: 10px;
   backdrop-filter: blur(100px);
   background: rgba(255, 255, 255, 0.11);
@@ -83,16 +100,14 @@ nav {
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition-duration: 0.4s;
-  margin-left: 0.5vw;
+  min-height: 7vh;
 }
 
-.navLink:hover .arrow,
-.navBtn:hover .arrow {
+.navLink:hover .arrow {
   animation: slide-right 0.8s ease-out both;
 }
 
-.navLink:active,
-.navBtn:active {
+.navLink:active {
   transform: translate(0.5vw, 0.5vw);
   transition-duration: 0.2s;
 }
@@ -113,8 +128,14 @@ nav {
 }
 
 @media (max-width: 1500px) {
-  .navLink,
-  #navBtn {
-    font-size: 2.5vh;
+  nav {
+    min-width: 22vw;
+  }
+
+  .navLink {
+    height: 100%;
+    margin-right: 1vw;
+    max-height: 10vh;
+    min-width: 19vw;
   }
 }

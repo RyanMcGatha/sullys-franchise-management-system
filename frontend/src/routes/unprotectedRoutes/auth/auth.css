@@ -12,7 +12,7 @@
 
 .form_container {
   border-radius: 1rem;
-  width: 100vw;
+  width: 85vw;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #212121;
   display: flex;
@@ -55,21 +55,21 @@
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1rem;
   max-width: 80%;
   text-align: center;
-  line-height: 1.4rem;
+  line-height: 1rem;
   color: #8b8e98;
   margin-bottom: 3vh;
 }
 
 .input_container {
-  min-width: 80vw;
+  min-width: 65vw;
   height: fit-content;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3vh;
 }
 
 .icon {
@@ -105,7 +105,7 @@
 }
 
 .sign-in_btn {
-  width: 50vw;
+  min-width: 70vw;
   font-size: 2vh;
   height: 5vh;
   border: 0;
@@ -117,5 +117,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2vh;
+  margin-top: 4vh;
 }
