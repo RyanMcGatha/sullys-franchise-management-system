@@ -54,68 +54,131 @@ const Dashboard = () => {
             src="https://wnplbeoyxtitkkuaaaua.supabase.co/storage/v1/object/public/logos/sullysLogo.png"
           />
         </button>
-        {isNavVisible && <NavMobile />}
-        <div className="locationsTxt">Locations</div>
-
-        <div className="cards">
-          <div className="actionCards">
-            <button
-              className={`actionCard ${!showAllLocations ? "whiteButton" : ""}`}
-              type="radio"
-              name="action"
-              value="showAllLocations"
-              onClick={() => {
-                setShowAllLocations(true);
-                setAddLocations(false);
-                setAddUsers(false);
-                setShowAllUsers(false);
-              }}
-            >
-              <label className="actionContent">View All Locations</label>
-            </button>
-            <button
-              className={`actionCard ${!addLocations ? "whiteButton" : ""}`}
-              type="radio"
-              name="action"
-              value="addLocations"
-              onClick={() => {
-                setAddLocations(true);
-                setShowAllLocations(false);
-                setAddUsers(false);
-                setShowAllUsers(false);
-              }}
-            >
-              <label className="actionContent">Add Locations</label>
-            </button>
-            <button
-              className={`actionCard ${!showAllUsers ? "whiteButton" : ""}`}
-              type="radio"
-              name="action"
-              value="showAllUsers"
-              onClick={() => {
-                setAddLocations(false);
-                setShowAllLocations(false);
-                setAddUsers(false);
-                setShowAllUsers(true);
-              }}
-            >
-              <label className="actionContent">View All Users</label>
-            </button>
-            <button
-              className={`actionCard ${!addUsers ? "whiteButton" : ""}`}
-              type="radio"
-              name="action"
-              value="addUsers"
-              onClick={() => {
-                setAddLocations(false);
-                setShowAllLocations(false);
-                setAddUsers(true);
-                setShowAllUsers(false);
-              }}
-            >
-              <label className="actionContent">Add Users</label>
-            </button>
+        {isNavVisible && (
+          <div className="mobileCards">
+            <div className="actionCards">
+              <button
+                className={`actionCard ${
+                  !showAllLocations ? "whiteButton" : ""
+                }`}
+                type="radio"
+                name="action"
+                value="showAllLocations"
+                onClick={() => {
+                  setShowAllLocations(true);
+                  setAddLocations(false);
+                  setAddUsers(false);
+                  setShowAllUsers(false);
+                }}
+              >
+                <label className="actionContent">View All Locations</label>
+              </button>
+              <button
+                className={`actionCard ${!addLocations ? "whiteButton" : ""}`}
+                type="radio"
+                name="action"
+                value="addLocations"
+                onClick={() => {
+                  setAddLocations(true);
+                  setShowAllLocations(false);
+                  setAddUsers(false);
+                  setShowAllUsers(false);
+                }}
+              >
+                <label className="actionContent">Add Locations</label>
+              </button>
+              <button
+                className={`actionCard ${!showAllUsers ? "whiteButton" : ""}`}
+                type="radio"
+                name="action"
+                value="showAllUsers"
+                onClick={() => {
+                  setAddLocations(false);
+                  setShowAllLocations(false);
+                  setAddUsers(false);
+                  setShowAllUsers(true);
+                }}
+              >
+                <label className="actionContent">View All Users</label>
+              </button>
+              <button
+                className={`actionCard ${!addUsers ? "whiteButton" : ""}`}
+                type="radio"
+                name="action"
+                value="addUsers"
+                onClick={() => {
+                  setAddLocations(false);
+                  setShowAllLocations(false);
+                  setAddUsers(true);
+                  setShowAllUsers(false);
+                }}
+              >
+                <label className="actionContent">Add Users</label>
+              </button>
+            </div>
           </div>
+        )}
+        <div className="locationsTxt">Locations</div>
+      </div>
+
+      <div className="cards">
+        <div className="actionCards">
+          <button
+            className={`actionCard ${!showAllLocations ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="showAllLocations"
+            onClick={() => {
+              setShowAllLocations(true);
+              setAddLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(false);
+            }}
+          >
+            <label className="actionContent">View All Locations</label>
+          </button>
+          <button
+            className={`actionCard ${!addLocations ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="addLocations"
+            onClick={() => {
+              setAddLocations(true);
+              setShowAllLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(false);
+            }}
+          >
+            <label className="actionContent">Add Locations</label>
+          </button>
+          <button
+            className={`actionCard ${!showAllUsers ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="showAllUsers"
+            onClick={() => {
+              setAddLocations(false);
+              setShowAllLocations(false);
+              setAddUsers(false);
+              setShowAllUsers(true);
+            }}
+          >
+            <label className="actionContent">View All Users</label>
+          </button>
+          <button
+            className={`actionCard ${!addUsers ? "whiteButton" : ""}`}
+            type="radio"
+            name="action"
+            value="addUsers"
+            onClick={() => {
+              setAddLocations(false);
+              setShowAllLocations(false);
+              setAddUsers(true);
+              setShowAllUsers(false);
+            }}
+          >
+            <label className="actionContent">Add Users</label>
+          </button>
         </div>
       </div>
       <div className="displayWindow">

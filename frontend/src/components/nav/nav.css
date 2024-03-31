@@ -13,6 +13,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 14vw;
   background-color: var(--nav-bg-color);
   box-shadow: 0.25rem 0.25rem 0.5rem var(--nav-shadow-color);
@@ -30,6 +31,7 @@ nav {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 2vh;
 }
 
 .sullysLogo {
@@ -58,6 +60,10 @@ nav {
   text-decoration: none;
   margin: 2vh 0;
   max-width: 100%;
+  display: flex;
+  font-size: 8vh;
+  font-family: "Pacifico", sans-serif;
+  height: 15vh;
 }
 
 .navLink:hover,

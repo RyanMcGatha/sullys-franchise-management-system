@@ -15,7 +15,7 @@
   background-color: black;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 750px) {
   .navLayout {
     display: none;
   }
