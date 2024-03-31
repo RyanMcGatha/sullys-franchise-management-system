@@ -115,6 +115,17 @@ const Dashboard = () => {
               >
                 <label className="actionContent">Add Users</label>
               </button>
+              <button
+                className={`actionCard ${!addUsers ? "whiteButton" : ""}`}
+                type="radio"
+                name="action"
+                value="addUsers"
+                onClick={() => {
+                  supabase.auth.signOut();
+                }}
+              >
+                <label className="actionContent">Sign Out</label>
+              </button>
             </div>
           </div>
         )}

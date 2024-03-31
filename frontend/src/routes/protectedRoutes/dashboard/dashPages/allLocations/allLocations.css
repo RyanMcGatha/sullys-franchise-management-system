@@ -113,7 +113,7 @@ body {
   }
 }
 
-@media (min-width: 750px) {
+@media (min-width: px) {
   .main-all-locations {
     max-width: 80vw;
     max-height: 80vh;
