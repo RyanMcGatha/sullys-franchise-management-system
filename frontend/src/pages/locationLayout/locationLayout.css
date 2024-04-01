@@ -21,7 +21,6 @@
   color: var(--layout-font-color);
   background-color: rgb(26 26 26);
   border: 1px solid var(--card-border-color);
-  padding-left: 1vh;
 }
 
 .header-location-layout {
@@ -29,13 +28,14 @@
   align-items: center;
   justify-content: center;
   width: 101%;
-
+  font-size: 2vh;
   box-shadow: var(--file-shadow);
   background-color: var(--file-bg-color);
   border: 1px solid var(--file-border-color);
   padding: 1em;
   max-height: 8vh;
   gap: 15vw;
+  overflow: hidden;
 }
 
 button {
@@ -94,4 +94,13 @@ button {
   height: auto;
   min-height: 92vh;
   background: transparent;
+}
+
+@media (max-width: 750px) {
+  .main-location-layout {
+    width: 100vw;
+  }
+
+  .header-location-layout {
+  }
 }
