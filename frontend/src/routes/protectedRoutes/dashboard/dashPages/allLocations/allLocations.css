@@ -11,11 +11,16 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-text);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+a {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-family: "Pacifico";
+  color: rgba(255, 255, 255, 0.174);
+  font-size: 2vw;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .main-all-locations {

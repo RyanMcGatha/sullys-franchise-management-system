@@ -108,6 +108,18 @@ const Dashboard = () => {
                 <label className="actionContent">Sign Out</label>
               </button>
             </div>
+            <button
+              className="closeButton"
+              type="button"
+              onClick={() => {
+                setAddLocations(false);
+                setShowAllLocations(false);
+                setAddUsers(false);
+                setShowAllUsers(false);
+              }}
+            >
+              close
+            </button>
           </div>
         )}
         <div className="locationsTxt">Locations</div>
@@ -174,19 +186,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="displayWindow">
-        <button
-          type="button"
-          onClick={() => {
-            setAddLocations(false);
-            setShowAllLocations(false);
-            setAddUsers(false);
-            setShowAllUsers(false);
-          }}
-        >
-          close
-        </button>
         {addLocations && <Locations />}
-
         {addUsers && <AddUser />}
         {showAllUsers && <AllUsers />}
 

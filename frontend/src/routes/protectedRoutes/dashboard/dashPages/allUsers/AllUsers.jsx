@@ -22,20 +22,17 @@ const AllUsers = () => {
     }
     fetchUsers();
   }, []);
-  console.log(users);
 
   return (
     <div className="main-all-users">
       <div className="displayTemplate">
-        <span>Username</span> |<span>E-mail</span> |<span>FullName</span> |
+        <span>Username</span> |<span>E-mail</span> |<span>FullName</span> |{" "}
         <span>Role</span>
       </div>
       {users.map((user) => (
         <div className="users" key={user.id}>
-          <div className="userDisplay">
-            <span>{user.username}</span> | <span>{user.email}</span> |{" "}
-            <span>{user.full_name}</span> | <span>{user.role}</span>
-          </div>
+          <span>{user.username}</span> | <span>{user.email}</span> |{" "}
+          <span>{user.full_name}</span> | <span>{user.role}</span>
         </div>
       ))}
     </div>

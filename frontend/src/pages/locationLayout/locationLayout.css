@@ -6,20 +6,20 @@
   --card-hover-bg-color: rgba(255, 255, 255, 0.11);
   --card-hover-border-color: rgba(255, 255, 255, 0.45);
   --card-shadow-color: rgba(255, 255, 255, 0.05);
-  --small-btn-font-size: 2vh; /* Font size for smaller buttons */
-  --small-btn-width: 15vw; /* Width for smaller buttons */
-  --small-btn-height: 15vh; /* Height for smaller buttons */
+  --small-btn-font-size: 2vh;
+  --small-btn-width: 15vw;
+  --small-btn-height: 15vh;
 }
 
 .main-location-layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 86vw;
-  height: 100vh;
+  max-width: 86vw;
+  min-height: 100vh;
+  max-height: 100vh;
   font-size: 5vh;
   color: var(--layout-font-color);
-  background-color: rgb(26 26 26);
+
   border: 1px solid var(--card-border-color);
 }
 
@@ -27,15 +27,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 101%;
   font-size: 2vh;
+  width: 86vw;
   box-shadow: var(--file-shadow);
   background-color: var(--file-bg-color);
   border: 1px solid var(--file-border-color);
   padding: 1em;
-  max-height: 8vh;
   gap: 15vw;
   overflow: hidden;
+  min-height: 10vh;
 }
 
 button {
@@ -48,13 +48,8 @@ button {
   cursor: pointer;
 }
 
-.cards-location-layout,
 .displayWindow-location-layout {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 86vw;
-  max-height: 92vh;
 }
 
 .actionCards-location-layout {
@@ -63,7 +58,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 0.5vw;
-  width: 86vw;
+  max-width: 86vw;
 }
 
 .actionCard-location-layout {
@@ -90,17 +85,14 @@ button {
 }
 
 .displayWindow-location-layout {
-  overflow-y: auto;
-  height: auto;
-  min-height: 92vh;
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
 }
 
 @media (max-width: 750px) {
   .main-location-layout {
     width: 100vw;
-  }
-
-  .header-location-layout {
   }
 }

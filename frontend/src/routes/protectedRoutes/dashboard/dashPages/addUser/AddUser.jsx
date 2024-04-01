@@ -9,6 +9,7 @@ const AddUser = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { session } = useAuth();
 
   const handleAddUser = async (event) => {
     event.preventDefault();
@@ -27,6 +28,7 @@ const AddUser = () => {
     }
     setLoading(false);
   };
+  console.log(session.user);
 
   return (
     <div className="main-add-user">
