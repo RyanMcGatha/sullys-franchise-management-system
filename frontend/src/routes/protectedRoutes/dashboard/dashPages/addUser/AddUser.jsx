@@ -9,7 +9,6 @@ const AddUser = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
 
   const handleAddUser = async (event) => {
     event.preventDefault();
@@ -19,7 +18,6 @@ const AddUser = () => {
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
-      role: role,
     });
 
     if (error) {
@@ -35,7 +33,7 @@ const AddUser = () => {
       <div className="formContainer-add-user">
         <div className="subHeading-add-user">Add new user</div>
         <form onSubmit={handleAddUser} className="form-add-user">
-          <input
+          {/* <input
             className="input-add-user"
             name="username"
             type="text"
@@ -43,7 +41,7 @@ const AddUser = () => {
             value={username}
             required={true}
             onChange={(event) => setUsername(event.target.value)}
-          />
+          /> */}
           <input
             className="input-add-user"
             name="email"
@@ -62,7 +60,7 @@ const AddUser = () => {
             required={true}
             onChange={(evenr) => setPassword(event.target.value)}
           />
-          <input
+          {/* <input
             className="input-add-user"
             name="role"
             list="roles"
@@ -75,7 +73,7 @@ const AddUser = () => {
             <option value="Admin" />
             <option value="User" />
             <option value="Manager" />
-          </datalist>
+          </datalist> */}
           <button className="button-add-user" type="submit">
             Add User
           </button>

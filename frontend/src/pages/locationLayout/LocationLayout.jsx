@@ -8,18 +8,16 @@ const LocationLayout = () => {
   const { owner, store_number, location_name, id, folder_name } = useParams();
   const navigate = useNavigate();
 
-  // useState declarations for form fields, etc., might be here
-  // For brevity, assuming these are used elsewhere in your component or for API calls
   const [showAddFolder, setShowAddFolder] = useState(false);
 
   useEffect(() => {}, [owner, store_number, location_name, id, folder_name]);
 
   const handleAddFolderClick = () => {
-    setShowAddFolder((prevState) => !prevState); // Toggle the visibility of AddFolder component
+    setShowAddFolder((prevState) => !prevState);
   };
 
   const handleBackClick = () => {
-    navigate(-1); // Navigate back to the previous page
+    navigate(-1);
   };
 
   return (
@@ -33,7 +31,6 @@ const LocationLayout = () => {
           className="small-actionCard-location-layout"
           onClick={handleAddFolderClick}
         >
-          {/* Dynamic button label based on whether the AddFolder component is displayed */}
           {showAddFolder ? "Close Add Folder" : "Add Folder"}
         </button>
       </div>

@@ -2,9 +2,11 @@ import "./allUsers.css";
 
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../../../config/supabaseConfig";
+import { useAuth } from "../../../../../AuthContext";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
+  const { session } = useAuth();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -24,7 +26,7 @@ const AllUsers = () => {
 
   return (
     <div className="main-all-users">
-      <div class="displayTemplate">
+      <div className="displayTemplate">
         <span>Username</span> |<span>E-mail</span> |<span>FullName</span> |
         <span>Role</span>
       </div>

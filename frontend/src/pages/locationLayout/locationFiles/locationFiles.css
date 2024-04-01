@@ -1,6 +1,5 @@
 :root {
-  --main-bg-color: #000; /* Assuming a background color, replace with your preference */
-  --font-color: white;
+  --main-bg-color: #000;
   --content-width: 86vw;
 }
 
@@ -22,25 +21,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: var(--content-width); /* Unified width control */
+  width: var(--content-width);
   overflow-y: auto;
   overflow-x: hidden;
-  background: transparent; /* Maintained for explicit declaration */
+  background: transparent;
 }
 
 .topRow {
   display: flex;
-  width: calc(
-    var(--content-width) - 1vw
-  ); /* Adjusting to maintain spacing consistency */
+  width: calc(var(--content-width) - 1vw);
   justify-content: space-between;
 }
 
 @media (max-width: 750px) {
   :root {
-    --content-width: 100vw; /* Full width for smaller screens */
-  }
-
-  .topRow {
+    --content-width: 100vw;
   }
 }

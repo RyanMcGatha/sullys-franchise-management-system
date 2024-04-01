@@ -94,13 +94,14 @@ export default function Auth({ url }) {
           </svg>
           <input
             placeholder="name@mail.com"
-            title="Inpit title"
-            name="input-name"
-            type="text"
+            title="Input title"
+            name="input-email"
+            type="email"
             className="input_field"
             id="email_field"
             value={email}
             required={true}
+            autoComplete="email"
             onChange={(event) => setEmail(event.target.value)}
           ></input>
         </div>
@@ -134,13 +135,14 @@ export default function Auth({ url }) {
           </svg>
           <input
             placeholder="Password"
-            title="Inpit title"
-            name="input-name"
+            title="Input title"
+            name="input-password"
             type="password"
             className="input_field"
             id="password_field"
             value={password}
             required={true}
+            autoComplete="current-password"
             onChange={(event) => setPassword(event.target.value)}
           ></input>
         </div>

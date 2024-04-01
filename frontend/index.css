@@ -1,31 +1,3 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@font-face {
-  font-family: "Pacifico";
-  src: url("./src/assets/fonts/Pacifico.woff2") format("woff2"),
-    url("./src/assets/fonts/Pacifico.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Fineday-StyleTwo";
-  src: url("./src/assets/fonts/Fineday-StyleTwo.woff2") format("woff2"),
-    url("./src/assets/fonts/Fineday-StyleTwo.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Trade Gothic LT STD Bold";
-  src: url("./src/assets/fonts/TradeGothicLTSTD-Bold.woff2") format("woff2"),
-    url("./src/assets/fonts/TradeGothicLTSTD-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-}
-
 :root,
 body {
   padding: 0;

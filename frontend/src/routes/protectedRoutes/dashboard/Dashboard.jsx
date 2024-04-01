@@ -22,25 +22,6 @@ const Dashboard = () => {
 
   const [isNavVisible, setIsNavVisible] = useState(false);
 
-  useEffect(() => {
-    async function fetchRole() {
-      try {
-        const { data, error } = await supabase
-          .from("profiles")
-          .select("role")
-          .eq("id", session.user.id);
-
-        if (error) {
-          throw error;
-        }
-        setRole(data[0].role); // Assuming 'data' is an array of profiles
-      } catch (error) {
-        console.error("Error fetching role: ", error.message);
-      }
-    }
-    fetchRole();
-  }, [session.user.id]);
-
   return (
     <div className="main-dashboard">
       <div className="topRowDashboard">
