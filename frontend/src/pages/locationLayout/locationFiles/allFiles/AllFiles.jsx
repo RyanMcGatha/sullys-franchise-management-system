@@ -6,7 +6,7 @@ import { supabase } from "../../../../config/supabaseConfig";
 import AddFile from "../addFile/AddFile";
 
 const AllFiles = () => {
-  const { folder_name } = useParams();
+  const { id, store_number, folder_name, location_name } = useParams();
 
   const [files, setFiles] = useState([]);
   console.log(files);
@@ -30,6 +30,12 @@ const AllFiles = () => {
     fetchFiles();
   }, [folder_name]);
 
+  async function downloadFile() {
+    const { data, error } = await supabase.storage
+      .from(`uploads-${store_number}`)
+      .download(files.name);
+  }
+
   return (
     <div className="main-all-files">
       <div className="fileDisplayTemplate">
@@ -41,7 +47,10 @@ const AllFiles = () => {
           <div className="files" key={file.id}>
             <div className="fileDisplay">
               <span>{file.name}</span> | <span>{file.type}</span> |{" "}
-              <span>{file.created_at}</span>
+              <span>{file.created_at}</span> |{" "}
+              <button type="button" onClick={downloadFile}>
+                Download
+              </button>
             </div>
           </div>
         ))}
