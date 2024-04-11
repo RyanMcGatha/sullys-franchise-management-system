@@ -18,16 +18,17 @@ const AllLocations = ({ url }) => {
         .match({ id });
 
       if (deleteError) throw deleteError;
-
       let bucketName = `uploads-${store_number}`;
-      let { error: bucketError } = await supabase.storage.deleteBucket(
+      let { error: bucketError } = await supabase.storage.emptyBucket(
         bucketName
       );
-
       if (bucketError) throw bucketError;
 
+      let { error: bucketerror } = await supabase.storage.deleteBucket(
+        bucketName
+      );
+      if (bucketerror) throw bucketerror;
       setLocations(locations.filter((location) => location.id !== id));
-
       alert("Location and its associated files deleted successfully");
     } catch (error) {
       alert(error.message);
