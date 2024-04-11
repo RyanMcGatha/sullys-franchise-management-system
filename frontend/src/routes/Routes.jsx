@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "../index.css";
 
 import { supabase } from "../../supabaseConfig";
 import { useAuth } from "../AuthContext";
