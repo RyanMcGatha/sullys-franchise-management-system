@@ -1,15 +1,13 @@
-import "./allFiles.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../../../config/supabaseConfig";
-
-import AddFile from "../addFile/AddFile";
+import "./allFiles.css";
 
 const AllFiles = () => {
-  const { id, store_number, folder_name, location_name } = useParams();
+  const { store_number, folder_name } = useParams();
 
   const [files, setFiles] = useState([]);
-  console.log(files);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchFiles() {
@@ -27,13 +25,39 @@ const AllFiles = () => {
         setError(error.message);
       }
     }
+
     fetchFiles();
   }, [folder_name]);
 
-  async function downloadFile() {
-    const { data, error } = await supabase.storage
-      .from(`uploads-${store_number}`)
-      .download(files.name);
+  async function downloadFile(fileName) {
+    try {
+      // Construct the full path including the folder name
+      const filePath = `${folder_name}/${fileName}`;
+      // Encode the filePath to ensure it's a valid URL component
+      const encodedFilePath = encodeURIComponent(filePath);
+      const { data, error } = await supabase.storage
+        .from(`uploads-${store_number}`)
+        .download(encodedFilePath);
+      if (error) {
+        throw error;
+      }
+      // Create a URL for the downloaded blob
+      const url = URL.createObjectURL(data);
+      // Trigger download
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading file: ", error.message);
+      setError(`Error downloading file: ${error.message}`);
+    }
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (
@@ -41,20 +65,13 @@ const AllFiles = () => {
       <div className="fileDisplayTemplate">
         <span>File Name</span> | <span>Type</span> | <span>Created At</span>
       </div>
-
-      <div className="fileContainer">
-        {files.map((file) => (
-          <div className="files" key={file.id}>
-            <div className="fileDisplay">
-              <span>{file.name}</span> | <span>{file.type}</span> |{" "}
-              <span>{file.created_at}</span> |{" "}
-              <button type="button" onClick={downloadFile}>
-                Download
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+      {files.map((file) => (
+        <div key={file.id} className="fileDisplay">
+          <span>{file.name}</span> | <span>{file.type}</span> |{" "}
+          <span>{file.created_at}</span>
+          <button onClick={() => downloadFile(file.name)}>Download</button>
+        </div>
+      ))}
     </div>
   );
 };

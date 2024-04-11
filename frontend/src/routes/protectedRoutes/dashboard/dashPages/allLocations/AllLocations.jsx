@@ -8,20 +8,29 @@ const AllLocations = ({ url }) => {
   const [locations, setLocations] = useState([]);
   const [blankUrl, setBlankUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [buckets, setBuckets] = useState([]);
 
   const handleDelete = async (id, store_number) => {
-    const { data, error } = await supabase
-      .from("locations")
-      .delete()
-      .match({ id });
-    if (error) {
-      alert(error.message);
-    } else {
-      const { data, error } = await supabase.storage.deleteBucket(
-        `uploads-${store_number}`
+    try {
+      let { data: deleteData, error: deleteError } = await supabase
+        .from("locations")
+        .delete()
+        .match({ id });
+
+      if (deleteError) throw deleteError;
+
+      let bucketName = `uploads-${store_number}`;
+      let { error: bucketError } = await supabase.storage.deleteBucket(
+        bucketName
       );
-      alert("Location deleted successfully");
+
+      if (bucketError) throw bucketError;
+
       setLocations(locations.filter((location) => location.id !== id));
+
+      alert("Location and its associated files deleted successfully");
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -54,7 +63,24 @@ const AllLocations = ({ url }) => {
       }
     }
     fetchLocations();
+
+    async function fetchBuckets() {
+      try {
+        const { data, error } = await supabase.storage.listBuckets();
+        if (error) {
+          throw error;
+        }
+        // Assuming 'data' contains an array of bucket objects, extract their names.
+        const bucketNames = data.map((bucket) => bucket.name);
+        setBuckets(bucketNames);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    fetchBuckets();
   }, [url]);
+
+  useEffect(() => {}, [buckets]);
 
   return (
     <div className="main-all-locations">
@@ -70,7 +96,7 @@ const AllLocations = ({ url }) => {
               <div className="card__content--container | flow">
                 <h2 className="card__title">{location.location_name}</h2>
                 <p className="card__description">
-                  Store Number : {location.store_number}
+                  Store Number: {location.store_number}
                 </p>
                 <button className="card__button" id="cardBtn">
                   <Link
@@ -81,7 +107,9 @@ const AllLocations = ({ url }) => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleDelete(location.id)}
+                  onClick={() =>
+                    handleDelete(location.id, location.store_number)
+                  }
                   className="card__button"
                   id="cardBtn"
                 >
