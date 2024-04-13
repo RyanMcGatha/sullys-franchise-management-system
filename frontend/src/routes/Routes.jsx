@@ -5,7 +5,10 @@ import "../index.css";
 import { supabase } from "../../supabaseConfig";
 import { useAuth } from "../AuthContext";
 
-import { SlideInAuth } from "./publicRoutes/SignIn";
+import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
+import ErrorPage from "./errorPages/ErrorPage";
+import Locations from "./protectedRoutes/Locations";
+import { SignIn } from "./publicRoutes/SignIn";
 
 const Routes = () => {
   const { isAuth } = useAuth();
@@ -13,11 +16,17 @@ const Routes = () => {
   const publicRoutes = [
     {
       path: "/",
-      element: <SlideInAuth />,
+      errorElement: <ErrorPage />,
+      element: <SignIn />,
     },
   ];
 
-  const protectedRoutes = [{}];
+  const protectedRoutes = [
+    {
+      path: "/locations",
+      element: <Locations />,
+    },
+  ];
 
   const router = createBrowserRouter([
     ...publicRoutes,
