@@ -23,9 +23,8 @@ import { useEffect, useRef, useState } from "react";
       */
 const Example = () => {
   return (
-    <div className="grid h-screen place-content-center bg-neutral-900">
+    <div className="grid h-0 w-0 place-content-center bg-neutral-900">
       <SideStaggerNavigation />
-      <span className="text-neutral-400">Hover lines 👉</span>
     </div>
   );
 };

@@ -26,13 +26,13 @@ export function AuthProvider({ children }) {
   );
 }
 
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
 AuthProvider.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
-
-export function useAuth() {
-  return useContext(AuthContext);
-}

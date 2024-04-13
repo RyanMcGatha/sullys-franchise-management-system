@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../AuthContext";
 import { supabase } from "../../../supabaseConfig";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SignIn = () => {
   const { session } = useAuth();
-
-  return (
+  return !session ? (
     <MouseImageTrail
       renderImageBuffer={50}
       rotationRange={25}
@@ -38,6 +38,8 @@ export const SignIn = () => {
         <WatermarkWrapper />
       </section>
     </MouseImageTrail>
+  ) : (
+    <Link to={"locations"} />
   );
 };
 
@@ -51,8 +53,6 @@ const Copy = () => {
 };
 
 const Form = () => {
-  const { session } = useAuth();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   async function onSubmit(event) {
@@ -63,11 +63,9 @@ const Form = () => {
     });
     if (error) {
       alert(error.error_description || error.message);
-    } else {
-      return <Navigate to={"/locations"} />;
     }
   }
-  return !session ? (
+  return (
     <>
       <style>
         {`
@@ -101,7 +99,7 @@ const Form = () => {
             Sign In
           </motion.h1>
           <motion.p variants={primaryVariants} className="mb-8 text-center">
-            Sign in with your email below and stream away!
+            Sign in with your email and stream away!
           </motion.p>
 
           <form onSubmit={onSubmit} className="w-full">
@@ -143,42 +141,18 @@ const Form = () => {
               />
             </motion.div>
 
-            <motion.div
-              variants={primaryVariants}
-              className="mb-4 flex w-full items-start gap-1.5"
-            >
-              <input
-                type="checkbox"
-                id="terms-checkbox"
-                className="h-4 w-4 accent-indigo-600"
-                required
-              />
-              <label htmlFor="terms-checkbox" className="text-xs">
-                By signing up, I agree to the terms and conditions, privacy
-                policy, and cookie policy
-              </label>
-            </motion.div>
-
             <motion.button
               variants={primaryVariants}
               whileTap={{ scale: 0.985 }}
               type="submit"
-              className="mb-1.5 w-full rounded bg-indigo-600 px-4 py-2 text-center font-medium text-white transition-colors hover:bg-indigo-700"
+              className="mb-1.5 w-full rounded bg-red-500 px-4 py-2 mt-1 text-center font-medium text-white transition-colors hover:bg-red-600"
             >
-              Sign up
+              Sign In
             </motion.button>
-            <motion.p variants={primaryVariants} className="text-xs">
-              Already have an account?{" "}
-              <a className="text-indigo-600 underline" href="#">
-                Sign in
-              </a>
-            </motion.p>
           </form>
         </div>
       </motion.div>
     </>
-  ) : (
-    <Navigate to={"/locations"} />
   );
 };
 

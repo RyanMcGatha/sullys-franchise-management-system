@@ -1,38 +1,38 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "../index.css";
-
-import { supabase } from "../../supabaseConfig";
 import { useAuth } from "../AuthContext";
-
-import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
-import ErrorPage from "./errorPages/ErrorPage";
-import Locations from "./protectedRoutes/Locations";
 import { SignIn } from "./publicRoutes/SignIn";
+import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
+import Locations from "./protectedRoutes/Locations";
+import ErrorPage from "./errorPages/ErrorPage";
 
 const Routes = () => {
-  const { isAuth } = useAuth();
+  const { session } = useAuth();
 
   const publicRoutes = [
     {
       path: "/",
-      errorElement: <ErrorPage />,
       element: <SignIn />,
+      errorElement: <ErrorPage />,
     },
   ];
 
   const protectedRoutes = [
     {
-      path: "/locations",
-      element: <Locations />,
+      path: "/",
+      element: <ProtectedLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "locations",
+          element: <Locations />,
+        },
+      ],
     },
   ];
 
-  const router = createBrowserRouter([
-    ...publicRoutes,
-    ...(isAuth ? protectedRoutes : []),
-    ...protectedRoutes,
-  ]);
+  const router = createBrowserRouter(session ? protectedRoutes : publicRoutes);
+
   return <RouterProvider router={router} />;
 };
 

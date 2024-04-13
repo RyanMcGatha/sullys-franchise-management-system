@@ -1,14 +1,15 @@
 import { useAuth } from "../../AuthContext";
 import { supabase } from "../../../supabaseConfig";
+import React from "react";
 
-const Locations = () => {
+function Locations() {
   const { session } = useAuth();
 
   return (
     <>
-      <div className=" text-black">hello</div>
+      <div className="h-screen">hello</div>
     </>
   );
-};
+}
 
 export default Locations;
