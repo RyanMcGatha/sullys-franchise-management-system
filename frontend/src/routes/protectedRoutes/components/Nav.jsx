@@ -8,15 +8,13 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 const Nav = () => {
-  return (
-    <div className="grid h-0 w-0 place-content-center ">
-      <SideStaggerNavigation />
-    </div>
-  );
+  return <SideStaggerNavigation />;
 };
 
+// Total number of lines on the side of the page
 const NUM_LINES = 30;
-
+// Position key will place the title on the Nth
+// line of the sidebar
 const navItems = [
   { position: 1, title: "Home" },
   { position: 8, title: "About" },
@@ -38,7 +36,7 @@ const SideStaggerNavigation = () => {
         mouseY.set(Infinity);
         setIsHovered(false);
       }}
-      className="fixed right-0 top-0 flex h-screen flex-col items-end justify-between py-4 pl-8"
+      className="fixed left-0 top-0 flex h-screen flex-col items-start justify-between py-4 pr-8"
     >
       {Array.from(Array(NUM_LINES).keys()).map((i) => {
         const linkContent = navItems.find((item) => item.position === i + 1);
@@ -70,9 +68,11 @@ const LinkLine = ({ mouseY, isHovered, title }) => {
     return val - (bounds?.y || 0) - (bounds?.height || 0) / 2;
   });
 
+  // Styles for non-link lines
   const lineWidthRaw = useTransform(distance, [-80, 0, 80], [15, 100, 15]);
   const lineWidth = useSpring(lineWidthRaw, SPRING_OPTIONS);
 
+  // Styles for link lines
   const linkWidth = useSpring(25, SPRING_OPTIONS);
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const LinkLine = ({ mouseY, isHovered, title }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-0 top-0 z-10 w-full pt-2 font-bold uppercase text-neutral-500 transition-colors group-hover:text-indigo-300"
+                className="absolute text-right right-0 top-0 z-10 w-full pt-2 font-bold uppercase text-neutral-500 transition-colors group-hover:text-indigo-300"
               >
                 {title}
               </motion.span>

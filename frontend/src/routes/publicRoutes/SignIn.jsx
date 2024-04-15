@@ -8,7 +8,7 @@ import { Navigate, redirect } from "react-router-dom";
 
 const SignIn = () => {
   const { session } = useAuth();
-  return !session ? (
+  return (
     <MouseImageTrail
       renderImageBuffer={50}
       rotationRange={25}
@@ -37,8 +37,6 @@ const SignIn = () => {
         <WatermarkWrapper />
       </section>
     </MouseImageTrail>
-  ) : (
-    <Navigate to={"/locations"} />
   );
 };
 
@@ -96,7 +94,7 @@ const Form = () => {
           border: "solid 2px white",
         }}
       >
-        <div className="mx-auto my-auto max-w-lg px-4 pr-0 text-gray-600">
+        <div className="mx-auto my-auto max-w-lg px-4 pr-0 text-gray-500">
           <motion.h1
             variants={primaryVariants}
             className="mb-2 text-center text-4xl font-semibold"

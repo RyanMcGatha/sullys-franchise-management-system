@@ -1,13 +1,16 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
+import Card from "./components/3dCard";
+import { HeaderFont } from "./components/HeaderFont";
 const Locations = () => {
   const { session } = useAuth();
-  return session ? (
+  return (
     <>
-      <div>locations</div>
+      <div className="flex flex-col h-screen w-full">
+        Locations
+        <Card />
+      </div>
     </>
-  ) : (
-    <Navigate to={"/"} />
   );
 };
 
