@@ -1,9 +1,9 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useMemo } from "react";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import { SignIn } from "./publicRoutes/SignIn";
-import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
+import SignIn from "./publicRoutes/SignIn";
 import Locations from "./protectedRoutes/Locations";
+import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
 import ErrorPage from "./errorPages/ErrorPage";
 
 const Routes = () => {
@@ -24,14 +24,14 @@ const Routes = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "locations",
+          path: "/locations",
           element: <Locations />,
         },
       ],
     },
   ];
 
-  const router = createBrowserRouter(session ? protectedRoutes : publicRoutes);
+  const router = createBrowserRouter([...publicRoutes, ...protectedRoutes]);
 
   return <RouterProvider router={router} />;
 };

@@ -1,7 +1,7 @@
 const ErrorPage = () => {
   return (
     <>
-      <div>hello world</div>
+      <div>error 404</div>
     </>
   );
 };

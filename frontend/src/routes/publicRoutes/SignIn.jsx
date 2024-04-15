@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 
 import { useAuth } from "../../AuthContext";
 import { supabase } from "../../../supabaseConfig";
-import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Navigate, redirect } from "react-router-dom";
 
-export const SignIn = () => {
+const SignIn = () => {
   const { session } = useAuth();
   return !session ? (
     <MouseImageTrail
@@ -39,7 +38,7 @@ export const SignIn = () => {
       </section>
     </MouseImageTrail>
   ) : (
-    <Link to={"locations"} />
+    <Navigate to={"/locations"} />
   );
 };
 
@@ -55,16 +54,22 @@ const Copy = () => {
 const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  async function onSubmit(event) {
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
     if (error) {
       alert(error.error_description || error.message);
+    } else {
     }
-  }
+    setLoading(false);
+  };
+
   return (
     <>
       <style>
@@ -102,7 +107,7 @@ const Form = () => {
             Sign in with your email and stream away!
           </motion.p>
 
-          <form onSubmit={onSubmit} className="w-full">
+          <form onSubmit={handleLogin} className="w-full">
             <motion.div variants={primaryVariants} className="mb-2 w-full">
               <label
                 htmlFor="email-input"
@@ -324,3 +329,5 @@ const MouseImageTrail = ({
     </div>
   );
 };
+
+export default SignIn;

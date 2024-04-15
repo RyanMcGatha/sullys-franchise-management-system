@@ -1,15 +1,14 @@
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
-import { supabase } from "../../../supabaseConfig";
-import React from "react";
-
-function Locations() {
+const Locations = () => {
   const { session } = useAuth();
-
-  return (
+  return session ? (
     <>
-      <div className="h-screen">hello</div>
+      <div>locations</div>
     </>
+  ) : (
+    <Navigate to={"/"} />
   );
-}
+};
 
 export default Locations;

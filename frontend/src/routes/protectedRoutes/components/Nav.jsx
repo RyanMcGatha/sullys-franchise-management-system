@@ -7,32 +7,16 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-/**
-     * You may want to hide the scrollbar on the body element
-     * of your page while using this navigation.
-     * 
-     * You can accomplish this using the following css:
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-      
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none; 
-        }
-      */
-const Example = () => {
+const Nav = () => {
   return (
-    <div className="grid h-0 w-0 place-content-center bg-neutral-900">
+    <div className="grid h-0 w-0 place-content-center ">
       <SideStaggerNavigation />
     </div>
   );
 };
 
-// Total number of lines on the side of the page
 const NUM_LINES = 30;
-// Position key will place the title on the Nth
-// line of the sidebar
+
 const navItems = [
   { position: 1, title: "Home" },
   { position: 8, title: "About" },
@@ -86,11 +70,9 @@ const LinkLine = ({ mouseY, isHovered, title }) => {
     return val - (bounds?.y || 0) - (bounds?.height || 0) / 2;
   });
 
-  // Styles for non-link lines
   const lineWidthRaw = useTransform(distance, [-80, 0, 80], [15, 100, 15]);
   const lineWidth = useSpring(lineWidthRaw, SPRING_OPTIONS);
 
-  // Styles for link lines
   const linkWidth = useSpring(25, SPRING_OPTIONS);
 
   useEffect(() => {
@@ -135,4 +117,4 @@ const LinkLine = ({ mouseY, isHovered, title }) => {
   }
 };
 
-export default Example;
+export default Nav;
