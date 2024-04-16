@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../AuthContext";
 import Card from "./components/3dCard";
 import { supabase } from "../../../supabaseConfig";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import AddLocation from "./components/AddLocation";
 const Locations = () => {
   const [locations, setLocations] = useState([]);
@@ -87,6 +87,14 @@ const Locations = () => {
                 >
                   delete
                 </button>
+              }
+              folders={
+                <Link
+                  to={"/locations/folders"}
+                  className=" hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-2xl mt-10"
+                >
+                  View Folders
+                </Link>
               }
             />
           ))}

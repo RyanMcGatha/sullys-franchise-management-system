@@ -7,14 +7,14 @@ import {
 } from "framer-motion";
 import { FiMousePointer } from "react-icons/fi";
 
-const Card = ({ name, del }) => {
-  return <TiltCard name={name} del={del} />;
+const Card = ({ name, del, folders }) => {
+  return <TiltCard name={name} del={del} folders={folders} />;
 };
 
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 
-const TiltCard = ({ name, del }) => {
+const TiltCard = ({ name, del, folders }) => {
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -68,6 +68,7 @@ const TiltCard = ({ name, del }) => {
       >
         <div className="text-black flex flex-col">
           {name}
+          {folders}
           {del}
         </div>
       </div>

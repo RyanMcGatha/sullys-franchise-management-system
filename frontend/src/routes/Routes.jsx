@@ -5,6 +5,7 @@ import SignIn from "./publicRoutes/SignIn";
 import Locations from "./protectedRoutes/Locations";
 import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
 import ErrorPage from "./errorPages/ErrorPage";
+import Folders from "./protectedRoutes/Folders";
 
 const Routes = () => {
   const { session } = useAuth();
@@ -26,6 +27,10 @@ const Routes = () => {
         {
           path: "/locations",
           element: <Locations />,
+        },
+        {
+          path: "/locations/:folders",
+          element: <Folders />,
         },
       ],
     },

@@ -147,18 +147,18 @@ const SpringModal = ({
                   required={true}
                   onChange={(e) => setLocationName(e.target.value)}
                 />
-                <div className="flex gap-2">
+                <div className="flex gap-5 items-center mt-5">
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 mt-5 rounded"
+                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl"
                   >
-                    Nah, go back
+                    Go Back
                   </button>
                   <button
                     type="submit"
                     disabled={loading}
                     onClick={() => setIsOpen(false)}
-                    className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
+                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 px-1 rounded-xl"
                   >
                     {loading ? "Loading ..." : "Add Location"}
                   </button>
