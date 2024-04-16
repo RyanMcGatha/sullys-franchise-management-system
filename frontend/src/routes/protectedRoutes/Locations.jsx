@@ -68,7 +68,7 @@ const Locations = () => {
   return (
     <>
       <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
-        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-4 px-16 pt-2">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-5 px-20 pt-2 pl-24">
           Locations
           <AddLocation locations={locations} setLocations={setLocations} />
         </div>

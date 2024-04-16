@@ -37,7 +37,7 @@ const SideStaggerNavigation = () => {
         mouseY.set(Infinity);
         setIsHovered(false);
       }}
-      className="fixed left-0 top-0 flex h-screen flex-col items-start justify-between py-4 pl-1"
+      className="fixed left-0 top-0 flex h-screen flex-col items-start justify-between py-4 pr-8"
     >
       {Array.from(Array(NUM_LINES).keys()).map((i) => {
         const linkContent = navItems.find((item) => item.position === i + 1);
@@ -70,16 +70,16 @@ const LinkLine = ({ mouseY, isHovered, title, onClick, href }) => {
     return val - (bounds?.y || 0) - (bounds?.height || 0) / 2;
   });
 
-  const lineWidthRaw = useTransform(distance, [-80, 0, 80], [15, 100, 15]);
+  const lineWidthRaw = useTransform(distance, [-80, 0, 80], [25, 100, 25]);
   const lineWidth = useSpring(lineWidthRaw, SPRING_OPTIONS);
 
   const linkWidth = useSpring(25, SPRING_OPTIONS);
 
   useEffect(() => {
     if (isHovered) {
-      linkWidth.set(150);
+      linkWidth.set(200);
     } else {
-      linkWidth.set(25);
+      linkWidth.set(45);
     }
   }, [isHovered]);
 
@@ -89,7 +89,7 @@ const LinkLine = ({ mouseY, isHovered, title, onClick, href }) => {
         <motion.div
           ref={ref}
           className="group relative bg-neutral-500 transition-colors hover:bg-red-500"
-          style={{ width: linkWidth, height: 2 }}
+          style={{ width: linkWidth, height: 3 }}
         >
           <AnimatePresence>
             {isHovered && (
@@ -112,7 +112,7 @@ const LinkLine = ({ mouseY, isHovered, title, onClick, href }) => {
       <motion.div
         ref={ref}
         className="relative bg-neutral-500"
-        style={{ width: lineWidth, height: 2 }}
+        style={{ width: lineWidth, height: 3 }}
       />
     );
   }

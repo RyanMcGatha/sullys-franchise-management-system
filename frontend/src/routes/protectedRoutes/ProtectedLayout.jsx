@@ -11,7 +11,7 @@ const ProtectedLayout = () => {
       <div className="flex bg-neutral-100 w-screen overflow-hidden">
         <motion.div
           className="h-screen"
-          initial={{ marginRight: 30 }}
+          initial={{ marginRight: 0 }}
           whileHover={{
             marginRight: 160,
             transition: {
