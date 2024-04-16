@@ -1,14 +1,16 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
 import { motion } from "framer-motion";
+import { useAuth } from "../../AuthContext";
 
 const ProtectedLayout = () => {
-  return (
+  const { session } = useAuth();
+  return session ? (
     <>
       <div className="flex bg-slate-200 w-screen overflow-hidden">
         <motion.div
-          className="h-screen w-fit"
+          className="h-screen"
           initial={{ marginRight: 30 }}
           whileHover={{
             marginRight: 160,
@@ -22,11 +24,13 @@ const ProtectedLayout = () => {
         >
           <Nav />
         </motion.div>
-        <div className="w-full">
+        <div className="w-full px-6 h-screen">
           <Outlet />
         </div>
       </div>
     </>
+  ) : (
+    <Navigate to={"/"} />
   );
 };
 

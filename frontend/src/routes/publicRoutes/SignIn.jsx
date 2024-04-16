@@ -8,7 +8,7 @@ import { Navigate, redirect } from "react-router-dom";
 
 const SignIn = () => {
   const { session } = useAuth();
-  return (
+  return !session ? (
     <MouseImageTrail
       renderImageBuffer={50}
       rotationRange={25}
@@ -37,6 +37,8 @@ const SignIn = () => {
         <WatermarkWrapper />
       </section>
     </MouseImageTrail>
+  ) : (
+    <Navigate to={"/locations"} />
   );
 };
 
@@ -117,7 +119,7 @@ const Form = () => {
                 id="email-input"
                 type="email"
                 placeholder="Enter your email"
-                className="w-full rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                className="w-full rounded border-[1px] px-2.5 py-1.5 focus:outline-red-500"
                 required
                 value={email}
                 autoComplete="email"
