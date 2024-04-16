@@ -68,30 +68,34 @@ const Locations = () => {
   return (
     <>
       <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
-        <div className="text-7xl text-slate-400 w-full flex justify-between items-center">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-4 px-16 pt-2">
           Locations
           <AddLocation locations={locations} setLocations={setLocations} />
         </div>
-        <div className="flex gap-5 w-full h-full flex-wrap overflow-auto pl-7 text-3xl ">
+        <div className="flex gap-10 w-full max-h-fit flex-wrap justify-center overflow-auto pb-10 pt-1 no-scrollbar">
           {locations.map((location) => (
             <Card
               key={location.id}
-              name={location.location_name}
+              name={
+                <div className=" font-semibold p-2 rounded text-4xl">
+                  {location.location_name}
+                </div>
+              }
               del={
                 <button
-                  className=" hover:bg-red-500/10 transition-colors text-white font-semibold p-2 rounded bg-red-500 text-2xl mt-10"
+                  className=" hover:bg-red-500/20 transition-colors text-white font-semibold p-2 rounded bg-red-500 text-xl"
                   type="button"
                   onClick={() =>
                     handleDelete(location.id, location.store_number)
                   }
                 >
-                  delete
+                  Delete Location
                 </button>
               }
               folders={
                 <Link
-                  to={"/locations/folders"}
-                  className=" hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-2xl mt-10"
+                  to={`/locations/folders/:${location.id}`}
+                  className=" hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-xl"
                 >
                   View Folders
                 </Link>

@@ -17,6 +17,21 @@ const AddLocation = ({}) => {
     event.preventDefault();
     setLoading(true);
 
+    async function createBucket() {
+      const { bucketData, bucketError } = await supabase.storage.createBucket(
+        `uploads-${store_number}`,
+        {
+          public: true,
+        }
+      );
+      if (bucketError) {
+        console.log(bucketError);
+      } else {
+        console.log(bucketData);
+      }
+    }
+    createBucket();
+
     try {
       const { data, error } = await supabase
         .from("locations")
@@ -39,10 +54,10 @@ const AddLocation = ({}) => {
   };
 
   return (
-    <div className=" ">
+    <div className="">
       <button
         onClick={() => setIsOpen(true)}
-        className=" bg-slate-300 text-slate-400 font-medium px-4 py-4 rounded-xl hover:opacity-90 transition-opacity scale-50"
+        className=" bg-slate-200 text-netural-400 font-medium px-4 py-4 rounded-xl hover:opacity-90 transition-opacity text-2xl"
       >
         Add Location
       </button>

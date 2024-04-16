@@ -29,7 +29,7 @@ const Routes = () => {
           element: <Locations />,
         },
         {
-          path: "/locations/:folders",
+          path: "/locations/:folders/:id",
           element: <Folders />,
         },
       ],

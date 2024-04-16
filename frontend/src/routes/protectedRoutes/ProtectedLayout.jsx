@@ -8,7 +8,7 @@ const ProtectedLayout = () => {
   const { session } = useAuth();
   return session ? (
     <>
-      <div className="flex bg-slate-200 w-screen overflow-hidden">
+      <div className="flex bg-neutral-100 w-screen overflow-hidden">
         <motion.div
           className="h-screen"
           initial={{ marginRight: 30 }}
@@ -24,7 +24,7 @@ const ProtectedLayout = () => {
         >
           <Nav />
         </motion.div>
-        <div className="w-full px-6 h-screen">
+        <div className="w-full h-screen">
           <Outlet />
         </div>
       </div>

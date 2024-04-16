@@ -57,19 +57,23 @@ const TiltCard = ({ name, del, folders }) => {
         transformStyle: "preserve-3d",
         transform,
       }}
-      className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-slate-400 to-slate-300"
+      className="h-96 min-w-96 rounded-xl bg-gradient-to-br from-slate-200 to-slate-300"
     >
       <div
         style={{
-          transform: "translateZ(75px)",
+          transform: "translateZ(90px)",
           transformStyle: "preserve-3d",
         }}
-        className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg"
+        className="absolute inset-4 grid place-content-center rounded-xl shadow-lg p-2 pt-4"
       >
-        <div className="text-black flex flex-col">
-          {name}
-          {folders}
-          {del}
+        <div className="text-black flex flex-col items-center">
+          <img
+            className="mb-1 min-w-[200px] min-h-auto rounded-lg "
+            src="https://wnplbeoyxtitkkuaaaua.supabase.co/storage/v1/object/public/imgs/store.jpg"
+          />
+          <div className="text-sm text-neutral-500 mb-2">{name}</div>
+          <div className="text-sm ">{folders}</div>
+          <div className="text-sm  my-5">{del}</div>
         </div>
       </div>
     </motion.div>
