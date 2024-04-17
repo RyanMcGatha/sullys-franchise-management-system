@@ -12,6 +12,7 @@ import Locations from "./protectedRoutes/Locations";
 import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
 import ErrorPage from "./errorPages/ErrorPage";
 import Folders from "./protectedRoutes/Folders";
+import Files from "./protectedRoutes/Files";
 
 const Routes = () => {
   const { session } = useAuth();
@@ -30,6 +31,7 @@ const Routes = () => {
       children: [
         { path: "locations", element: <Locations /> },
         { path: ":id", element: <Folders /> },
+        { path: ":id/:folder_name", element: <Files /> },
       ],
     },
   ];

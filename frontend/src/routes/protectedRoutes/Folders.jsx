@@ -9,10 +9,7 @@ const Folders = () => {
   const { id } = useParams();
   const [folders, setFolders] = useState([]);
   const [error, setError] = useState(null);
-
-  const addFolderToList = (newFolder) => {
-    setFolders((prevFolders) => [...prevFolders, newFolder]);
-  };
+  const [folder_name, setFolderName] = useState(null);
 
   const handleDelete = async (folder_id) => {
     try {
@@ -53,7 +50,7 @@ const Folders = () => {
       <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
         <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-5 px-20 pt-2 pl-24">
           Folders
-          <AddFolder id={id} addFolderToList={addFolderToList} />
+          <AddFolder id={id} />
         </div>
         <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar">
           {folders.map((folder) => (
@@ -73,9 +70,9 @@ const Folders = () => {
                   Delete Folder
                 </button>
               }
-              folders={
+              files={
                 <Link
-                  to={`/folders/${folder.folder_id}/files`}
+                  to={`/${id}/${folder.folder_name}`}
                   className="hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-xl"
                 >
                   View Files
