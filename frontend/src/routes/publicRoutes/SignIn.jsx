@@ -7,8 +7,7 @@ import { supabase } from "../../../supabaseConfig";
 import { Navigate, redirect } from "react-router-dom";
 
 const SignIn = () => {
-  const { session } = useAuth();
-  return !session ? (
+  return (
     <MouseImageTrail
       renderImageBuffer={50}
       rotationRange={25}
@@ -37,8 +36,6 @@ const SignIn = () => {
         <WatermarkWrapper />
       </section>
     </MouseImageTrail>
-  ) : (
-    <Navigate to={"/locations"} />
   );
 };
 

@@ -1,5 +1,11 @@
-import React, { useMemo } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import React, { useMemo, useState } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useParams,
+  Navigate,
+} from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import SignIn from "./publicRoutes/SignIn";
 import Locations from "./protectedRoutes/Locations";
@@ -9,34 +15,26 @@ import Folders from "./protectedRoutes/Folders";
 
 const Routes = () => {
   const { session } = useAuth();
+  if (session === "loading") {
+    return <div>Loading...</div>;
+  }
 
-  const publicRoutes = [
+  const routes = [
     {
       path: "/",
-      element: <SignIn />,
+      element: session ? <Navigate to="/locations" /> : <SignIn />,
       errorElement: <ErrorPage />,
     },
-  ];
-
-  const protectedRoutes = [
     {
-      path: "/",
-      element: <ProtectedLayout />,
-      errorElement: <ErrorPage />,
+      element: session ? <ProtectedLayout /> : <Navigate to="/" />,
       children: [
-        {
-          path: "/locations",
-          element: <Locations />,
-        },
-        {
-          path: "/locations/:folders/:id",
-          element: <Folders />,
-        },
+        { path: "locations", element: <Locations /> },
+        { path: ":id", element: <Folders /> },
       ],
     },
   ];
 
-  const router = createBrowserRouter([...publicRoutes, ...protectedRoutes]);
+  const router = createBrowserRouter([...routes]);
 
   return <RouterProvider router={router} />;
 };

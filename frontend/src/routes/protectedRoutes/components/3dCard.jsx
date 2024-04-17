@@ -7,8 +7,10 @@ import {
 } from "framer-motion";
 import { FiMousePointer } from "react-icons/fi";
 
-const Card = ({ name, del, folders }) => {
-  return <TiltCard name={name} del={del} folders={folders} />;
+const Card = ({ name, del, folders, locations }) => {
+  return (
+    <TiltCard name={name} del={del} folders={folders} locations={locations} />
+  );
 };
 
 const ROTATION_RANGE = 32.5;

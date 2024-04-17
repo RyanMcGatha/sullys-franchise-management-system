@@ -7,7 +7,6 @@ import AddLocation from "./components/AddLocation";
 const Locations = () => {
   const [locations, setLocations] = useState([]);
   const [error, setError] = useState(null);
-  const { session } = useAuth();
   const [buckets, setBuckets] = useState([]);
 
   const handleDelete = async (id, store_number) => {
@@ -72,9 +71,10 @@ const Locations = () => {
           Locations
           <AddLocation locations={locations} setLocations={setLocations} />
         </div>
-        <div className="flex gap-10 w-full max-h-fit flex-wrap justify-center overflow-auto pb-10 pt-1 no-scrollbar">
+        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar">
           {locations.map((location) => (
             <Card
+              location={locations}
               key={location.id}
               name={
                 <div className=" font-semibold p-2 rounded text-4xl">
@@ -94,7 +94,7 @@ const Locations = () => {
               }
               folders={
                 <Link
-                  to={`/locations/folders/:${location.id}`}
+                  to={`/${location.id}`}
                   className=" hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-xl"
                 >
                   View Folders

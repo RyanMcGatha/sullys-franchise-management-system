@@ -2,11 +2,9 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
 import { motion } from "framer-motion";
-import { useAuth } from "../../AuthContext";
 
-const ProtectedLayout = () => {
-  const { session } = useAuth();
-  return session ? (
+const ProtectedLayout = ({}) => {
+  return (
     <>
       <div className="flex bg-neutral-100 w-screen overflow-hidden">
         <motion.div
@@ -29,8 +27,6 @@ const ProtectedLayout = () => {
         </div>
       </div>
     </>
-  ) : (
-    <Navigate to={"/"} />
   );
 };
 
