@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../../AuthContext";
-import Card from "./components/3dCard";
+
 import { supabase } from "../../../supabaseConfig";
 import { Link, Navigate } from "react-router-dom";
 import AddLocation from "./components/AddLocation";
+import LocationCard from "./components/3dCard";
 const Locations = () => {
   const [locations, setLocations] = useState([]);
   const [error, setError] = useState(null);
   const [buckets, setBuckets] = useState([]);
+  console.log(locations);
 
   const handleDelete = async (id, store_number) => {
     try {
@@ -73,7 +74,7 @@ const Locations = () => {
         </div>
         <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar">
           {locations.map((location) => (
-            <Card
+            <LocationCard
               location={locations}
               key={location.id}
               name={
