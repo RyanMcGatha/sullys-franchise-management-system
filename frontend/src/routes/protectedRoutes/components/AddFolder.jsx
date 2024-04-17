@@ -26,6 +26,7 @@ const AddFolder = ({ id, folders }) => {
         alert(error.message);
       } else {
       }
+      window.location.reload();
       setLoading(false);
     }
     createFolder();

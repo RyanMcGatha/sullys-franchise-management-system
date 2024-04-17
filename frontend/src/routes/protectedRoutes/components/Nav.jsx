@@ -8,7 +8,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import { supabase } from "../../../../supabaseConfig";
-import { Navigate } from "react-router-dom";
 
 const Nav = () => {
   return <SideStaggerNavigation />;
@@ -17,7 +16,11 @@ const Nav = () => {
 const NUM_LINES = 30;
 
 const navItems = [
-  { position: 1, title: "Locations" },
+  {
+    position: 2,
+    title: "Locations",
+    onClick: () => (window.location.href = "/locations"),
+  },
   { position: 8, title: "About" },
   { position: 20, title: "Services" },
   { position: 25, title: "Sign Out", onClick: () => supabase.auth.signOut() },
