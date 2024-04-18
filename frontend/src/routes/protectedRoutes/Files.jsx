@@ -10,7 +10,31 @@ const AllFiles = () => {
 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState("");
-  console.log(files);
+
+  const deleteFile = async (fileName) => {
+    try {
+      const filePath = `${folder_name}/${fileName}`;
+      const { data, error } = await supabase.storage
+        .from(`uploads-${store_number}`)
+        .remove([filePath]);
+      if (error) {
+        throw error;
+      }
+      const { data: deleteData, deleteError } = await supabase
+        .from("files")
+        .delete()
+        .match({ folder_name, name: fileName });
+      if (deleteError) {
+        throw deleteError;
+      }
+      setFiles((currentFiles) =>
+        currentFiles.filter((file) => file.name !== fileName)
+      );
+    } catch (error) {
+      console.error("Error deleting file: ", error.message);
+      setError(`Error deleting file: ${error.message}`);
+    }
+  };
 
   useEffect(() => {
     async function fetchFiles() {
@@ -34,9 +58,8 @@ const AllFiles = () => {
 
   async function downloadFile(fileName) {
     try {
-      // Construct the full path including the folder name
       const filePath = `${folder_name}/${fileName}`;
-      // Encode the filePath to ensure it's a valid URL component
+
       const encodedFilePath = encodeURIComponent(filePath);
       const { data, error } = await supabase.storage
         .from(`uploads-${store_number}`)
@@ -119,7 +142,10 @@ const AllFiles = () => {
                       </button>
                     </td>
                     <td className="p-4">
-                      <button className="hover:text-red-500 scale-150">
+                      <button
+                        className="hover:text-red-500 scale-150"
+                        onClick={() => deleteFile(file.name)}
+                      >
                         <FiTrash2 />
                       </button>
                     </td>
