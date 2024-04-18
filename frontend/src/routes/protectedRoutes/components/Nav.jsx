@@ -18,12 +18,11 @@ const NUM_LINES = 30;
 const navItems = [
   {
     position: 2,
-    title: "Locations",
+    title: "Home",
     onClick: () => (window.location.href = "/locations"),
   },
-  { position: 8, title: "Chat" },
+
   { position: 20, title: "Sign Out", onClick: () => supabase.auth.signOut() },
-  { position: 25, title: "Settings" },
 ];
 
 const SideStaggerNavigation = () => {
