@@ -72,7 +72,7 @@ const Locations = () => {
           Locations
           <AddLocation locations={locations} setLocations={setLocations} />
         </div>
-        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar">
+        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-28 overflow-auto pb-10 pt-1 no-scrollbar">
           {locations.map((location) => (
             <LocationCard
               location={locations}

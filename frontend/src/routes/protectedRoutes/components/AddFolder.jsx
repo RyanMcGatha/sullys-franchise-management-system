@@ -80,7 +80,7 @@ const SpringModal = ({
                 className="flex flex-col text-xl gap-2 p-10 "
               >
                 <input
-                  className="rounded-xl p-3 placeholder:text-white"
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
                     backdropFilter: "blur(15px)",

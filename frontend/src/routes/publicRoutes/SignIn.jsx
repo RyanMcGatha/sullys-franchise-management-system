@@ -135,7 +135,7 @@ const Form = () => {
                 id="password-input"
                 type="password"
                 placeholder="Enter your password"
-                className="w-full rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-indigo-600"
+                className="w-full rounded border-[1px] border-slate-300 px-2.5 py-1.5 focus:outline-red-600"
                 required
                 value={password}
                 autoComplete="current-password"

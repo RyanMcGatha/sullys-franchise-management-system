@@ -121,10 +121,9 @@ const SpringModal = ({
                 className="flex flex-col z-10 text-white text-8xl gap-2 p-10 px-20 "
               >
                 <input
-                  className=" rounded-xl p-5 placeholder:text-white"
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backgroundAttachment: "fixed",
                     backdropFilter: "blur(15px)",
                     border: "solid 2px white",
                   }}
@@ -135,10 +134,9 @@ const SpringModal = ({
                   onChange={(e) => setStoreNumber(e.target.value)}
                 />
                 <input
-                  className=" rounded-xl p-5 placeholder:text-white"
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backgroundAttachment: "fixed",
                     backdropFilter: "blur(15px)",
                     border: "solid 2px white",
                   }}
@@ -149,10 +147,9 @@ const SpringModal = ({
                   onChange={(e) => setOwner(e.target.value)}
                 />
                 <input
-                  className=" rounded-xl p-5 placeholder:text-white"
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backgroundAttachment: "fixed",
                     backdropFilter: "blur(15px)",
                     border: "solid 2px white",
                   }}
@@ -164,6 +161,7 @@ const SpringModal = ({
                 />
                 <div className="flex gap-5 items-center mt-5">
                   <button
+                    type="button"
                     onClick={() => setIsOpen(false)}
                     className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl"
                   >
