@@ -30,8 +30,8 @@ const Routes = () => {
       element: session ? <ProtectedLayout /> : <Navigate to="/" />,
       children: [
         { path: "locations", element: <Locations /> },
-        { path: ":id", element: <Folders /> },
-        { path: ":id/:folder_name", element: <Files /> },
+        { path: ":id/:store_number", element: <Folders /> },
+        { path: ":id/:store_number/:folder_name", element: <Files /> },
       ],
     },
   ];

@@ -6,7 +6,7 @@ import FolderCard from "./components/FolderCard";
 import { Link } from "react-router-dom";
 
 const Folders = () => {
-  const { id } = useParams();
+  const { id, store_number } = useParams();
   const [folders, setFolders] = useState([]);
   const [error, setError] = useState(null);
   const [folder_name, setFolderName] = useState(null);
@@ -72,7 +72,7 @@ const Folders = () => {
               }
               files={
                 <Link
-                  to={`/${id}/${folder.folder_name}`}
+                  to={`/${id}/${store_number}/${folder.folder_name}`}
                   className="hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-xl"
                 >
                   View Files

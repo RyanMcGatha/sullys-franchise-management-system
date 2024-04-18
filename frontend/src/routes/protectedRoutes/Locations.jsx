@@ -95,7 +95,7 @@ const Locations = () => {
               }
               folders={
                 <Link
-                  to={`/${location.id}`}
+                  to={`/${location.id}/${location.store_number}`}
                   className=" hover:bg-slate-500/20 transition-colors text-white font-semibold p-2 rounded bg-slate-500 text-xl"
                 >
                   View Folders
