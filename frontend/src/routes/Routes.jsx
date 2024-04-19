@@ -1,85 +1,43 @@
-import React from "react";
-
-import { supabase } from "../config/supabaseConfig";
-
-import Auth from "./unprotectedRoutes/auth/Auth";
-
-import Dashboard from "./protectedRoutes/dashboard/Dashboard";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import React, { useMemo, useState } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useParams,
+  Navigate,
+} from "react-router-dom";
 import { useAuth } from "../AuthContext";
-
-import Layout from "../pages/layout/Layout";
-
-import ProtetcedLayout from "../pages/protectedLayout/ProtectedLayout";
-
-import Locations from "./protectedRoutes/dashboard/dashPages/addLocation/Locations";
-
-import ErrorPage from "../pages/errorPage/ErrorPage";
-
-import Messenger from "./protectedRoutes/messenger/Messenger";
-
-import LocationLayout from "../pages/locationLayout/LocationLayout";
-import LocationFiles from "../pages/locationLayout/locationFiles/LocationFiles";
-import AllLocations from "./protectedRoutes/dashboard/dashPages/allLocations/AllLocations";
-import AllUsers from "./protectedRoutes/dashboard/dashPages/allUsers/AllUsers";
+import SignIn from "./publicRoutes/SignIn";
+import Locations from "./protectedRoutes/Locations";
+import ProtectedLayout from "./protectedRoutes/ProtectedLayout";
+import ErrorPage from "./errorPages/ErrorPage";
+import Folders from "./protectedRoutes/Folders";
+import Files from "./protectedRoutes/Files";
 
 const Routes = () => {
-  const { isAuth } = useAuth();
+  const { session } = useAuth();
+  if (session === "loading") {
+    return <div>Loading...</div>;
+  }
 
-  const publicRoutes = [
+  const routes = [
     {
-      element: <Layout />,
+      path: "/",
+      element: session ? <Navigate to="/locations" /> : <SignIn />,
       errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "/",
-          element: <Auth />,
-        },
-      ],
     },
-  ];
-
-  const protectedRoutes = [
     {
-      element: <ProtetcedLayout />,
-      errorElement: {
-        path: "errorpage",
-        element: <ErrorPage />,
-      },
+      element: session ? <ProtectedLayout /> : <Navigate to="/" />,
       children: [
-        {
-          path: "/dashboard",
-          element: <Dashboard />,
-        },
-        {
-          path: "/locations",
-          element: <Locations />,
-        },
-        {
-          path: "/alllocations",
-          element: <AllLocations />,
-        },
-
-        {
-          path: "/locations/:owner/:store_number/:location_name/:id",
-          element: <LocationLayout />,
-        },
-
-        {
-          path: "/location/:id/:store_number/folder/:folder_name",
-          element: <LocationFiles />,
-        },
+        { path: "locations", element: <Locations /> },
+        { path: ":id/:store_number", element: <Folders /> },
+        { path: ":id/:store_number/:folder_name", element: <Files /> },
       ],
     },
   ];
 
-  const router = createBrowserRouter([
-    ...publicRoutes,
-    ...(isAuth ? protectedRoutes : []),
-    ...protectedRoutes,
-  ]);
+  const router = createBrowserRouter([...routes]);
+
   return <RouterProvider router={router} />;
 };
 
