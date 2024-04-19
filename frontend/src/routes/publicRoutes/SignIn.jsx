@@ -41,8 +41,9 @@ const SignIn = () => {
 
 const Copy = () => {
   return (
-    <section className="z-[999999] fixed flex flex-col w-screen h-screen items-center justify-center">
+    <section className="z-[999999] fixed flex flex-col w-screen h-screen items-center md:justify-center gap-10 pt-5">
       <Logo />
+
       <Form />
     </section>
   );
@@ -85,9 +86,9 @@ const Form = () => {
           staggerChildren: 0.05,
         }}
         viewport={{ once: true }}
-        className=" scale-90 w-auto max-h-fit p-10 rounded-xl md:scale-100 xl:scale-125 2xl:scale-150"
+        className=" w-auto max-h-fit p-10 rounded-xl md:scale-125 xl:scale-150"
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.3)",
+          backgroundColor: "rgba(255, 255, 255, 0.5)",
           backgroundAttachment: "fixed",
           backdropFilter: "blur(15px)",
           border: "solid 2px white",
@@ -162,8 +163,8 @@ const Logo = () => {
   return (
     <img
       src="https://wnplbeoyxtitkkuaaaua.supabase.co/storage/v1/object/public/logos/sullysLogo.png"
-      className="absolute left-[50%] top-4 -translate-x-[50%] lg:left-4 lg:-translate-x-0 w-40 h-fit 2xl:w-64"
       alt="Sully's Logo"
+      className=" w-40 h-auto md:fixed md:left-5 md:top-5"
     />
   );
 };

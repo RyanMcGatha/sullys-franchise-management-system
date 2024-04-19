@@ -39,7 +39,7 @@ const SideStaggerNavigation = () => {
         mouseY.set(Infinity);
         setIsHovered(false);
       }}
-      className="fixed left-0 top-0 flex h-screen flex-col items-start justify-between py-4 pr-8"
+      className="fixed left-0 top-0 flex h-screen flex-col items-start justify-between py-4 pr-2 md:pr-8 bg-slate-100 md:bg-transparent"
     >
       {Array.from(Array(NUM_LINES).keys()).map((i) => {
         const linkContent = navItems.find((item) => item.position === i + 1);

@@ -68,11 +68,13 @@ const Locations = () => {
   return (
     <>
       <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
-        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-5 px-20 pt-2 pl-24">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex flex-col pl-20 md:flex-row md:justify-between md:items-center mb-5 md:px-20 pt-2 md:pl-24">
           Locations
-          <AddLocation locations={locations} setLocations={setLocations} />
+          <div className="pl-12 md:pl-0">
+            <AddLocation locations={locations} setLocations={setLocations} />
+          </div>
         </div>
-        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-28 overflow-auto pb-10 pt-1 no-scrollbar">
+        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-20 md:px-28 overflow-x-hidden overflow-auto pb-40 md:pb-10 pt-1 no-scrollbar">
           {locations.map((location) => (
             <LocationCard
               location={locations}

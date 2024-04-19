@@ -160,7 +160,7 @@ const SpringModal = ({
                   <button
                     type="button"
                     onClick={() => setIsOpen(false)}
-                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl"
+                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl whitespace-nowrap"
                   >
                     Go Back
                   </button>
@@ -168,9 +168,9 @@ const SpringModal = ({
                     type="submit"
                     disabled={loading}
                     onClick={() => setIsOpen(false)}
-                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl"
+                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-auto p-2 rounded-xl whitespace-nowrap"
                   >
-                    {loading ? "Loading ..." : "Add Location"}
+                    Add Location
                   </button>
                 </div>
               </form>
