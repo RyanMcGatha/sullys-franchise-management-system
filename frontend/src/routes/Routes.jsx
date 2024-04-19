@@ -23,7 +23,7 @@ const Routes = () => {
   const routes = [
     {
       path: "/",
-      element: session ? <Navigate to="/locations" /> : <SignIn />,
+      element: session ? <Navigate to="locations" /> : <SignIn />,
       errorElement: <ErrorPage />,
     },
     {
