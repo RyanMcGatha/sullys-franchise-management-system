@@ -170,7 +170,7 @@ const SpringModal = ({
                     onClick={() => setIsOpen(false)}
                     className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-auto p-2 rounded-xl whitespace-nowrap"
                   >
-                    Add Location
+                    {loading ? "Loading ..." : "Add Location"}
                   </button>
                 </div>
               </form>

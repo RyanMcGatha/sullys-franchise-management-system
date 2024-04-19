@@ -88,17 +88,19 @@ const AllFiles = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
-        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-5 px-20 pt-2 pl-24">
+      <div className="flexflex-col h-screen overflow-hidden items-center w-full gap-1 pt-5 md:pt-0">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex flex-col pl-40 md:flex-row md:justify-between md:items-center mb-5 md:px-20 pt-2 md:pl-24">
           Files
-          <AddFile />
+          <div className="mb-5">
+            <AddFile />
+          </div>
         </div>
-        <div className="flex w-screen px-32">
-          <div className="w-full bg-white shadow-lg rounded-lg overflow-x-scroll max-w-7xl mx-auto">
+        <div className="flex h-screen ">
+          <div className="w-full px-10 pr-20 md:pr-0 pt-1 bg-white shadow-lg rounded-lg overflow-x-scroll md:scale-90 mx-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b-[1px] border-slate-200 text-slate-400 text-sm uppercase">
-                  <th className="pl-4 w-8"></th>
+                  <th className="pl-4"></th>
                   <th className="text-start p-4 font-medium">File Name</th>
                   <th className="text-start p-4 font-medium">Download</th>
                   <th className="text-start p-4 font-medium">Share</th>
