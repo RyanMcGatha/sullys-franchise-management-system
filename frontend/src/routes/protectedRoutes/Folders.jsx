@@ -47,17 +47,19 @@ const Folders = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1">
-        <div className="text-6xl font-semibold text-neutral-400 w-full flex justify-between items-center mb-5 px-20 pt-2 pl-24">
+      <div className="flex flex-col h-screen overflow-hidden items-center w-full gap-1 pt-5 md:pt-0">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex flex-col pl-28 md:flex-row md:justify-between md:items-center mb-5 md:px-20 pt-2 md:pl-24">
           Folders
-          <AddFolder id={id} />
+          <div className="pl-6 md:pl-0">
+            <AddFolder id={id} />
+          </div>
         </div>
-        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar">
+        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-20 md:px-28 overflow-x-hidden overflow-auto pb-40 md:pb-10 pt-1 no-scrollbar">
           {folders.map((folder) => (
             <FolderCard
               key={folder.folder_id}
               name={
-                <div className="font-semibold p-2 rounded">
+                <div className="font-semibold p-2 text-4xl rounded">
                   {folder.folder_name}
                 </div>
               }
