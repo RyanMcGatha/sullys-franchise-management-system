@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { FiDownload, FiShare2, FiTrash2 } from "react-icons/fi";
 import { supabase } from "../../../supabaseConfig";
 import AddFile from "./components/AddFile";
-
-import { FiDownload, FiShare2, FiTrash2 } from "react-icons/fi";
-import { motion } from "framer-motion";
-import { FiAward, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import AddUser from "./components/AddUser";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -28,164 +25,62 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  const Table = () => {
-    const [users, setUsers] = useState(userData);
-
-    const shift = (id, direction) => {
-      const index = users.findIndex((u) => u.id === id);
-      let usersCopy = [...users];
-
-      if (direction === "up") {
-        if (index > 0) {
-          [usersCopy[index], usersCopy[index - 1]] = [
-            usersCopy[index - 1],
-            usersCopy[index],
-          ];
-        }
-      } else {
-        if (index < usersCopy.length - 1) {
-          [usersCopy[index], usersCopy[index + 1]] = [
-            usersCopy[index + 1],
-            usersCopy[index],
-          ];
-        }
-      }
-
-      setUsers(usersCopy);
-    };
-
-    return (
-      <div className="w-full bg-white shadow-lg rounded-lg overflow-x-scroll max-w-4xl mx-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b-[1px] border-slate-200 text-slate-400 text-sm uppercase">
-              <th className="pl-4 w-8"></th>
-              <th className="text-start p-4 font-medium">Team Member</th>
-              <th className="text-start p-4 font-medium">Rank</th>
-              <th className="text-start p-4 font-medium">Max Rank</th>
-              <th className="text-start p-4 font-medium">Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {users.map((user, index) => {
-              return (
-                <TableRows
-                  key={user.id}
-                  user={user}
-                  index={index}
-                  shift={shift}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
-
-  const TableRows = ({ user, index, shift }) => {
-    const rankOrdinal = numberToOrdinal(index + 1);
-    const maxRankOrdinal = numberToOrdinal(user.maxRank);
-
-    return (
-      <motion.tr
-        layoutId={`row-${user.id}`}
-        className={`text-sm ${user.id % 2 ? "bg-slate-100" : "bg-white"}`}
-      >
-        <td className="pl-4 w-8 text-lg">
-          <button
-            className="hover:text-violet-600"
-            onClick={() => shift(user.id, "up")}
-          >
-            <FiChevronUp />
-          </button>
-          <button
-            className="hover:text-violet-600"
-            onClick={() => shift(user.id, "down")}
-          >
-            <FiChevronDown />
-          </button>
-        </td>
-
-        <td className="p-4 flex items-center gap-3 overflow-hidden">
-          <img
-            src={user.photoURL}
-            alt="Example user photo"
-            className="w-10 h-10 rounded-full bg-slate-300 object-cover object-top shrink-0"
-          />
-          <div>
-            <span className="block mb-1 font-medium">{user.name}</span>
-            <span className="block text-xs text-slate-500">{user.contact}</span>
-          </div>
-        </td>
-
-        <td className="p-4">
-          <div
-            className={`flex items-center gap-2 font-medium ${
-              rankOrdinal === "1st" && "text-violet-500"
-            }`}
-          >
-            <span>{rankOrdinal}</span>
-            {rankOrdinal === "1st" && <FiAward className="text-xl" />}{" "}
-          </div>
-        </td>
-
-        <td className="p-4 font-medium">{maxRankOrdinal}</td>
-
-        <td className="p-4">
-          <span
-            className={`px-2 py-1 text-xs font-medium rounded ${
-              user.status === "online"
-                ? "bg-green-200 text-green-800"
-                : user.status === "offline"
-                ? "bg-yellow-200 text-yellow-800"
-                : "bg-slate-200 text-slate-800"
-            }`}
-          >
-            {user.status}
-          </span>
-        </td>
-      </motion.tr>
-    );
-  };
-
-  const numberToOrdinal = (n) => {
-    let ord = "th";
-
-    if (n % 10 == 1 && n % 100 != 11) {
-      ord = "st";
-    } else if (n % 10 == 2 && n % 100 != 12) {
-      ord = "nd";
-    } else if (n % 10 == 3 && n % 100 != 13) {
-      ord = "rd";
-    }
-
-    return n + ord;
-  };
-
-  const userData = [
-    {
-      id: users[0]?.id,
-      name: users[0]?.username,
-      contact: users[0]?.email,
-      photoURL: users[0]?.avatar_url,
-      maxRank: 1,
-      status: "online",
-    },
-    {
-      id: users[1]?.id,
-      name: users[1]?.username,
-      contact: users[1]?.email,
-      photoURL: users[1]?.avatar_url,
-      maxRank: 2,
-      status: "offline",
-    },
-  ];
-
   return (
     <>
-      <Table />
+      <div className="flexflex-col h-screen overflow-hidden items-center w-full gap-1 pt-5 md:pt-0">
+        <div className="text-6xl font-semibold text-neutral-400 w-full flex flex-col pl-40 md:flex-row md:justify-between md:items-center mb-5 md:px-20 pt-2 md:pl-24">
+          Users
+          <div className="mb-5">
+            <AddUser />
+          </div>
+        </div>
+        <div className="flex h-screen ">
+          <div className="w-full px-10 pr-20 md:pr-0 pt-1 bg-white shadow-lg rounded-lg overflow-x-scroll md:scale-90 mx-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b-[1px] border-slate-200 text-slate-400 text-xl uppercase ">
+                  <th className=" p-4 font-medium">User Name</th>
+                  <th className=" p-4 font-medium">Full Name</th>
+                  <th className=" p-4 font-medium">Role</th>
+                  <th className=" p-4 font-bold">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr
+                    key={index}
+                    className="border-b-[1px] border-slate-200 text-slate-400"
+                  >
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        {user.username}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        {user.first_name} {user.last_name}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        {user.role}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        <FiTrash2 />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar"></div>
+      </div>
     </>
   );
 };
