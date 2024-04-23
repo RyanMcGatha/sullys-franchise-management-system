@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { supabase } from "../../../supabaseConfig";
-import { chatOne } from "../../../supabaseConfig";
 
 const Chat = () => {
   const [message, setMessage] = useState("");

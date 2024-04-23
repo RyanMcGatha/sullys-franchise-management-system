@@ -15,6 +15,7 @@ import Folders from "./protectedRoutes/Folders";
 import Files from "./protectedRoutes/Files";
 import LoadingPage from "./publicRoutes/LoadingPage";
 import Chat from "./protectedRoutes/Chat";
+import Users from "./protectedRoutes/Users";
 
 const Routes = () => {
   const { session } = useAuth();
@@ -34,6 +35,7 @@ const Routes = () => {
         { path: "locations", element: <Locations /> },
         { path: ":id/:store_number", element: <Folders /> },
         { path: ":id/:store_number/:folder_name", element: <Files /> },
+        { path: "users", element: <Users /> },
         { path: "chat", element: <Chat /> },
       ],
     },
