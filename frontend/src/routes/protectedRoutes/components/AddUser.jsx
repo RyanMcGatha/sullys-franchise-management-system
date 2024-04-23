@@ -75,7 +75,7 @@ const SpringModal = ({
             <RiFolderAddLine className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
               <h3 className="text-3xl font-bold text-center mb-2">
-                Enter new folder name!
+                Enter new user information!
               </h3>
               <form
                 onSubmit={handleAddFolder}
@@ -89,7 +89,59 @@ const SpringModal = ({
                     border: "solid 2px white",
                   }}
                   type="text"
-                  placeholder="Folder Name"
+                  placeholder="Username"
+                  value={folder_name}
+                  required={true}
+                  onChange={(e) => setFolderName(e.target.value)}
+                />
+                <input
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    backdropFilter: "blur(15px)",
+                    border: "solid 2px white",
+                  }}
+                  type="text"
+                  placeholder="First Name"
+                  value={folder_name}
+                  required={true}
+                  onChange={(e) => setFolderName(e.target.value)}
+                />
+                <input
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    backdropFilter: "blur(15px)",
+                    border: "solid 2px white",
+                  }}
+                  type="text"
+                  placeholder="Last Name"
+                  value={folder_name}
+                  required={true}
+                  onChange={(e) => setFolderName(e.target.value)}
+                />
+                <input
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    backdropFilter: "blur(15px)",
+                    border: "solid 2px white",
+                  }}
+                  type="text"
+                  placeholder="Email"
+                  value={folder_name}
+                  required={true}
+                  onChange={(e) => setFolderName(e.target.value)}
+                />
+                <input
+                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.3)",
+                    backdropFilter: "blur(15px)",
+                    border: "solid 2px white",
+                  }}
+                  type="text"
+                  placeholder="Role"
                   value={folder_name}
                   required={true}
                   onChange={(e) => setFolderName(e.target.value)}
@@ -105,9 +157,9 @@ const SpringModal = ({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-auto p-2 rounded-xl whitespace-nowrap"
+                    className="bg-slate-500 hover:bg-white/10 transition-colors text-white font-semibold w-full p-2 rounded-xl whitespace-nowrap"
                   >
-                    {loading ? "Loading ..." : "Add Folder"}
+                    {loading ? "Loading ..." : "Add User"}
                   </button>
                 </div>
               </form>

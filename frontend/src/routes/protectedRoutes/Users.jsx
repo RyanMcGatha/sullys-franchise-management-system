@@ -5,20 +5,21 @@ import AddFile from "./components/AddFile";
 import AddUser from "./components/AddUser";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(["loading"]);
   const [error, setError] = useState("");
+  console.log(users);
 
   useEffect(() => {
     async function fetchUsers() {
       try {
         const { data, error } = await supabase.from("profiles").select("*");
-
         if (error) {
-          throw error;
+          setError(error.message);
+        } else {
+          setUsers(data);
         }
-        setUsers(data);
       } catch (error) {
-        setError(error.message);
+        setError("Failed to fetch users");
       }
     }
 
@@ -38,11 +39,13 @@ const Users = () => {
           <div className="w-full px-10 pr-20 md:pr-0 pt-1 bg-white shadow-lg rounded-lg overflow-x-scroll md:scale-90 mx-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b-[1px] border-slate-200 text-slate-400 text-xl uppercase ">
-                  <th className=" p-4 font-medium">User Name</th>
-                  <th className=" p-4 font-medium">Full Name</th>
-                  <th className=" p-4 font-medium">Role</th>
-                  <th className=" p-4 font-bold">Delete</th>
+                <tr className="border-b-[1px] border-slate-200 text-slate-400 text-sm uppercase">
+                  <th className="text-start p-4 font-medium">Userame</th>
+                  <th className="text-start p-4 font-medium">First Name</th>
+                  <th className="text-start p-4 font-medium">Last Name</th>
+                  <th className="text-start p-4 font-medium">email</th>
+                  <th className="text-start p-4 font-medium">role</th>
+                  <th className="text-start p-4 font-medium">delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,7 +61,17 @@ const Users = () => {
                     </td>
                     <td className="p-4">
                       <div className="text-lg font-semibold text-start">
-                        {user.first_name} {user.last_name}
+                        {user.first_name}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        {user.last_name}
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="text-lg font-semibold text-start">
+                        {user.email}
                       </div>
                     </td>
                     <td className="p-4">
@@ -67,7 +80,7 @@ const Users = () => {
                       </div>
                     </td>
                     <td className="p-4">
-                      <div className="text-lg font-semibold text-start">
+                      <div className="text-lg font-semibold">
                         <FiTrash2 />
                       </div>
                     </td>

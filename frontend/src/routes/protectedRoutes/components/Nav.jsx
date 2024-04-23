@@ -21,8 +21,13 @@ const navItems = [
     title: "Home",
     onClick: () => (window.location.href = "/locations"),
   },
+  {
+    position: 10,
+    title: "Users",
+    onClick: () => (window.location.href = "/users"),
+  },
 
-  { position: 20, title: "Sign Out", onClick: () => supabase.auth.signOut() },
+  { position: 27, title: "Sign Out", onClick: () => supabase.auth.signOut() },
 ];
 
 const SideStaggerNavigation = () => {
