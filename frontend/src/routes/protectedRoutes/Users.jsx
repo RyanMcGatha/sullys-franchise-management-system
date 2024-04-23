@@ -1,30 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { FiDownload, FiShare2, FiTrash2 } from "react-icons/fi";
 import { supabase } from "../../../supabaseConfig";
-import AddFile from "./components/AddFile";
 import AddUser from "./components/AddUser";
 
 const Users = () => {
-  const [users, setUsers] = useState(["loading"]);
+  const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   console.log(users);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const { data, error } = await supabase.from("profiles").select("*");
-        if (error) {
-          setError(error.message);
-        } else {
-          setUsers(data);
-        }
-      } catch (error) {
-        setError("Failed to fetch users");
+  const fetchUsers = async () => {
+    try {
+      const { data, error } = await supabase.from("profiles").select("*");
+      if (error) {
+        throw error;
+      } else {
+        setUsers(data);
       }
+    } catch (error) {
+      setError("Failed to fetch users");
     }
+  };
 
+  useEffect(() => {
     fetchUsers();
   }, []);
+
+  // const handleDelete = async (userId) => {
+  //   const adminAuthClient = supabase.auth.admin;
+
+  //   try {
+  //     const { data, error } = await supabase.auth.admin.deleteUser(userId);
+
+  //     if (error) {
+  //       throw error;
+  //     }
+  //     setUsers(users.filter((user) => user.id !== userId));
+  //   } catch (error) {
+  //     console.error("Error deleting user:", error.message);
+  //   }
+  // };
 
   return (
     <>
@@ -35,8 +49,8 @@ const Users = () => {
             <AddUser />
           </div>
         </div>
-        <div className="flex h-screen ">
-          <div className="w-full px-10 pr-20 md:pr-0 pt-1 bg-white shadow-lg rounded-lg overflow-x-scroll md:scale-90 mx-auto">
+        <div style={{ maxHeight: "85vh" }} className="flex overflow-auto">
+          <div className="w-full px-10 pr-20 md:pr-0 bg-white shadow-lg rounded-lg overflow-auto md:scale-90 mx-auto p-5">
             <table className="w-full">
               <thead>
                 <tr className="border-b-[1px] border-slate-200 text-slate-400 text-sm uppercase">
@@ -45,13 +59,13 @@ const Users = () => {
                   <th className="text-start p-4 font-medium">Last Name</th>
                   <th className="text-start p-4 font-medium">email</th>
                   <th className="text-start p-4 font-medium">role</th>
-                  <th className="text-start p-4 font-medium">delete</th>
+                  {/* <th className="text-start p-4 font-medium">delete</th> */}
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
+                {users.map((user) => (
                   <tr
-                    key={index}
+                    key={user.id}
                     className="border-b-[1px] border-slate-200 text-slate-400"
                   >
                     <td className="p-4">
@@ -79,19 +93,20 @@ const Users = () => {
                         {user.role}
                       </div>
                     </td>
-                    <td className="p-4">
+                    {/* <td className="p-4">
                       <div className="text-lg font-semibold">
-                        <FiTrash2 />
+                        <FiTrash2
+                          onClick={() => handleDelete(user.id)}
+                          style={{ cursor: "pointer" }}
+                        />
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
-              <tbody></tbody>
             </table>
           </div>
         </div>
-
         <div className="flex justify-start gap-10 w-full max-h-fit flex-wrap px-32 overflow-auto pb-10 pt-1 no-scrollbar"></div>
       </div>
     </>

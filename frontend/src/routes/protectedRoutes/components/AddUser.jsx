@@ -5,27 +5,58 @@ import { supabase } from "../../../../supabaseConfig";
 
 const AddUser = () => {
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+  });
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleAddUser = async (event) => {
     event.preventDefault();
-
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
+    try {
+      const signUpResult = await supabase.auth.signUp({
+        email: userData.email,
+        password: userData.password,
+      });
 
-    if (error) {
+      if (signUpResult.error) {
+        throw new Error(signUpResult.error.message);
+      }
+
+      const profileUpdateResult = await supabase
+        .from("profiles")
+        .update({
+          username: userData.username,
+          first_name: userData.first_name,
+          last_name: userData.last_name,
+          role: userData.role,
+        })
+        .eq("email", userData.email);
+
+      if (profileUpdateResult.error) {
+        throw new Error(profileUpdateResult.error.message);
+      }
+
+      window.location.reload();
+    } catch (error) {
       alert(error.message);
-    } else {
-      alert("User added successfully");
+    } finally {
+      setLoading(false);
+      setIsOpen(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -40,8 +71,9 @@ const AddUser = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         loading={loading}
-        setLoading={setLoading}
-        handleAddFolder={handleAddUser}
+        handleAddUser={handleAddUser}
+        userData={userData}
+        handleInputChange={handleInputChange}
       />
     </div>
   );
@@ -51,9 +83,9 @@ const SpringModal = ({
   isOpen,
   setIsOpen,
   loading,
-  handleAddFolder,
-  folder_name,
-  setFolderName,
+  handleAddUser,
+  userData,
+  handleInputChange,
 }) => {
   return (
     <AnimatePresence>
@@ -78,74 +110,43 @@ const SpringModal = ({
                 Enter new user information!
               </h3>
               <form
-                onSubmit={handleAddFolder}
+                onSubmit={handleAddUser}
                 className="flex flex-col text-xl gap-2 p-10 "
               >
-                <input
+                {Object.entries(userData).map(([key, value]) => (
+                  <input
+                    key={key}
+                    className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.3)",
+                      backdropFilter: "blur(15px)",
+                      border: "solid 2px white",
+                    }}
+                    type={key === "email" ? "email" : "text"}
+                    name={key}
+                    value={value}
+                    placeholder={key.replace("_", " ").toUpperCase()}
+                    required={true}
+                    onChange={handleInputChange}
+                  />
+                ))}
+                <select
                   className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.3)",
                     backdropFilter: "blur(15px)",
                     border: "solid 2px white",
                   }}
-                  type="text"
-                  placeholder="Username"
-                  value={folder_name}
-                  required={true}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
-                <input
-                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backdropFilter: "blur(15px)",
-                    border: "solid 2px white",
-                  }}
-                  type="text"
-                  placeholder="First Name"
-                  value={folder_name}
-                  required={true}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
-                <input
-                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backdropFilter: "blur(15px)",
-                    border: "solid 2px white",
-                  }}
-                  type="text"
-                  placeholder="Last Name"
-                  value={folder_name}
-                  required={true}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
-                <input
-                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backdropFilter: "blur(15px)",
-                    border: "solid 2px white",
-                  }}
-                  type="text"
-                  placeholder="Email"
-                  value={folder_name}
-                  required={true}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
-                <input
-                  className="rounded-xl p-3 placeholder:text-white focus:outline-red-500"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.3)",
-                    backdropFilter: "blur(15px)",
-                    border: "solid 2px white",
-                  }}
-                  type="text"
-                  placeholder="Role"
-                  value={folder_name}
-                  required={true}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
+                  value={userData.role}
+                  onChange={handleInputChange}
+                  name="role"
+                  required
+                >
+                  <option value="">Select Role</option>
+                  <option value="admin">Admin</option>
+                  <option value="authenticated user">Authenticated User</option>
+                  <option value="user">User</option>
+                </select>
                 <div className="flex gap-5 items-center mt-5">
                   <button
                     type="button"
