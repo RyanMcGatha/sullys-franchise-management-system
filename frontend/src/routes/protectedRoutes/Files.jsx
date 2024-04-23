@@ -67,9 +67,9 @@ const AllFiles = () => {
       if (error) {
         throw error;
       }
-      // Create a URL for the downloaded blob
+
       const url = URL.createObjectURL(data);
-      // Trigger download
+
       const link = document.createElement("a");
       link.href = url;
       link.setAttribute("download", fileName);

@@ -8,7 +8,6 @@ const Locations = () => {
   const [locations, setLocations] = useState([]);
   const [error, setError] = useState(null);
   const [buckets, setBuckets] = useState([]);
-  console.log(locations);
 
   const handleDelete = async (id, store_number) => {
     try {
@@ -29,7 +28,7 @@ const Locations = () => {
       );
       if (bucketerror) throw bucketerror;
       setLocations(locations.filter((location) => location.id !== id));
-      alert("Location and its associated files deleted successfully");
+      window.location.reload();
     } catch (error) {
       alert(error.message);
     }

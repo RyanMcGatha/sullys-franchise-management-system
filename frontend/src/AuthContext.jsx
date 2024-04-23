@@ -12,18 +12,11 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      if (session) {
-        localStorage.setItem("session", JSON.stringify(session));
-      }
     });
+    console.log(session);
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      if (session) {
-        localStorage.setItem("session", JSON.stringify(session));
-      } else {
-        localStorage.removeItem("session");
-      }
     });
   }, []);
 
