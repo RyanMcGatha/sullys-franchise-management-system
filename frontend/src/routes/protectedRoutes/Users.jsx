@@ -6,7 +6,6 @@ import AddUser from "./components/AddUser";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
-  console.log(users);
 
   const fetchUsers = async () => {
     try {
@@ -25,20 +24,21 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  // const handleDelete = async (userId) => {
-  //   const adminAuthClient = supabase.auth.admin;
+  const handleDelete = async (userId) => {
+    try {
+      const { error } = await supabase
+        .from("profiles")
+        .delete()
+        .eq("id", userId);
 
-  //   try {
-  //     const { data, error } = await supabase.auth.admin.deleteUser(userId);
-
-  //     if (error) {
-  //       throw error;
-  //     }
-  //     setUsers(users.filter((user) => user.id !== userId));
-  //   } catch (error) {
-  //     console.error("Error deleting user:", error.message);
-  //   }
-  // };
+      if (error) {
+        throw error;
+      }
+      setUsers(users.filter((user) => user.id !== userId));
+    } catch (error) {
+      console.error("Error deleting user:", error.message);
+    }
+  };
 
   return (
     <>
@@ -59,7 +59,7 @@ const Users = () => {
                   <th className="text-start p-4 font-medium">Last Name</th>
                   <th className="text-start p-4 font-medium">email</th>
                   <th className="text-start p-4 font-medium">role</th>
-                  {/* <th className="text-start p-4 font-medium">delete</th> */}
+                  <th className="text-start p-4 font-medium">delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -93,14 +93,14 @@ const Users = () => {
                         {user.role}
                       </div>
                     </td>
-                    {/* <td className="p-4">
+                    <td className="p-4">
                       <div className="text-lg font-semibold">
                         <FiTrash2
                           onClick={() => handleDelete(user.id)}
                           style={{ cursor: "pointer" }}
                         />
                       </div>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

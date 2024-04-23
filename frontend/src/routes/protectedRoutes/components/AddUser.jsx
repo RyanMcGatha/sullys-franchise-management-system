@@ -50,6 +50,14 @@ const AddUser = () => {
         throw new Error(profileUpdateResult.error.message);
       }
 
+      const { data, error } = await supabase.auth.updateUser({
+        data: {
+          role: userData.role,
+        },
+      });
+      if (error) throw error;
+      console.log(data);
+
       window.location.reload();
     } catch (error) {
       alert(error.message);
