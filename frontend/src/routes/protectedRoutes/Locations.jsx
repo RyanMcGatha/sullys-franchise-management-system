@@ -4,6 +4,9 @@ import { supabase } from "../../../supabaseConfig";
 import { Link, Navigate } from "react-router-dom";
 import AddLocation from "./components/AddLocation";
 import LocationCard from "./components/3dCard";
+
+//locations
+
 const Locations = () => {
   const [locations, setLocations] = useState([]);
   const [error, setError] = useState(null);
